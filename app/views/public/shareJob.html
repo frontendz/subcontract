@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <div class="pageTitle"><h2>Share a Job</h2></div>
+  <form role="form" name="shareJobForm" class="forgotPasswordForm" novalidate>
+    <div class="form-group text-left" ng-class="{'has-error' : (shareJobForm.$submitted || shareJobForm.email.$touched || submitted) && shareJobForm.email.$error.required || shareJobForm.$error.pattern }">
+       <label>Email Id:<span class="estricSign">*</span></label>
+       <input type="text" name="email" ng-model="email" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" class="form-control" ng-required="true" />
+       <p class="myerror" ng-show="(shareJobForm.$submitted || shareJobForm.email.$touched || submitted) && shareJobForm.email.$error.required">Email is required.</p>
+       <p ng-show="(shareJobForm.$submitted || shareJobForm.email.$touched || submitted) && shareJobForm.$error.pattern" class="help-block">Invalid email address.</p>
+    </div>
+    <div class="form-group text-center signInForm-submitBtnwrapper">
+      <input type="Submit" ng-click="shareJobForm.$valid && shareJobToFriend()" class="btnSubmit" value="Share" />
+      <input type="button" ng-click="close()" class="btnCancel" value="Cancel" />
+    </div>
+  </form>
+</div>

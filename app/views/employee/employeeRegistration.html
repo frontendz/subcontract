@@ -1,0 +1,78 @@
+<div class="employeeRegisteration" id="employeeWrapper">
+  <div class="loadLoginForm" ng-controller="LoginCtrl" ng-include src ="'views/logoLoginForm.html'"></div>
+  <div class="section-separator">
+    <div class="dialogContainer">
+      <div class="employeeRegisterationForm">
+        <div class="pageTitle"><h2>Register as Employee</h2></div>
+        <form ng-controller="EmployeeRegistrationCtrl as employeeRegistrationCtrl" role="form"
+          name="reigstrationForm" class="RegisterEmployeeForm" novalidate>
+           <div class="form-group text-left"
+           ng-class="{'has-error' : (reigstrationForm.$submitted || reigstrationForm.firstName.$touched || submitted ) && reigstrationForm.firstName.$error.required || reigstrationForm.firstName.$error.pattern }">
+              <label for="firstName" class="hidden-xs">First Name:<span class="estricSign">*</span></label>
+              <input type="text" class="form-control" name="firstName" id="firstName" ng-model="employeeRegistrationCtrl.firstName" placeholder="First Name" ng-pattern="/^[a-zA-Z\s]*$/" ng-required="true"/>
+              <p class="help-block" ng-show="(reigstrationForm.$submitted || reigstrationForm.firstName.$touched || submitted ) && reigstrationForm.firstName.$invalid && reigstrationForm.firstName.$error.required">First Name is required </p>
+              <p ng-show="reigstrationForm.firstName.$error.pattern" class="help-block">Only alphabats are allowed.</p>
+           </div>
+           <div class="form-group text-left"
+           ng-class="{'has-error' : (reigstrationForm.$submitted || reigstrationForm.lastName.$touched || submitted ) && reigstrationForm.lastName.$error.required || reigstrationForm.lastName.$error.pattern }">
+              <label for="lastName" class="hidden-xs">Last Name:<span class="estricSign">*</span></label>
+              <input type="text" class="form-control" name="lastName" id="lastName" ng-model="employeeRegistrationCtrl.lastName" placeholder="Last Name" ng-pattern="/^[a-zA-Z\s]*$/" ng-required="true"/>
+              <p class="help-block" ng-show="(reigstrationForm.$submitted || reigstrationForm.lastName.$touched || submitted ) && reigstrationForm.lastName.$invalid && reigstrationForm.lastName.$error.required">Last Name is required </p>
+              <p ng-show="reigstrationForm.lastName.$error.pattern" class="help-block">Only alphabats are allowed.</p>
+           </div>
+           <div class="form-group text-left"
+            ng-class="{'has-error' : (reigstrationForm.$submitted || reigstrationForm.email.$touched || submitted ) && reigstrationForm.email.$invalid && reigstrationForm.email.$error.pattern}">
+              <label for="email" class="hidden-xs">Email:<span class="estricSign">*</span></label>
+              <input type="text" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" class="form-control" name="email" id="email" ng-model="employeeRegistrationCtrl.email" placeholder="Email Address" ng-required="true" ng-blur="employeeRegistrationCtrl.checkUser()"/>
+              <p class="help-block" ng-show="(reigstrationForm.$submitted || reigstrationForm.email.$touched || submitted ) && reigstrationForm.email.$invalid && reigstrationForm.email.$error.required">Email is required</p>
+              <p ng-show="reigstrationForm.$error.pattern" class="help-block">Please enter valid email address.</p>
+           </div>
+           <div class="form-group text-left">
+              <label for="email" class="errorMessage {{employeeRegistrationCtrl.isShowEmailExist}}">{{employeeRegistrationCtrl.emailExist}}</label>
+           </div>
+           <div class="form-group text-left" ng-class="{'has-error' : (reigstrationForm.$submitted || reigstrationForm.mobile.$touched || submitted) && reigstrationForm.mobile.$error.required || reigstrationForm.mobile.$error.minlength || reigstrationForm.mobile.$error.maxlength || reigstrationForm.mobile.$error.pattern}">
+              <label for="mobile" class="hidden-xs">Mobile:<span class="estricSign">*</span></label>
+              <input type="text" ng-pattern="/^(0*[1-9]+0*)+$/" minlength="10" maxlength="10" class="form-control" name="mobile" id="txtMobile" ng-model="employeeRegistrationCtrl.mobile" placeholder="phone Number ex:XXXXXXXXXX" ng-required="true"/>
+              <p ng-show="(reigstrationForm.$submitted || reigstrationForm.mobile.$touched || submitted) && reigstrationForm.mobile.$error.required" class="help-block">Mobile is required.</p>
+              <p class="help-block" ng-show="reigstrationForm.mobile.$error.pattern">Only numbers are allowed & Not All Zeros</p>
+              <p class="help-block" ng-show="reigstrationForm.mobile.$error.minlength">Mobile number should be of 10 digits...!</p>
+           </div>
+           <div class="form-group text-left datePickerClass">
+              <label for="dob" class="hidden-xs">DOB:<span class="estricSign">*</span></label>
+              <input type="text" class="form-control" uib-datepicker-popup="{{employeeRegistrationCtrl.format}}" id="dtpDOB" ng-model="employeeRegistrationCtrl.dt" is-open="employeeRegistrationCtrl.popup1.opened" datepicker-options="employeeRegistrationCtrl.dateOptions" close-text="Close" alt-input-formats="altInputFormats" name="dob"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default btn-calender-emp" ng-click="employeeRegistrationCtrl.open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+           </div>
+           <div class="form-group text-left"
+           ng-class="{'has-error' : (reigstrationForm.$submitted || reigstrationForm.password.$touched || submitted ) && reigstrationForm.password.$invalid && reigstrationForm.password.$error.required || reigstrationForm.password.$error.pattern }">
+              <label for="password" class="hidden-xs">Password:<span class="estricSign">*</span></label>
+              <input type="password"
+                    class="form-control" name="password"
+                    id="txtNewPassword"
+                    ng-model="employeeRegistrationCtrl.password"
+                    placeholder="Password" ng-required="true"
+                    ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/" />
+              <p class="help-block" ng-show="(reigstrationForm.$submitted || reigstrationForm.password.$touched || submitted ) && reigstrationForm.password.$invalid && reigstrationForm.password.$error.required">Password is required</p>
+              <p ng-show="reigstrationForm.password.$error.pattern" class="help-block">Minimum 8 characters at least 1 Alphabet, 1 Number and 1 Special Character</p>
+           </div>
+           <div class="form-group text-left" ng-class="{'has-error' : reigstrationForm.confirmPassword.$invalid && reigstrationForm.confirmPassword.$pristine && submitted || reigstrationForm.confirmPassword.$error.pwmatch}">
+              <label for="confirmPassword" class="hidden-xs">Confirm Password:<span class="estricSign">*</span></label>
+              <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" ng-model="employeeRegistrationCtrl.confirmPassword" placeholder="Confirm Password" ng-required="true" pw-check="txtNewPassword"/>
+              <p ng-show="reigstrationForm.confirmPassword.$invalid && reigstrationForm.confirmPassword.$pristine && submitted || reigstrationForm.confirmPassword.$error.pwmatch" class="help-block">Passwords don't match.</p>
+           </div>
+           <div class="form-group text-left"
+           ng-class="{'has-error' : (reigstrationForm.$submitted || reigstrationForm.termCondition.$touched || submitted) && reigstrationForm.termCondition.$invalid && reigstrationForm.termCondition.$error.required }">
+              <input type="checkbox" name="termCondition" id="termCondition" ng-model="employeeRegistrationCtrl.termCondition.value" ng-required="true"/>
+              <label for="termCondition" class="hidden-xs">I agree to <a ng-click="employeeRegistrationCtrl.openTermsConditionPopup()">Terms & Conditions:</a><span class="estricSign">*</span></label>
+              <p ng-show="(reigstrationForm.$submitted || reigstrationForm.termCondition.$touched || submitted ) && reigstrationForm.termCondition.$invalid && reigstrationForm.termCondition.$error.required" class="help-block">Please read terms and conditions and check to accept</p>
+           </div>
+           <div class="form-group signInForm-submitBtnwrapper">
+              <input type="submit" class="btnSubmit" value="Register" title="Register" ng-click="reigstrationForm.$valid && employeeRegistrationCtrl.onRegisterFormSubmit()">
+              <input type="button" class="btnCancel" value="Cancel" title="Cancel" ui-sref="home">
+           </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

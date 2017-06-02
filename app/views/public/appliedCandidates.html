@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <div class="modal-header">
+    <h4>Applied Candidates
+      <p class="pull-right" ng-click="close()">X</p>
+    </h4>
+  </div>
+  <div class="modal-body">
+    <div ng-show="candidates.length <= 0">
+      <h4>No candidates applied!</h4>
+    </div>
+    <div ng-show="candidates.length > 0">
+      <div class="row candidate-row forCandidateDetail" ng-repeat="candidate in candidates" ng-click="redirectCandidateDetail(candidate)">
+        <div class="col-md-3">
+          <i class="glyphicon glyphicon-user"></i> {{candidate.firstName}} {{candidate.lastName}}
+        </div>
+        <div class="col-md-8">
+          <span ng-repeat="skillName in candidate.candidateSkills">
+            <i class="glyphicon glyphicon-star"></i>{{skillName.skillSetName}} ({{skillName.experience}}+ Years) &nbsp;
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary btn-lg pull-right" ng-click="close()">Close</button>
+  </div>
+</div>

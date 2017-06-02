@@ -1,0 +1,193 @@
+<div class="row">
+  <div class="col-xs-12 separatorJobs viewJobSection employer-content">
+    <div class="big-boxes">
+      <div class="row">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="col-sm-2">
+              <div class="row">
+                <p style="text-align:left;margin-bottom:20px">
+                  <img style="width:200px; padding-left:15px;" class="postlogo" src="http://test.subcontract.com/assets/images/sample.jpg">
+                </p>
+              </div>
+            </div>
+
+            <div class="row  text-capitalize" style="color: #337ab7;font-size: 16px;">
+
+            </div>
+            <div class="col-sm-6">
+              <label for="posttitle" class="control-label pull-left">Job Title :</label>
+              <input type="text" name="posttitle" readonly="" class="form-control" id="posttitle" ng-model="viewAppliedJobCtrl.result.jobTitle">
+              <br>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="posttitle" class="control-label pull-left">Job ID :</label>
+              <input type="text" name="jobId" class="form-control" readonly="" value="{{viewAppliedJobCtrl.result.userJobId}}">
+              <br> </div>
+            <div class="col-sm-6">
+              <label for="postDescription" class="control-label pull-left">Job Description :</label>
+              <textarea class="form-control" rows="5" id="postDescription" name="postDescription" readonly="">{{viewAppliedJobCtrl.result.jobDesc}}</textarea>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="location" class="control-label">Location:</label>
+              <div class="val-err" id="locErr"></div>
+              <input type="text" class="form-control" id="location" readonly="" ng-model="viewAppliedJobCtrl.result.location">
+              <br>
+            </div>
+            <div class="col-sm-6">
+              <label for="close_date" class="control-label">Closing Date :</label>
+              <input type="text" class="form-control" id="close_date" readonly="" ng-model="viewAppliedJobCtrl.result.closingAt | dateToCustomString">
+              <br>
+            </div>
+            <div class="col-sm-6">
+              <label for="skills" class="control-label">Skills :</label>
+              <input type="text" class="form-control" id="location" readonly="" value="{{viewAppliedJobCtrl.result.skill}}">
+              <br>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="joblength" class="control-label">Job Length :</label>
+              <input type="text" name="joblength" readonly="" class="form-control" value="{{viewAppliedJobCtrl.result.jobLength}}" id="joblength" placeholder="Job Length">
+              <br> </div>
+
+            <div class="col-sm-6">
+              <label for="experience_from" class="control-label">Experience Range :</label>
+              <input type="text" readonly="" name="experience_from" class="form-control" id="experience_from" placeholder="Experience From" value="{{viewAppliedJobCtrl.result.expFrom}} - {{viewAppliedJobCtrl.result.expTo}}">
+              <br>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="joblength" class="control-label ">Employment type :</label>
+              <input type="text" name="joblength" class="form-control" readonly="" value="{{viewAppliedJobCtrl.result.employementType}}" id="employmentType" placeholder="Employment type">
+              <br>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="numberOfPositions" class="control-label pull-left">Number of positions :</label>
+              <input type="text" name="numpos" class="form-control" readonly="" id="numpos" value="{{viewAppliedJobCtrl.result.noOfPosition}}">
+              <br> </div>
+
+            <div class="col-sm-6">
+              <label for="numberOfPositions" class="control-label pull-left">Recruiter :</label>
+              <input type="text" name="numpos" class="form-control" readonly="" id="numpos" value="{{viewAppliedJobCtrl.result.recruiterAssigned}}">
+              <br> </div>
+            <div class="col-sm-6">
+              <label for="telecommute" class="control-label pull-left">Remote :</label>
+              <input type="text" name="telecommute" class="form-control" value="{{viewAppliedJobCtrl.result.remote}}" id="joblength" readonly="">
+              <br> </div>
+
+            <div class="col-sm-6">
+              <label for="Qualification" class="control-label pull-left">Qualification :</label>
+              <input type="text" name="qual" class="form-control" id="qual" value="{{viewAppliedJobCtrl.result.qualification}}" readonly="">
+              <br> </div>
+
+            <div class="col-sm-6">
+              <label for="ReqType" class="control-label">Requirement type :</label>
+              <input type="text" name="reqtype" readonly="" class="form-control" id="req_type" value="{{viewAppliedJobCtrl.result.requirementType}}">
+              <br>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="jpc_c" class="control-label">Contract Terms :</label>
+              <input type="text" name="jpc_c" class="form-control" id="jpc_c" readonly="" value="{{viewAppliedJobCtrl.result.contractTerms}}">
+              <br>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="col-sm-4" style="padding-left:0px;">
+                    <label for="rate" class="control-label pull-left">Currency :</label>
+                    <input type="text" name="currency" class="form-control" id="currency" readonly="" value="{{viewAppliedJobCtrl.result.currency}}">
+                  </div>
+                  <div class="col-sm-8" style="padding-right:0px;">
+                    <label for="ctc_from" class="control-label">Rate Type :</label>
+                    <input type="text" name="rate" class="form-control" id="rate" readonly="" value="{{viewAppliedJobCtrl.result.rateType}}">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="ctc_from" class="control-label">Rate/Salary Range :</label>
+              <input type="text" name="ctc_from" class="form-control" id="ctc_from" readonly="" value="{{viewAppliedJobCtrl.result.salaryFrom}} - {{viewAppliedJobCtrl.result.salaryTo}}">
+              <br>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="industry_name" class="control-label">Industry :</label>
+              <input type="text" name="Industry" class="form-control" placeholder="Not Specified" id="Industry" readonly="" value="{{viewAppliedJobCtrl.result.industry}}">
+              <br>
+            </div>
+
+
+            <div class="col-sm-6">
+              <label for="fun_area" class="control-label">Functional Area :</label>
+              <input type="text" name="functionalArea" class="form-control" id="functional" readonly="" value="{{viewAppliedJobCtrl.result.functionalArea}}">
+              <br>
+            </div>
+
+
+            <div class="col-sm-6">
+              <label for="travel_type" class="control-label">Travel Type :</label>
+              <input type="text" name="travel_type" class="form-control" id="travel_type" readonly="" value="{{viewAppliedJobCtrl.result.travelType}}">
+              <br>
+            </div>
+            <div class="col-sm-6">
+              <label for="comp_desc" class="control-label">End Client Details :</label>
+              <input type="text" name="comp_desc" class="form-control" id="comp_desc" readonly="" value="{{viewAppliedJobCtrl.result.aboutCompany}}">
+              <br>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="post_vis" class="control-label">Job Visibility :</label>
+              <input type="text" name="post_vis" class="form-control" id="post_vis" readonly="" value="{{viewAppliedJobCtrl.result.visibility}}">
+              <br>
+            </div>
+            <div class="col-sm-6">
+              <label for="onboardby" class="control-label">Start Date :</label>
+              <input type="text" name="onboardby" class="form-control" id="onboardby" readonly="" value="{{viewAppliedJobCtrl.result.createdAt | dateToCustomString}}">
+              <br>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="keywords" class="control-label">keywords :</label>
+              <input type="text" name="keywords" class="form-control" id="keywords" readonly="" value="{{viewAppliedJobCtrl.result.keywords}}">
+              <br>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="refresh_by" class="control-label">Refresh job by :</label>
+              <input type="text" name="refresh_by" class="form-control" id="v" readonly="" value="{{viewAppliedJobCtrl.result.refreshJob}}">
+              <br>
+            </div>
+
+            <div class="row">
+              <span style="font-size: 16px;" class="text-capitalize">
+		          </span>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12" style="padding-left:0px">
+                <div class="col-sm-3" style="padding-left:0px"><span style="color: #16A085"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 separator text-right">
+              <span class="dlmButtons">
+                <input type="button" class="btnSubmit" value="Already Applied" ng-disabled={{viewAppliedJobCtrl.appliedButton}} />
+              </span>
+              <span class="dlmButtons">
+                <input type="button" class="btnCancel" value="Back" ng-click="viewAppliedJobCtrl.backToDashboard()" />
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

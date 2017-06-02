@@ -1,0 +1,36 @@
+<div class="left-navigation" role="navigation" ng-controller="EmployerNavigationCtrl">
+  <ul class="employer-menu">
+    <li ng-class="{ active: isActive('/employer/dashboard')}"><a ui-sref="employer.dashboard" target="_self" class="myDashboard">Home</a></li>
+    <li class="text-uppercase">
+      <span class="menu-heading">Jobs</span>
+    </li>
+    <li ng-class="{ active: isActive('/employer/addNewJob')}"><a ui-sref="employer.postJob" target="_self" class="addNewJob">New Job Post</a></li>
+    <li ng-class="{ active: isActive('/employer/myPostedJobs')}"><a ui-sref="employer.viewMyPostedJobs" target="_self" class="myPostedJob">My Job Posts</a></li>
+    <li ng-class="{ active: isActive('/employer/myConnectionPostedJobs')}"><a ui-sref="employer.viewMyConnectionPostedJobs" target="_self" class="viewAllJob">My Connection Job Posts</a></li>
+    <li ng-class="{ active: isActive('/employer/publicJobs')}"><a ui-sref="employer.viewPublicJobs" target="_self" class="publicAllPost">Public Jobs</a></li>
+
+    <li class="text-uppercase">
+      <span class="menu-heading">Candidates</span>
+    </li>
+    <li ng-class="{ active: isActive('/employer/addNewCandidate')}"><a ui-sref="employer.addNewCandidate" target="_self" class="addNewCandidate">Add New Candidate</a></li>
+    <li ng-class="{ active: isActive('/employer/myCandidates')}"><a ui-sref="employer.myCandidates" target="_self" class="viewAllCandidates">My Candidates</a></li>
+    <li ng-class="{ active: isActive('/employer/resume')}"><a ui-sref="employer.searchResume" target="_self" class="searchResume">Search Candidate Resume</a></li>
+    <li class="text-uppercase">
+      <span class="menu-heading">Network</span>
+    </li>
+    <li ng-class="{ active: isActive('/employer/myConnection')}"><a ui-sref="employer.myConnection" target="_self" class="myConnection">My Connections</a></li>
+    <li ng-class="{ active: isActive('/employer/pendingNetworkRequest')}"><a ui-sref="employer.pendingNetworkRequest" target="_self" class="viewPendingRequest">Pending Requests</a></li>
+    <li ng-class="{ active: isActive('/employer/sentNetworkRequest')}"><a ui-sref="employer.sentConnectionRequest" target="_self" class="viewSentRequest">Sent Requests</a></li>
+    <li ng-class="{ active: isActive('/employer/myConnectionGraph')}"><a ui-sref="employer.myConnectionGraph" target="_self" class="viewAllCandidates">My Network</a></li>
+    <li class="text-uppercase">
+      <span class="menu-heading">Profile</span>
+    </li>
+    <li ng-class="{ active: isActive('/employer/myProfile')}"><a ui-sref="employer.myFullProfile" target="_self" class="myConnection">My Profile</a></li>
+    <li ng-class="{ active: isActive('/employer/changePassword')}"><a ui-sref="employer.changePassword" target="_self" class="myConnection">Change Password</a></li>
+    <li class="text-uppercase">
+      <span class="menu-heading">Team</span>
+    </li>
+    <li ng-class="{ active: isActive('/employer/inviteTeam')}"><a ui-sref="employer.inviteTeam" target="_self" class="inviteTeam">Invite Team</a></li>
+    <li ng-class="{ active: isActive('/employer/viewTeam')}"><a ui-sref="employer.viewTeam" target="_self" class="viewTeam">View Team</a></li>
+  </ul>
+</div>

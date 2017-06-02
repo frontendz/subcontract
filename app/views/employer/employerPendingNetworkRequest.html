@@ -1,0 +1,33 @@
+<div class="employer-SentConnectionRequest employer-all-pages container-fluid row" id="employerSentConnectionRequest">
+  <h2>Pending Requests for Network</h2>
+  <div class="section-separator">
+    <div class="row" ng-show="employerPendingNetworkRequestCtrl.myPendingRequest">
+      <div class="col-xs-12">
+        <div class=" section-separator form-group col-lg-6 col-md-6 col-sm-12 col-xs-12" ng-repeat="myPendingRequest in employerPendingNetworkRequestCtrl.result | orderBy:sortingFn:orderReverse">
+          <div class="row">
+            <div class="col-md-3 col-xs-6 employerImage">
+              <img ng-src="images/recent-employer.png" alt="Employer" />
+            </div>
+            <div class="col-md-6 col-xs-6">
+              <span class="companyName">{{myPendingRequest.name}}</span>
+            </div>
+            <div class="col-md-3 col-xs-12 text-right">
+              <span>
+                <input type="submit" class="btnSubmit conntectBtn" ng-click="employerPendingNetworkRequestCtrl.acceptRequest(myPendingRequest)" value="Accept" title="Accept">
+                <!-- <br />
+                <input type="button" class="btnSubmit conntectBtn" ng-click="employerPendingNetworkRequestCtrl.rejectRequest(myPendingRequest)" value="Reject" title="Reject"> -->
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row"  ng-hide="employerPendingNetworkRequestCtrl.myPendingRequest">
+      <div class="col-xs-12">
+        <div class="row text-center">
+          <span class="noConnectionText">No any pending request</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

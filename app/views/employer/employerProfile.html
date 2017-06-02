@@ -1,0 +1,76 @@
+<div class="employerProfile" id="employerWrapper">
+  <div class="employer-header col-sm-12">
+    <div ng-controller="LoginCtrl" ng-include src ="'views/employer/employerHeader.html'"></div>
+  </div>
+  <div class="section-separator">
+    <div class="dialogContainer">
+      <div class="employerProfileForm">
+        <div class="pageTitle"><h2>Almost There!!</h2></div>
+        <form role="form" name="reigstrationForm" autocomplete="off" class="ProfileEmployerForm" novalidate="novalidate">
+           <div class="form-group text-left"  ng-class="{'has-error' : (reigstrationForm.$submitted || reigstrationForm.industry.$touched || submitted) && reigstrationForm.industry.$error.required }">
+              <label for="industryType" class="hidden-xs">Industry Type:<span class="estricSign">*</span></label>
+              <span class="textValue">
+                <select name="industry" class="form-control"  ng-options="item.displayTitle for item in employerProfileCtrl.industryType track by item.masterId" ng-required="true" ng-model="employerProfileCtrl.selectedIndustryType">
+                  <option value="" selected disabled hidden>{{employerProfileCtrl.selectedIndustryType}}</option>
+                </select>
+                <!-- {{employerProfileCtrl.selectedIndustryType}}... -->
+              </span>
+              <p ng-show="(reigstrationForm.$submitted || reigstrationForm.industry.$touched || submitted) && reigstrationForm.industry.$error.required" class="help-block">Industry Type is required.</p>
+           </div>
+           <div class="form-group text-left" ng-class="{'has-error' : (reigstrationForm.$submitted || reigstrationForm.location.$touched || submitted) && reigstrationForm.location.$error.required }">
+              <label for="location" class="hidden-xs">Location:<span class="estricSign">*</span></label>
+              <input  typeahead-on-select='employerProfileCtrl.doSomething(jobLocation)' id="Autocomplete2" class="form-control" name="location" ng-autocomplete options="options" details="details" class="form-control" type="text" placeholder="Enter your Location" id="txtJobLocation" value="" ng-model="employerProfileCtrl.location" ng-required="true" />
+              <p ng-show="(reigstrationForm.$submitted || reigstrationForm.location.$touched || submitted) && reigstrationForm.location.$error.required" class="help-block">Location is required.</p>
+           </div>
+           <div class="form-group text-left" ng-class="{'has-error' : (reigstrationForm.$submitted || reigstrationForm.website.$touched || submitted) && reigstrationForm.website.$error.required || reigstrationForm.website.$error.url }">
+              <label for="website" class="hidden-xs">Website:<span class="estricSign">*</span></label>
+              <input type="url" class="form-control" name="website" id="Website" ng-model="employerProfileCtrl.website" placeholder="Enter URL with http://" ng-required="true"/>
+              <p ng-show="(reigstrationForm.$submitted || reigstrationForm.website.$touched || submitted) && reigstrationForm.website.$error.required" class="help-block">Website is required.</p>
+              <p class="help-block" ng-show="reigstrationForm.website.$error.url">Invalid Website URL...!</p>
+           </div>
+           <div class="form-group text-left" ng-class="{'has-error' : (reigstrationForm.$submitted || reigstrationForm.contactNumber.$touched || submitted) && reigstrationForm.contactNumber.$error.required || reigstrationForm.contactNumber.$error.pattern || reigstrationForm.contactNumber.$error.maxlength  || reigstrationForm.contactNumber.$error.minlength}">
+              <label for="contactNumber" class="hidden-xs">Contact Number:<span class="estricSign">*</span></label>
+              <input type="text" class="form-control" ng-pattern="/^(0*[1-9]+0*)+$/" minlength="10" maxlength="10" name="contactNumber" id="contactNumber" ng-model="employerProfileCtrl.contactNumber" placeholder="Contact Number" ng-required="true"/>
+              <p ng-show="(reigstrationForm.$submitted || reigstrationForm.contactNumber.$touched || submitted) && reigstrationForm.contactNumber.$error.required" class="help-block">Contact Number is required.</p>
+              <p class="help-block" ng-show="reigstrationForm.contactNumber.$error.pattern">Invalid number...!</p>
+              <p class="help-block" ng-show="(reigstrationForm.$submitted || reigstrationForm.contactNumber.$touched || submitted) && reigstrationForm.contactNumber.$error.maxlength || reigstrationForm.contactNumber.$error.minlength">Requires 10 digits allowed...</p>
+           </div>
+           <div class="form-group text-left">
+             <div class="row">
+               <div class="col-sm-12">
+                <label for="directNo" class="hidden-xs">Direct No:</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-9" ng-class="{'has-error' : (reigstrationForm.$submitted || reigstrationForm.directNo.$touched || submitted) && reigstrationForm.directNo.$error.maxlength }">
+                <input type="number" maxlength="10" class="form-control" name="directNo" id="directNo" ng-model="employerProfileCtrl.directLineNo" placeholder="Direct No" />
+                <p class="help-block" ng-show="reigstrationForm.directNo.$error.maxlength">Maximum 10 digits allowed...</p>
+              </div>
+              <div class="col-sm-3" ng-class="{'has-error' : (reigstrationForm.$submitted || reigstrationForm.directExtn.$touched || submitted) && reigstrationForm.directExtn.$error.maxlength }">
+                <input type="number" maxlength="4" class="form-control" name="directExtn" id="directExtn" ng-model="employerProfileCtrl.directLineExtn" placeholder="Extension"/>
+                <p class="help-block" ng-show="reigstrationForm.directExtn.$error.maxlength">Maximum 4 digits allowed...</p>
+              </div>
+            </div>
+           </div>
+           <div class="form-group text-left"
+            ng-class="{'has-error' : (reigstrationForm.$submitted || reigstrationForm.contactName.$touched || submitted) && reigstrationForm.contactName.$error.required || reigstrationForm.contactName.$error.pattern}">
+              <label for="ContactName" class="hidden-xs">Contact Name:<span class="estricSign">*</span></label>
+              <input type="text" class="form-control" name="contactName" id="contactName" ng-model="employerProfileCtrl.contactName" placeholder="Contact Name" ng-required="true" ng-pattern="/^[a-zA-Z\s]*$/"/>
+              <p ng-show="(reigstrationForm.$submitted || reigstrationForm.contactName.$touched || submitted) && reigstrationForm.contactName.$error.required" class="help-block">Contact name is required.</p>
+              <p ng-show="reigstrationForm.contactName.$error.pattern" class="help-block">Only alphabats are allowed.</p>
+           </div>
+           <div class="form-group text-left">
+              <label for="certificateType" class="hidden-xs">Certificates:</label>
+              <span class="textValue">
+                <div ng-dropdown-multiselect="" class="customDropdown" options="employerProfileCtrl.certificateList" selected-model="employerProfileCtrl.CertificateListModel" extra-settings="{closeOnSelect: true, closeOnDeselect: true, buttonClasses: 'customDropdownBtn', dynamicTitle: true, displayProp: 'displayTitle', idProp: 'masterId', scrollable: false}"></div>
+              </span>
+           </div>
+           <div class="form-group signInForm-submitBtnwrapper">
+              <input type="submit" class="btnSubmit" ng-click="reigstrationForm.$valid && employerProfileCtrl.onProfileFormSubmit()" value="Submit Profile" title="Submit Profile">
+              <input type="button" class="btnCancel" value="Cancel" title="Cancel">
+           </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

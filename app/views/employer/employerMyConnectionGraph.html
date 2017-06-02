@@ -1,0 +1,32 @@
+<div class="employer-myconnection employer-all-pages container-fluid row" id="employerMyConnection">
+  <h2>My Connections</h2>
+  <div class="section-separator">
+    <div class="row" ng-show="employerMyConnectionGraphCtrl.myAvailableConnection">
+      <div class="col-xs-12">
+        <div class="row text-right">
+          <input type="submit" class="btnSubmit" ng-disabled="isDisabled" ng-click="employerMyConnectionGraphCtrl.redirectSignInEmployers()" value="Send A Request" title="Send a request">
+        </div>
+        <div class=" section-separator form-group col-xs-12">
+          <div class="row">
+            {{employerMyConnectionGraphCtrl.positions}}
+            <ng-map zoom="3" center="[0, 0]" class="mapClass">
+              <marker ng-repeat="p in employerMyConnectionGraphCtrl.positions"
+                position="{{p.pos}}">
+              </marker>
+            </ng-map>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row"  ng-hide="employerMyConnectionGraphCtrl.myAvailableConnection">
+      <div class="col-xs-12">
+        <div class="row text-center">
+          <span class="noConnectionText">Not connected to Any One Yet</span>
+        </div>
+        <div class="row text-center">
+          <input type="submit" class="btnSubmit" ng-disabled="isDisabled" ng-click="employerMyConnectionGraphCtrl.redirectSignInEmployers()" value="Send A Request" title="Send a request">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

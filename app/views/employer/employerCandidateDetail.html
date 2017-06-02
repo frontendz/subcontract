@@ -1,0 +1,49 @@
+<div class="employer-my-added-candidates employer-all-pages container-fluid row" id="employerMyAllPostedJobs">
+  <h2>Candidate Details</h2>
+  <div class="row">
+    <div class="big-boxes">
+      <div class="row">
+        <div class="col-sm-9 col-xs-12">
+          <div class="row">
+            <div class="col-xs-12">
+              <span class="jobTitle candidate-data">{{employerCandidateDetailsCtrl.candidateData.firstName}}</span>
+            </div>
+            <div class="col-xs-12">
+              <span class="aboutCompany candidate-data">{{employerCandidateDetailsCtrl.candidateData.lastName}}</span>
+            </div>
+            <div class="col-xs-12">
+              <span class="location candidate-data">
+                {{employerCandidateDetailsCtrl.candidateData.currentLocation}}
+              </span>
+            </div>
+            <div class="col-xs-12">
+              <span class="skills candidate-data">
+                Email
+              </span>
+              <span class="candidate-data">
+                {{employerCandidateDetailsCtrl.candidateData.email}}
+              </span>
+            </div>
+            <div class="col-xs-12">
+              <span class="job-desc candidate-data">
+                Mobile:
+              </span>
+              <span class="candidate-data">
+                {{employerCandidateDetailsCtrl.candidateData.mobileNo}}
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3 col-xs-12 text-right">
+          <div class="row">
+            <div class="col-xs-12">
+              <span class="dlmButtons">
+                <input type="button" value="Download Resume" title="Download Resume" ng-click="employerCandidateDetailsCtrl.downloadResume(employerCandidateDetailsCtrl.candidateData.candidateId)"/>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

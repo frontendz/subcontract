@@ -1,0 +1,67 @@
+<!-- editTeamMembersCtrl-->
+<div class="row" id="editTeamMembers">
+  <div class="col-xs-12 separatorJobs">
+    <div class="big-boxes">
+      <div class="row">
+        <h4 class="text-center">Edit Team Members</h4>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="employer-add-new-job employer-all-pages container-fluid" id="editTeamMembers">
+          <form id="formEditTeamMembers" name="editTeamForm" autocomplete="off" class="row" novalidate="novalidate">
+            <div class="employer-fields-section">
+              <div class="row">
+                <div class="form-group col-sm-9"
+                    ng-class="{'has-error' : (editTeamForm.$submitted || editTeamForm.firstName.$touched || submitted ) && editTeamForm.firstName.$invalid && editTeamForm.firstName.$error.required || editTeamForm.firstName.$error.pattern}">
+                  <span class="labelValue col-sm-4 pull-left">First Name:<span class="estricSign">*</span></span>
+                  <span class="textValue col-sm-8">
+                    <input ng-required="true" class="form-control" type="text" name="firstName" placeholder="First Name" id="txtFirstName" value="" ng-model="editTeamMembersCtrl.defaultTeamMember.firstName" ng-pattern="/^[a-zA-Z\s]*$/">
+                    <p class="help-block" ng-show="(editTeamForm.$submitted || editTeamForm.firstName.$touched || submitted ) && editTeamForm.firstName.$invalid && editTeamForm.firstName.$error.required">First Name is required</p>
+                    <p ng-show="editTeamForm.firstName.$error.pattern" class="help-block">Only alphabats are allowed.</p>
+                  </span>
+                </div>
+                <div class="form-group col-sm-9"
+                      ng-class="{'has-error' : (editTeamForm.$submitted || editTeamForm.lastName.$touched || submitted ) && editTeamForm.lastName.$invalid && editTeamForm.lastName.$error.required || editTeamForm.lastName.$error.pattern}">
+                  <span class="labelValue col-sm-4 pull-left">Last Name:<span class="estricSign">*</span></span>
+                  <span class="textValue col-sm-8">
+                    <input ng-required="true" class="form-control" type="text" placeholder="Last Name" name="lastName" id="txtLastName" value="" ng-model="editTeamMembersCtrl.defaultTeamMember.lastName" ng-pattern="/^[a-zA-Z\s]*$/">
+                    <p class="help-block" ng-show="(editTeamForm.$submitted || editTeamForm.lastName.$touched || submitted ) && editTeamForm.lastName.$invalid && editTeamForm.lastName.$error.required">Last Name is required</p>
+                    <p ng-show="editTeamForm.lastName.$error.pattern" class="help-block">Only alphabats are allowed.</p>
+                  </span>
+                </div>
+                <div class="form-group col-sm-9" ng-class="{'has-error' : (editTeamForm.$submitted || editTeamForm.email.$touched || submitted ) && editTeamForm.email.$invalid && editTeamForm.email.$error.pattern}">
+                  <span class="labelValue col-sm-4 pull-left">Email:<span class="estricSign">*</span></span>
+                  <span class="textValue col-sm-8">
+                    <input ng-required="true" class="form-control" name="email" type="text" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" placeholder="Eg:email@company.com" id="txtEmail" value="" ng-model="editTeamMembersCtrl.defaultTeamMember.email">
+                    <p class="help-block" ng-show="(editTeamForm.$submitted || editTeamForm.email.$touched || submitted ) && editTeamForm.email.$invalid && editTeamForm.email.$error.required">Email is required</p>
+                    <p class="help-block myerror" ng-show="editTeamForm.email.$error.pattern">Invalid Email</p>
+                  </span>
+                </div>
+                <div class="form-group col-sm-9"
+                  ng-class="{'has-error' : (editTeamForm.$submitted || editTeamForm.mobileNumber.$touched || submitted ) && editTeamForm.mobileNumber.$invalid && editTeamForm.mobileNumber.$error.required }">
+                  <span class="labelValue col-sm-4 pull-left">Mobile:<span class="estricSign">*</span></span>
+                  <span class="textValue col-sm-8">
+                    <input ng-required="true" type="text" class="form-control" ng-pattern="/^(0*[1-9]+0*)+$/" maxlength="10" name="mobileNumber" placeholder="10 Digits only" id="txtMobileNumber" value="" ng-model="editTeamMembersCtrl.defaultTeamMember.mobile" />
+                    <p class="myerror" ng-show="editTeamForm.mobileNumber.$error.pattern">Invalid number...!</p>
+                    <p class="help-block" ng-show="(editTeamForm.$submitted || editTeamForm.mobileNumber.$touched || submitted ) && editTeamForm.mobileNumber.$invalid && editTeamForm.mobileNumber.$error.required">Mobile Number is required</p>
+                  </span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group  col-lg-9 addNewJobForm">
+                  <span class="labelValue col-sm-4 pull-left"></span>
+                  <span class="textValue col-sm-8">
+                    <input type="submit" class="btnSubmit" ng-disabled="isDisabled" value="Submit" title="Submit"
+                      ng-click="editTeamForm.$valid && editTeamMembersCtrl.updateTeamMembers(editTeamForm.$valid)">&nbsp;
+                    <input type="button" class="btnSubmit" ng-click="editTeamMembersCtrl.cancel()" value="Cancel" title="Cancel">
+                  </span>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

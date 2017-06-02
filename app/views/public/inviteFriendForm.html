@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <div class="pageTitle"><h2>Invite your friend</h2></div>
+  <form id="frmInviteFriend" name="frmInviteFriend" autocomplete="off" class="" novalidate="novalidate">
+    <div class="form-group text-left"
+        ng-class="{'has-error' : (frmInviteFriend.$submitted || frmInviteFriend.friendName.$touched || submitted ) && frmInviteFriend.friendName.$invalid && frmInviteFriend.friendName.$error.required || frmInviteFriend.friendName.$error.pattern }">
+       <label>Friend Name:</label>
+       <input type="text" class="form-control" name="friendName" id="friendName" ng-model="friendName" ng-required="true" />
+       <p class="help-block" ng-show="(frmInviteFriend.$submitted || frmInviteFriend.friendName.$touched || submitted ) && frmInviteFriend.friendName.$invalid && frmInviteFriend.friendName.$error.required">Friend Name is required</p>
+       <p ng-show="frmInviteFriend.friendName.$error.pattern" class="help-block">Only alphabats are allowed.</p>
+    </div>
+    <div class="form-group text-left"
+        ng-class="{'has-error' : (frmInviteFriend.$submitted || frmInviteFriend.friendEmail.$touched || submitted ) && frmInviteFriend.friendEmail.$invalid && frmInviteFriend.friendEmail.$error.required || frmInviteFriend.friendEmail.$error.pattern }">
+      <label>Friend Email:</label>
+      <input type="text" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" class="form-control" name="friendEmail" id="friendEmail" ng-model="friendEmail" ng-required="true" />
+      <p class="help-block" ng-show="(frmInviteFriend.$submitted || frmInviteFriend.friendEmail.$touched || submitted ) && frmInviteFriend.friendEmail.$invalid && frmInviteFriend.friendEmail.$error.required">Friend Email is required</p>
+      <p class="help-block myerror" ng-show="frmInviteFriend.friendEmail.$error.pattern">Invalid Email</p>
+    </div>
+    <div class="form-group text-center signInForm-submitBtnwrapper">
+      <input type="submit" class="btnSubmit" value="Invite" title="Submit" ng-click="frmInviteFriend.$valid && inviteFriend()">
+      <input type="button" class="btnCancel" value="Cancel" title="Cancel" ng-click="close()">
+    </div>
+   </div>
+ </form>

@@ -1,0 +1,16 @@
+<div class="employeeSection container-fluid">
+  <div class="row">
+     <div class="employee-header col-sm-12">
+      <div ng-include src ="'views/employee/employeeHeader.html'"></div>
+    </div>
+    <div class="employee-content col-sm-12">
+      <div class="row">
+        <div class="col-sm-2 navigation-section">
+          <div ng-controller="EmployeeNavigationCtrl" ng-include src ="'views/employee/employeeMenu.html'">
+         </div>
+        </div><!--END OF navigationSection-->
+        <div ui-view class="col-sm-10 dashboardViewSection"></div>
+      </div>
+    </div>
+  </div>
+</div>

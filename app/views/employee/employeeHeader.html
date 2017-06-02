@@ -1,0 +1,31 @@
+<div class="header" ng-controller="EmployeeHeaderCtrl as employeeHeaderCtrl">
+  <div class="row">
+    <div class="col-sm-6 " role="navigation">
+      <div class="logo">
+        <img src="images/logo.png" alt="Logo" ui-sref="employee.dashboard">
+      </div>
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+    </div>
+    <div class="col-sm-6 logout logout-section-employee text-right">
+      <!-- <input type="button" class="btnLink btnInvite" value="Invite a friend" ng-click="employerHeaderCtrl.inviteFriend()" /><br /> -->
+      <div class="btn-group" uib-dropdown>
+        <button id="btn-append-to-single-button" type="button" class="" uib-dropdown-toggle>
+          {{employeeHeaderCtrl.employeeName}} <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu  dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
+          <li role="menuitem"><a href="#" ng-click="employeeHeaderCtrl.logout()">Sign out</a></li>
+        </ul>
+      </div>
+      <br />
+      <br />
+
+    </div>
+  </div>
+</div>

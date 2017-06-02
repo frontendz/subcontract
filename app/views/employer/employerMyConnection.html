@@ -1,0 +1,37 @@
+<div class="employer-myconnection employer-all-pages container-fluid row" id="employerMyConnection">
+  <h2>My Connections</h2>
+  <div class="section-separator">
+    <div class="row" ng-show="employerMyConnectionCtrl.myAvailableConnection">
+      <div class="col-xs-12">
+        <div class="row text-right">
+          <input type="submit" class="btnSubmit" ng-disabled="isDisabled" ng-click="employerMyConnectionCtrl.redirectSignInEmployers()" value="Send A Request" title="Send a request">
+        </div>
+        <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12" ng-repeat="myConnectedEmployer in employerMyConnectionCtrl.result | orderBy:sortingFn:orderReverse">
+          <div class="row">
+            <div class="col-md-3 col-xs-6 employerImage" ng-click="employerMyConnectionCtrl.viewConnection(myConnectedEmployer)">
+              <img ng-src="images/recent-employer.png" alt="Employer" />
+            </div>
+            <div class="col-md-6 col-xs-6" ng-click="employerMyConnectionCtrl.viewConnection(myConnectedEmployer)">
+              <span class="companyName">{{myConnectedEmployer.name}}</span>
+            </div>
+            <div class="col-md-3 col-xs-12 text-right">
+              <span>
+                <input type="submit" class="btnSubmit conntectBtn" ng-click="employerMyConnectionCtrl.cancelNetwork(myConnectedEmployer)" value="Cancel" title="Cancel">
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row"  ng-hide="employerMyConnectionCtrl.myAvailableConnection">
+      <div class="col-xs-12">
+        <div class="row text-center">
+          <span class="noConnectionText">Not connected to Any One Yet</span>
+        </div>
+        <div class="row text-center">
+          <input type="submit" class="btnSubmit" ng-disabled="isDisabled" ng-click="employerMyConnectionCtrl.redirectSignInEmployers()" value="Send A Request" title="Send a request">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

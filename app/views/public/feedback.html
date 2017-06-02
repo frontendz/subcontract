@@ -1,0 +1,84 @@
+<div class="forgotPasswordRegisteration" id="forgotPasswordWrapper">
+  <div ng-controller="LoginCtrl" ng-include src ="'views/logoLoginForm.html'"></div>
+  <div class="section-separator">
+    <div class="">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-10">
+      <div class="forgotPasswordForm">
+        <div class="pageTitle"><h2>Report a Problem</h2></div>
+        <div class="">
+          <form id="feedbackForm" autocomplete="off" class="row separator feedbackForm" name="feedbackForm" novalidate="novalidate">
+          <div class="col-xs-7 no-padding">
+            <div class="">
+              <div class="form-group col-xs-12"
+              ng-class="{'has-error' : (feedbackForm.$submitted || feedbackForm.name.$touched || submitted ) && feedbackForm.name.$error.required || feedbackForm.name.$error.pattern }">
+                <span class="labelValue">Name:<span class="estricSign">*</span></span>
+                <span class="textValue">
+                  <input class="form-control" name="name" type="text" placeholder="Name" id="txtName" ng-model="feedbackCtrl.name" ng-pattern="/^[a-zA-Z\s]*$/" ng-required="true" />
+                </span>
+                <p class="help-block" ng-show="(feedbackForm.$submitted || feedbackForm.name.$touched || submitted ) && feedbackForm.name.$invalid && feedbackForm.name.$error.required">Name is required </p>
+                <p ng-show="feedbackForm.name.$error.pattern" class="help-block">Only alphabats are allowed.</p>
+              </div>
+              <div class="form-group col-xs-12"
+              ng-class="{'has-error' : (feedbackForm.$submitted || feedbackForm.email.$touched || submitted ) && feedbackForm.email.$invalid && feedbackForm.email.$error.required || feedbackForm.email.$error.pattern} ">
+                <span class="labelValue">Email:<span class="estricSign">*</span></span>
+                <span class="textValue">
+                  <input class="form-control" type="text" placeholder="To" id="txtEmail" value="" ng-model="feedbackCtrl.email" name="email" ng-required="true" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" />
+                </span>
+                <p class="help-block" ng-show="(feedbackForm.$submitted || feedbackForm.email.$touched || submitted ) && feedbackForm.email.$invalid && feedbackForm.email.$error.required">Email is required</p>
+                <p ng-show="feedbackForm.email.$error.pattern" class="help-block">Email is invalid.</p>
+              </div>
+              <div class="form-group col-xs-12"
+              ng-class="{'has-error' : (feedbackForm.$submitted || feedbackForm.description.$touched || submitted ) && feedbackForm.description.$error.required }">
+                <span class="labelValue">Description:<span class="estricSign">*</span></span>
+                <span class="textValue">
+                  <textarea class="form-control" maxlength="1000" name="description" type="text" placeholder="Description" id="txtDesc" ng-model="feedbackCtrl.desc" ng-required="true" ></textarea>
+                </span>
+                <p class="help-block" ng-show="(feedbackForm.$submitted || feedbackForm.description.$touched || submitted ) && feedbackForm.description.$invalid && feedbackForm.description.$error.required">Description is required </p>
+              </div>
+              <div class="form-group col-xs-12"
+                ng-class="{'has-error' : errorFile.$error === 'pattern' }">
+                <span class="labelValue">Attachments: (.doc,.docx,.pdf,.rtf,.txt, images)</span>
+                <span class="textValue">
+                  <input class="form-control" type="file" ngf-select ng-model="feedbackCtrl.attachments" name="file"
+                    ngf-max-size="2MB" ngf-model-invalid="errorFile" id="btnChooseFile" value="Choose File"
+                    ngf-pattern="'.doc,.docx,.pdf,.rtf,.txt,.png,.jpeg,.jpg,.bmp'" accept="application/msword,application/pdf,application/rtf,text/plain, application/vnd.openxmlformats-officedocument.wordprocessingml.document, image/*">
+                </span>
+                <p class="help-block" ng-show="errorFile.$error === 'pattern'">This File format is not supported.</p>
+              </div>
+              <div class="form-group col-xs-12"
+              ng-class="{'has-error' : (feedbackForm.$submitted || feedbackForm.mobileNo.$touched || submitted ) && feedbackForm.mobileNo.$error.minlength || feedbackForm.mobileNo.$error.pattern  || feedbackForm.mobileNo.$error.maxlength }">
+                <span class="labelValue">Mobile</span>
+                <span class="textValue">
+                  <input class="form-control" type="text" name="mobileNo" ng-pattern="/^(0*[1-9]+0*)+$/" minlength="10" maxlength="10" placeholder="10 Digits Only" id="txtMobileNumber" value="" ng-model="feedbackCtrl.mobileNo">
+                </span>
+                <p class="help-block" ng-show="(feedbackForm.$submitted || feedbackForm.mobileNo.$touched || submitted ) && feedbackForm.mobileNo.$invalid && feedbackForm.mobileNo.$error.minlength">Mobile number must be of 10 digits.</p>
+                <p class="help-block" ng-show="feedbackForm.mobileNo.$error.pattern">Only numbers are allowed & Not All Zeros</p>
+              </div>
+              <div class="form-group col-xs-12">
+                <input type="submit" class="btnSubmit" ng-disabled="isDisabled" alue="Submit Feedback" title="Submit Feedback" ng-click="feedbackForm.$valid && feedbackCtrl.submitFeedback()">
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-1"></div>
+          <div class="col-xs-4 borderBox">
+            <div class="headContact">Why feedback is necessary</div>
+            <div class="Address">
+              <br />
+              <ul>
+                <li>Completion of communication</li>
+                <li>Understanding the receiver view</li>
+                <li>Measuring the effectiveness of Application</li>
+                <li>Improving Application work-flow</li>
+                <li>Helpful while New Features</li>
+              </ul>
+            </div>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+          <div class="col-sm-1"></div>
+    </div>
+  </div>
+</div>

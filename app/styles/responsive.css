@@ -1,0 +1,78 @@
+@media only screen and (max-width: 767px) {
+  .navbar-collapse.collapse.in {
+    position: absolute;
+    background: #fff !important;
+    width: 100%;
+    padding-top: 15px; }
+
+  .navbar-header {
+    position: absolute;
+    top: 10px;
+    right: 0; }
+
+  .landingPage .carousel-caption {
+    width: 100%; }
+  .landingPage .forRecruiter {
+    margin-top: 62px; }
+  .landingPage .innerSlide {
+    overflow-y: scroll !important;
+    background-size: contain !important;
+    background-position: top center !important; }
+  .landingPage .navbar-toggle {
+    position: absolute;
+    right: 15px; }
+  .landingPage .loginForm {
+    position: relative !important;
+    right: auto !important;
+    top: auto !important; }
+  .landingPage .navbar-default .navbar-collapse {
+    background: #fff;
+    z-index: 50;
+    padding: 0 15px;
+    position: absolute;
+    width: 100%; }
+  .landingPage .carousel-caption {
+    left: 0; }
+  .landingPage .overLayTextsSlide3 {
+    width: 100% !important; }
+  .landingPage .blackBanner {
+    padding: 50px 50px 0 50px !important; }
+  .landingPage .overLayTexts {
+    border: 1px solid #000;
+    background: #8C9CB3;
+    opacity: 0.7;
+    padding: 10px;
+    width: 100% !important; }
+    .landingPage .overLayTexts span {
+      display: block; }
+    .landingPage .overLayTexts .headerOverlay {
+      font-size: 32px; }
+  .landingPage .jobsTexts {
+    border: 1px solid #000;
+    background: #8C9CB3;
+    opacity: 0.7;
+    padding: 10px;
+    width: 100% !important;
+    margin-top: 30px; }
+    .landingPage .jobsTexts .jobOverlay {
+      font-size: 18px; }
+    .landingPage .jobsTexts .jobContentOverlay {
+      margin-top: 15px; }
+
+  .employerRegisteration .dialogContainer, .forgotPasswordRegisteration .dialogContainer, .employeeRegisteration .dialogContainer {
+    width: 100% !important; }
+
+  .employeeRegisterationForm {
+    padding: 15px !important; }
+
+  .forgotPasswordRegisteration .dialogContainer {
+    width: 100% !important; }
+  .forgotPasswordRegisteration .forgotPasswordForm {
+    padding: 15px !important; }
+
+  .forDemoRegisteration .dialogContainer {
+    width: 100% !important; }
+  .forDemoRegisteration .askForDemoForm {
+    padding: 15px !important; } }
+
+/*# sourceMappingURL=responsive.css.map */

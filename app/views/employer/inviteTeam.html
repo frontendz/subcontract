@@ -1,0 +1,72 @@
+<!-- inviteTeamCtrl-->
+<div class="employer-add-new-job employer-all-pages container-fluid" id="inviteTeam">
+  <h2>Invite Team</h2>
+  <form id="formInviteTeam" autocomplete="off" class="row separator" name="inviteTeamForm" novalidate="novalidate" valid-submit="inviteTeamCtrl.addInviteTeam()">
+    <div class="employer-fields-section">
+      <div class="row">
+        <div class="form-group col-sm-9"
+          ng-class="{'has-error' : (inviteTeamForm.$submitted || inviteTeamForm.firstName.$touched || submitted ) && inviteTeamForm.firstName.$invalid && inviteTeamForm.firstName.$error.required || inviteTeamForm.firstName.$error.pattern }">
+          <span class="col-sm-4">First Name:<span class="estricSign">*</span></span>
+          <span class="textValue col-sm-8">
+            <input class="form-control" type="text" ng-pattern="/^[a-zA-Z\s]*$/" placeholder="First Name" id="txtFirstName" value="" ng-model="inviteTeamCtrl.firstName" name="firstName" ng-required="true" />
+            <p class="help-block" ng-show="(inviteTeamForm.$submitted || inviteTeamForm.firstName.$touched || submitted ) && inviteTeamForm.firstName.$invalid && inviteTeamForm.firstName.$error.required">First Name is required</p>
+            <p ng-show="inviteTeamForm.firstName.$error.pattern" class="help-block">Only alphabats are allowed.</p>
+          </span>
+        </div>
+        <div class="form-group col-sm-9"
+          ng-class="{'has-error' : (inviteTeamForm.$submitted || inviteTeamForm.lastName.$touched || submitted ) && inviteTeamForm.lastName.$invalid && inviteTeamForm.lastName.$error.required || inviteTeamForm.lastName.$error.pattern }">
+          <span class="col-sm-4">Last Name:<span class="estricSign">*</span></span>
+          <span class="textValue col-sm-8">
+            <input class="form-control" type="text" ng-pattern="/^[a-zA-Z\s]*$/" placeholder="Last Name" id="txtLastName" value="" ng-model="inviteTeamCtrl.lastName" name="lastName" ng-required="true" />
+            <p class="help-block" ng-show="(inviteTeamForm.$submitted || inviteTeamForm.lastName.$touched || submitted ) && inviteTeamForm.lastName.$invalid && inviteTeamForm.lastName.$error.required">Last Name is required</p>
+            <p ng-show="inviteTeamForm.lastName.$error.pattern" class="help-block">Only alphabats are allowed.</p>
+            </span>
+        </div>
+        <div class="form-group col-sm-9"
+          ng-class="{'has-error' : (inviteTeamForm.$submitted || inviteTeamForm.email.$touched || submitted ) && inviteTeamForm.email.$invalid && inviteTeamForm.email.$error.required || inviteTeamForm.email.$error.pattern}">
+          <span class="col-sm-4">Email:<span class="estricSign">*</span></span>
+          <span class="textValue col-sm-8">
+            <input class="form-control" ng-blur="inviteTeamCtrl.checkEmail()" type="text" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" placeholder="Eg:email@company.com" id="txtEmail" value="" ng-model="inviteTeamCtrl.email" name="email" ng-required="true"/>
+            <p class="help-block" ng-show="(inviteTeamForm.$submitted || inviteTeamForm.email.$touched || submitted ) && inviteTeamForm.email.$invalid && inviteTeamForm.email.$error.required">Email is required</p>
+            <p class="help-block myerror" ng-show="inviteTeamForm.email.$error.pattern">Invalid Email</p>
+            <p class="has-error {{inviteTeamCtrl.isShowEmailExist}}"><span class="help-block">{{inviteTeamCtrl.emailExist}}<span></p>
+          </span>
+        </div>
+        <div class="form-group col-sm-9"
+        ng-class="{'has-error' : (inviteTeamForm.$submitted || inviteTeamForm.mobileNumber.$touched || submitted ) && inviteTeamForm.mobileNumber.$invalid && inviteTeamForm.mobileNumber.$error.required || inviteTeamForm.mobileNumber.$error.minlength || inviteTeamForm.mobileNumber.$error.pattern }">
+          <span class="col-sm-4">Mobile:<span class="estricSign">*</span></span>
+          <span class="textValue col-sm-8">
+            <input type="text" class="form-control" ng-pattern="/^(0*[1-9]+0*)+$/" minlength="10" maxlength="10" placeholder="10 Digits only" id="txtMobileNumber" value="" ng-model="inviteTeamCtrl.mobileNumber" name="mobileNumber" ng-required="true" />
+            <p class="myerror" ng-show="inviteTeamForm.mobileNumber.$error.pattern">Invalid number...!</p>
+            <p class="help-block" ng-show="(inviteTeamForm.$submitted || inviteTeamForm.mobileNumber.$touched || submitted ) && inviteTeamForm.mobileNumber.$invalid && inviteTeamForm.mobileNumber.$error.required">Mobile Number is required</p>
+            <p class="help-block" ng-show="(inviteTeamForm.$submitted || inviteTeamForm.mobileNumber.$touched || submitted ) && inviteTeamForm.mobileNumber.$invalid && inviteTeamForm.mobileNumber.$error.minlength || inviteTeamForm.mobileNumber.$error.pattern ">Invalid Mobile No.</p>
+          </span>
+        </div>
+        <div class="form-group col-sm-9"
+          ng-class="{'has-error' : (inviteTeamForm.$submitted || inviteTeamForm.password.$touched || submitted ) && inviteTeamForm.password.$invalid && inviteTeamForm.password.$error.required || inviteTeamForm.password.$error.pattern}">
+          <span class="col-sm-4">Password:<span class="estricSign">*</span></span>
+          <span class="textValue col-sm-8">
+            <input type="password" class="form-control" placeholder="******" id="txtNewPassword" value="" ng-model="inviteTeamCtrl.password" name="password" ng-required="true"
+            ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/" />
+            <p class="help-block" ng-show="(inviteTeamForm.$submitted || inviteTeamForm.password.$touched || submitted ) && inviteTeamForm.password.$invalid && inviteTeamForm.password.$error.required">Password is required</p>
+            <p ng-show="inviteTeamForm.password.$error.pattern" class="help-block">Minimum 8 characters at least 1 Alphabet, 1 Number and 1 Special Character</p>
+          </span>
+        </div>
+        <div class="form-group col-sm-9"ng-class="{'has-error' : (inviteTeamForm.$submitted || inviteTeamForm.confirmPassword.$touched || submitted )  && inviteTeamForm.confirmPassword.$error.required || inviteTeamForm.confirmPassword.$error.pwmatch}">
+          <span class="col-sm-4">Confirm password:<span class="estricSign">*</span></span>
+          <span class="textValue col-sm-8">
+            <input type="password"  class="form-control" placeholder="******"  id="txtConfirmPassword" value="" ng-model="inviteTeamCtrl.confirmPassword" name="confirmPassword" ng-required="true" pw-check="txtNewPassword" />
+            <p class="help-block" ng-show="(inviteTeamForm.$submitted || inviteTeamForm.confirmPassword.$touched || submitted ) && inviteTeamForm.confirmPassword.$invalid && inviteTeamForm.confirmPassword.$error.required">Confirm Password is required</p>
+            <p ng-show="inviteTeamForm.confirmPassword.$error.pwmatch" class="help-block">Passwords don't match.</p>
+          </span>
+        </div>
+        <div class="form-group col-sm-9"ng-class="{'has-error' : (inviteTeamForm.$submitted || inviteTeamForm.confirmPassword.$touched || submitted )  && inviteTeamForm.confirmPassword.$error.required || inviteTeamForm.confirmPassword.$error.pwmatch}">
+          <span class="col-sm-4"></span>
+          <span class="textValue col-sm-8">
+            <input type="submit" class="btnSubmit" ng-disabled="isDisabled" value="Submit" title="Submit">
+          </span>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

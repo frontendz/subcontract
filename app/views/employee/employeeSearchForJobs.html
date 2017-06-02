@@ -1,0 +1,93 @@
+<div class="row">
+  <div class="employeeDashboard" id="employeeWrapper">
+    <div class="col-lg-9">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h4 class="text-center">Search For Jobs</h4>
+          <hr>
+          <div class="col-lg-12">
+            <div class="form-group">
+              <label>Search for Jobs</label>
+              <form role="form" name="searchForm" class="searchForm" novalidate ng-submit="employeeSearchForJobsCtrl.searchJobs()">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Enter Search keywords with spaces" ng-model="employeeSearchForJobsCtrl.currentJobs">
+                  <span class="input-group-addon searchicon" type="submit" ng-click="employeeSearchForJobsCtrl.searchJobs()" role="button" tabindex="0">
+                    <i class="glyphicon glyphicon-search"></i>
+                  </span>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="col-sm-12 employeeDashboardCtrl" >
+            <div id="jobsData" style="min-height: 200px;">
+              <div class="" ng-show="employeeSearchForJobsCtrl.jobsData.length <= 0">
+                <h4>No Public Jobs Found</h4>
+              </div>
+              <div class="well_look dataSeparator" ng-repeat="job in employeeSearchForJobsCtrl.jobsData"
+                   ng-show="employeeSearchForJobsCtrl.jobsData.length > 0">
+                 <div class="row extraPadding15">
+                   <div class="col-sm-9">
+                     <div class="row">
+                       <div class="col-sm-12">
+                         <div class="jobTitle">
+                           <a href="" ng-click="employeeSearchForJobsCtrl.viewJob(job, 'public')">{{job.jobTitle}}</a>
+                         </div>
+                       </div>
+                     </div>
+                     <div class="row">
+                       <div class="col-sm-12">
+                         <a href="" class="dice-btn-link" id="">{{job.aboutCompany}}</a>
+                       </div>
+                     </div>
+                     <div class="row">
+                       <div class="col-sm-5">
+                         <span>
+                           <i class="glyphicon glyphicon-calendar"> </i> {{job.expFrom}}+  -  {{job.expTo}}+  Years
+                         </span>
+                       </div>
+                       <div class="col-sm-7">
+                         <i class="glyphicon glyphicon-map-marker"></i> {{job.location}}
+                       </div>
+                     </div>
+                     <div class="row">
+                       <div class="col-sm-5 labelsData"><span style="">Key Skills:</span></div>
+                       <div class="col-sm-7"><span>{{job.skill}}</span></div>
+                     </div>
+                     <div class="row">
+                       <div class="col-sm-5 labelsData"><span style="">Description:</span></div>
+                       <div class="col-sm-7">{{job.jobDesc}}</div>
+                     </div>
+                     <div class="row">
+                       <div class="col-sm-5 labelsData"><span style="">Salary:</span></div>
+                       <div class="col-sm-7">{{job.salaryFrom}} - {{job.salaryTo}}</div>
+                     </div>
+                     <div class="row">
+                       <div class="col-sm-5 labelsData"><span style="">Industry:</span></div>
+                       <div class="col-sm-7">{{job.industry}}</div>
+                     </div>
+                     <div class="row">
+                       <div class="col-sm-5 labelsData"><span style="">Posted on:</span></div>
+                       <div class="col-sm-7">{{job.createdAt  | dateToCustomString}}</div>
+                     </div>
+                   </div>
+                   <div class="col-sm-3 text-right extraRightPadding30">
+                     <div class="row">
+                       <p><img class="companylogo" src="images/sample.jpg"></p>
+                     </div>
+                     <div class="row">
+                       <a href="" ng-click="employeeSearchForJobsCtrl.viewJob(job, 'public')" class="btn btnView btn-md">View Job</a>
+                     </div>
+                   </div>
+                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 addBlackBg">
+      <div ng-include src ="'views/employee/employeeStatasticsData.html'" ng-controller="EmployeeStatasticsDataCtrl as employeeStatasticsDataCtrl"></div>
+    </div>
+  </div>
+</div>

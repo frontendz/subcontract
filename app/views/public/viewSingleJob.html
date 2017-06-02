@@ -1,0 +1,107 @@
+<div class="viewSingleJob" id="employerWrapper">
+  <div class="loadLoginForm" ng-controller="LoginCtrl" ng-include src ="'views/logoLoginForm.html'"></div>
+  <div class="row">
+    <div class="col-xs-12 separatorJobs">
+      <div class="big-boxes">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <div class="col-sm-2"></div>
+              <div class="col-sm-8">
+                <h2><i class="fa fa-suitcase"></i>&nbsp;&nbsp;&nbsp;<label>Job Details</label></h2>
+                <br>
+
+                <div id="result" style="min-height: 200px;" class="tab-pane active">
+                  <div class="well_look">
+                    <div class="row">
+                      <p class="col-sm-1"><i class="glyphicon glyphicon-bookmark"></i></p>
+                      <div class="col-sm-9">
+                        <div class="row jobTitle">
+                          <a href="" ng-click="viewSingleJobCtrl.viewSingleJob(job)">{{viewSingleJobCtrl.result.jobTitle}}</a>
+                        </div>
+                        <div class="row">
+                        <span style="font-size: 16px;" class="">
+                          <a href="" class="dice-btn-link" id="">{{viewSingleJobCtrl.result.employerName}}</a>
+                        </span>
+                        </div>
+                        <div class="row">
+                        <span class="col-sm-12" style="padding-left:0px">
+                          <div class="row">
+                            <span  class="col-sm-3">
+                              <i class="glyphicon glyphicon-calendar"> </i> {{viewSingleJobCtrl.result.expFrom}}  -  {{viewSingleJobCtrl.result.expTo}} Years
+                            </span>
+                            <span class="col-sm-8 margin_bottom" >
+                              <i class="glyphicon glyphicon-map-marker"></i> {{viewSingleJobCtrl.result.location}}
+                            </span>
+                          </div>
+                        </span>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-12" style="padding-left:0px">
+                            <div class="col-sm-3" style="padding-left:0px">
+                              <span style="">Key Skills:</span>
+                            </div>
+                            <div class="col-sm-8" style="padding-left:0px">
+                              <span>{{viewSingleJobCtrl.result.skill}}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-2">
+                        <div class="row">
+                          <p><img class="companylogo" src="images/sample.jpg"></p>
+                        </div>
+
+                      </div>
+                    </div>
+                    <div class="row">
+                      <span class="col-sm-1"></span>
+                      <div class="col-sm-9">
+                        <div class="row">
+                          <div class="col-sm-12" style="padding-left: 0">
+                            <div class="col-sm-3" style="padding-left:0;">
+                              <span style="">Description:</span>
+                            </div>
+                            <div>
+                              {{viewSingleJobCtrl.result.jobDesc}}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <span class="col-sm-1"></span>
+                      <span class="col-sm-5 center" style="background:#ddd;padding-top:6px;">
+                        Salary: {{viewSingleJobCtrl.result.salaryFrom}} - {{viewSingleJobCtrl.result.salaryTo}}
+                      </span>
+                      <span class="col-sm-5 center" style=" margin-left:5px; background:#ddd;padding-top:6px;">Industry: {{viewSingleJobCtrl.result.industry}}</span>
+                    </div>
+                    <br />
+                    <div class="row">
+                      <span class="col-sm-1"></span>
+                      <span class="col-sm-5 center" style="background:#ddd;padding-top:6px;">
+                        Posted On: {{viewSingleJobCtrl.result.createdAt  | dateToCustomString}}
+                      </span>
+                      <span class="col-sm-5 center" style=" margin-left:5px; background:#ddd;padding-top:6px;">
+                        Posted By: {{viewSingleJobCtrl.result.employerName }}
+                      </span>
+                    </div>
+                    <br />
+                  </div>
+                  <!-- <input type="button" ng-click="viewSingleJobCtrl.loadMorePublicJobs()" class="btnSubmit" value="Load More" title="Register"> -->
+                </div>
+
+                <div class="row" style="float: right;">
+                  <a href="" class="btn btn-primary" ng-click="viewSingleJobCtrl.shareJob(viewSingleJobCtrl.result)">Share job</a>
+                  <a href="" class="btn btn-primary" ng-click="viewSingleJobCtrl.loginToApply()">Login to Apply</a>
+                  <a href="javascript:history.back()" class="btn btn-primary">Back</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

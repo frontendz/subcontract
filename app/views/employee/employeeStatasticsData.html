@@ -1,0 +1,44 @@
+<ul class="list-group">
+  <li class="list-group-item">
+    <img src="images/chart-graph.png" style="width:20px">
+    <span class="text-success">STATASTICS</span>
+  </li>
+  <li class="list-group-item">
+    <span class="badge">{{employeeStatasticsDataCtrl.appliedData.length}}</span>
+    <a ng-click="employeeStatasticsDataCtrl.redirectToAppliedJob()">Total Jobs Applied</a>
+  </li>
+</ul>
+<ul class="list-group">
+  <li class="list-group-item"><img src="images/back.png" style="width:20px">
+    <span class="text-success">WHAT'S NEXT</span></li>
+  <li class="list-group-item"><a ui-sref="employee.searchLocation">Search Job by Location</a></li>
+  <li class="list-group-item"><a ui-sref="employee.searchSkills">Search Job by Skills</a></li>
+  <li class="list-group-item"><a ui-sref="employee.searchCompany">Search Job by Company</a></li>
+</ul>
+<ul class="list-group">
+  <li class="list-group-item"><img src="images/list.png" style="width:20px">
+    <span class="text-success">Recently Job Posted</span>
+  </li>
+  <li class="list-group-item" ng-repeat="jobs in employeeStatasticsDataCtrl.recentJobs">
+    <div class="row">
+      <div class="col-lg-12">
+        <h4 class="text-info"><a ng-click="employeeStatasticsDataCtrl.viewJob(jobs, 'public')">{{jobs.jobTitle}}</a></h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <span>By:</span>
+      <span class="text-success">{{jobs.employerName}}</span>
+      </div>
+      <div class="col-lg-12">
+        <span>Posted on:</span>
+        <span class="text-success">{{jobs.createdAt | dateToCustomString }}</span>
+      </div>
+    </div>
+  </li>
+  <li class="list-group-item text-right">
+    <span class="text-success">
+      <input type="button" class="btn btnView btn-sm" value="More..." ng-click="employeeStatasticsDataCtrl.loadMoreRecentJobs()" />
+    </span>
+  </li>
+</ul>

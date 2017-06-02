@@ -1,0 +1,85 @@
+<div class="employer-my-posted-jobs employer-all-pages container-fluid row" id="employerMyAllPostedJobs">
+  <!-- recruiterPostedJobsCtrl -->
+  <div class="row">
+    <div class="col-xs-6">
+      <h2>Job Posted by Recruiter</h2>
+    </div>
+    <div class="col-xs-6 text-right">
+        <h5><input type="submit" class="btnSubmit" value="Click to Post A Job" ui-sref="employer.postJob"></h5>
+    </div>
+  </div>
+
+  <div class="text-center" ng-show="recruiterPostedJobsCtrl.result.length <= 0">
+    <h4>No Job Found</h4>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 separatorJobs" ng-repeat="jobData in recruiterPostedJobsCtrl.result">
+      <div class="big-boxes">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="row">
+              <div class="col-xs-12">
+                <span class="jobTitle job-data" ng-click="recruiterPostedJobsCtrl.viewJobOpen(jobData)">{{jobData.jobTitle}}</span>
+              </div>
+              <div class="col-xs-12">
+                <span class="aboutCompany job-data">{{jobData.aboutCompany}}</span>
+              </div>
+              <div class="col-xs-12">
+                <span class="MinMaxYears job-data">
+                  {{jobData.expFrom}} - {{jobData.expTo}} Years,&nbsp;
+                </span>
+                <span class="location job-data">
+                  {{jobData.location}}
+                </span>
+              </div>
+              <div class="col-xs-12">
+                <span class="skills job-data">
+                  Key skills:
+                </span>
+                <span class="job-data">
+                  {{jobData.skill}}
+                </span>
+              </div>
+              <div class="col-xs-12">
+                <span class="job-desc job-data">
+                  Job description:
+                </span>
+                <span class="job-data">
+                  {{jobData.jobDesc}}
+                </span>
+              </div>
+              <div class="col-xs-12">
+                <div class="row">
+                  <div class="col-sm-6 col-xs-12">
+                    <span class="job-data">
+                      Rate Per Hour : {{jobData.rateType}}
+                    </span>
+                  </div>
+                  <div class="col-sm-6 col-xs-12">
+                    <span class="job-data">
+                      Posted On :
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12">
+              <span class="dlmButtons">
+                <button class="btn btn-primary" type="button" ng-click="recruiterPostedJobsCtrl.viewJobOpen(jobData)">
+                  View Job
+                </button>
+              </span>
+              <span class="dlmButtons">
+                <button class="btn btn-primary" type="button" ng-click="recruiterPostedJobsCtrl.editJobData(jobData)">
+                  Edit Job
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

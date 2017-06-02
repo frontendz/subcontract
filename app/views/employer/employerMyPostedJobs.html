@@ -1,0 +1,86 @@
+<div class="employer-my-posted-jobs employer-all-pages container-fluid row" id="employerMyAllPostedJobs">
+  <!-- employerMyPostedJobsCtrl -->
+  <div class="row">
+    <div class="col-xs-6">
+      <h2>My Posted Jobs</h2>
+    </div>
+    <div class="col-xs-6 text-right">
+        <h5><input type="submit" class="btnSubmit" value="Click to Post A Job" ui-sref="employer.postJob"></h5>
+    </div>
+  </div>
+
+  <div class="text-center" ng-show="employerMyPostedJobsCtrl.result.length <= 0">
+    <h4>No Job Found</h4>
+  </div>
+
+  <div class="">
+    <div class="well_look dataSeparator" ng-repeat="job in employerMyPostedJobsCtrl.postedJobs"
+           ng-show="employerMyPostedJobsCtrl.postedJobs.length > 0">
+      <div class="row extraPadding15">
+        <div class="col-sm-9">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="jobTitle">
+                <a href="" ng-click="employerMyPostedJobsCtrl.viewJob(job)">{{job.jobTitle}}</a>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <a href="" class="dice-btn-link" id="">{{job.aboutCompany}}</a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-5">
+              <span>
+                <i class="glyphicon glyphicon-calendar"> </i> {{job.expFrom}}+  -  {{job.expTo}}+  Years
+              </span>
+            </div>
+            <div class="col-sm-7">
+              <i class="glyphicon glyphicon-map-marker"></i> {{job.location}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-5 labelsData"><span style="">Key Skills:</span></div>
+            <div class="col-sm-7"><span>{{job.skill}}</span></div>
+          </div>
+          <div class="row">
+            <div class="col-sm-5 labelsData"><span style="">Description:</span></div>
+            <div class="col-sm-7">{{job.jobDesc}}</div>
+          </div>
+          <div class="row">
+            <div class="col-sm-5 labelsData"><span style="">Salary:</span></div>
+            <div class="col-sm-7">{{job.salaryFrom}} - {{job.salaryTo}}</div>
+          </div>
+          <div class="row">
+            <div class="col-sm-5 labelsData"><span style="">Industry:</span></div>
+            <div class="col-sm-7">{{job.industry}}</div>
+          </div>
+          <div class="row">
+            <div class="col-sm-5 labelsData"><span style="">Posted on:</span></div>
+            <div class="col-sm-7">{{job.createdAt  | dateToCustomString}}</div>
+          </div>
+        </div>
+        <div class="col-sm-3 text-right extraRightPadding30">
+          <div class="row">
+            <p><img class="companylogo" src="images/sample.jpg"></p>
+          </div>
+          <div class="row">
+            <p>
+              <button class="btn btnView btn-md btn-primary" type="button" ng-click="employerMyPostedJobsCtrl.editJobData(job)">
+                Edit Job
+              </button>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              <a href="" ng-click="employerMyPostedJobsCtrl.viewJob(job)" class="btn btnView btn-md">View Job</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <input type="button" ng-if="employerMyPostedJobsCtrl.showMyLoadMore === true" ng-click="employerMyPostedJobsCtrl.loadMoreMyJobs()" class="btnSubmit" value="Load More" title="Load More">
+  </div>
+
+</div>

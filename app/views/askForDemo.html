@@ -1,0 +1,35 @@
+<div class="forDemoRegisteration" id="askForDemoWrapper">
+  <div  ng-controller="LoginCtrl" ng-include src ="'views/logoLoginForm.html'"></div>
+  <div class="section-separator">
+    <div class="dialogContainer">
+      <div class="askForDemoForm">
+        <div class="pageTitle"><h2>Ask for a Demo</h2></div>
+        <form role="form" name="askForDemoForm" class="askForDemoForm" novalidate>
+          <div class="form-group text-left" ng-class="{'has-error' : (askForDemoForm.$submitted || askForDemoForm.name.$touched || submitted) && askForDemoForm.name.$error.required || askForDemoForm.name.$error.pattern}">
+             <label for="name" class="hidden-xs">Name:<span class="estricSign">*</span></label>
+             <input type="name" class="form-control" name="name" id="name" ng-model="askForDemoCtrl.name" ng-pattern="/^[a-zA-Z\s]*$/" placeholder="Name/Company Name" ng-required="true"/>
+             <p ng-show="(askForDemoForm.$submitted || askForDemoForm.name.$touched || submitted) && askForDemoForm.name.$error.required" class="help-block">Name is required.</p>
+             <p ng-show="askForDemoForm.name.$error.pattern" class="help-block">Only alphabats are allowed.</p>
+          </div>
+          <div class="form-group text-left" ng-class="{'has-error' : (askForDemoForm.$submitted || askForDemoForm.email.$touched || submitted) && askForDemoForm.email.$error.required || askForDemoForm.email.$error.pattern }">
+             <label for="email" class="hidden-xs">Email:<span class="estricSign">*</span></label>
+             <input type="text" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" class="form-control" name="email" id="email" ng-model="askForDemoCtrl.email" placeholder="Email id" ng-required="true"/>
+             <p ng-show="(askForDemoForm.$submitted || askForDemoForm.email.$touched || submitted) && askForDemoForm.email.$error.required" class="help-block">Email is required.</p>
+             <p ng-show="askForDemoForm.email.$error.pattern" class="help-block">Email is invalid.</p>
+          </div>
+          <div class="form-group text-left" ng-class="{'has-error' : (askForDemoForm.$submitted || askForDemoForm.mobile.$touched || submitted) && askForDemoForm.mobile.$error.required || askForDemoForm.mobile.$error.minlength || askForDemoForm.mobile.$error.maxlength || askForDemoForm.mobile.$error.pattern}">
+             <label for="mobile" class="hidden-xs">Mobile:<span class="estricSign">*</span></label>
+             <input type="text" ng-pattern="/^(0*[1-9]+0*)+$/" minlength="10" maxlength="10" class="form-control" name="mobile" id="txtMobile" ng-model="askForDemoCtrl.mobile" placeholder="phone Number ex:XXXXXXXXXX" ng-required="true"/>
+             <p ng-show="(askForDemoForm.$submitted || askForDemoForm.mobile.$touched || submitted) && askForDemoForm.mobile.$error.required" class="help-block">Mobile is required.</p>
+             <p class="help-block" ng-show="askForDemoForm.mobile.$error.pattern">Only numbers are allowed & Not All Zeros</p>
+             <p class="help-block" ng-show="askForDemoForm.mobile.$error.minlength">Mobile number should be of 10 digits...!</p>
+          </div>
+          <div class="form-group signInForm-submitBtnwrapper">
+             <input type="submit" class="btnSubmit" value="Submit" title="Submit" ng-click="askForDemoCtrl.registerDemo(askForDemoForm)">
+             <input type="button" class="btnCancel" value="Cancel" title="Cancel" ui-sref="home">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

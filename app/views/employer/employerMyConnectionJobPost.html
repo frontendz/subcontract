@@ -1,0 +1,68 @@
+<div class="employer-my-connection-posted-jobs employer-all-pages container-fluid row" id="employerMyConnectionPostedJobs">
+  <!-- employerMyPostedJobsCtrl -->
+  <h2>My Connections Posted Jobs</h2>
+  <div class="employer-dashboard">
+
+    <div class="" ng-show="employerMyConnectionJobPostCtrl.connectionJobs.length <= 0">
+      <h4>No Jobs Posted By Your Connection</h4>
+    </div>
+    <div class="well_look" ng-repeat="job in employerMyConnectionJobPostCtrl.connectionJobs"
+         ng-show="employerMyConnectionJobPostCtrl.connectionJobs.length > 0">
+      <div class="row extraPadding15">
+          <div class="col-sm-9">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="jobTitle">
+                  <a href="" ng-click="employerMyConnectionJobPostCtrl.viewJob(job, 'conn')">{{job.jobTitle}}</a>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <a href="" class="dice-btn-link" id="">{{job.aboutCompany}}</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-5">
+                <span>
+                  <i class="glyphicon glyphicon-calendar"> </i> {{job.expFrom}}+  -  {{job.expTo}}+  Years
+                </span>
+              </div>
+              <div class="col-sm-7">
+                <i class="glyphicon glyphicon-map-marker"></i> {{job.location}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-5 labelsData"><span style="">Key Skills:</span></div>
+              <div class="col-sm-7"><span>{{job.skill}}</span></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-5 labelsData"><span style="">Description:</span></div>
+              <div class="col-sm-7">{{job.jobDesc}}</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-5 labelsData"><span style="">Salary:</span></div>
+              <div class="col-sm-7">{{job.salaryFrom}} - {{job.salaryTo}}</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-5 labelsData"><span style="">Industry:</span></div>
+              <div class="col-sm-7">{{job.industry}}</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-5 labelsData"><span style="">Posted on:</span></div>
+              <div class="col-sm-7">{{job.createdAt  | dateToCustomString}}</div>
+            </div>
+          </div>
+          <div class="col-sm-3 text-right extraRightPadding30">
+            <div class="row">
+              <p><img class="companylogo" src="images/sample.jpg"></p>
+            </div>
+            <div class="row">
+              <a href="" ng-click="employerMyConnectionJobPostCtrl.viewJob(job, 'conn')" class="btn btnView btn-md">View Job</a>
+            </div>
+          </div>
+        </div>
+    </div>
+    <input type="button" ng-if="employerMyConnectionJobPostCtrl.showConnectionLoadMore === true" ng-click="employerMyConnectionJobPostCtrl.loadMoreConnectionJobs()" class="btnSubmit" value="Load More" title="Load More">
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <div class="pageTitle"><h2>Login</h2></div>
+    <form role="form" name="signInForm" ng-submit="signInForm.$valid && onLoginFormSubmit()" class="form-inline loginForm" novalidate>
+      <div class="form-group text-left fullWidth" ng-class="{'has-error' : (signInForm.$submitted || signInForm.email.$touched || submitted) && signInForm.email.$error.required ||  signInForm.email.$error.pattern }">
+         <label>Email Id:</label>
+         <input type="text" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" class="form-control fullWidth" name="email" id="email" ng-model="email" placeholder="Email address" ng-required="true"/>
+         <p class="myerror help-block" ng-show="(signInForm.$submitted || signInForm.email.$touched || submitted) && signInForm.email.$error.required">Email is mandatory.</p>
+         <p ng-show="signInForm.email.$error.pattern" class="help-block">Invalid email.</p>
+      </div>
+      <div class="form-group text-left fullWidth" ng-class="{'has-error' : (signInForm.$submitted || signInForm.password.$touched || submitted) && signInForm.password.$error.required}">
+        <label>Password:</label>
+        <input type="password" class="form-control fullWidth" name="password" id="password" ng-model="password" placeholder="Password" ng-required="true"/>
+        <p class="myerror help-block" ng-show="(signInForm.$submitted || signInForm.password.$touched || submitted) && signInForm.password.$error.required">Password is mandatory.</p>
+      </div>
+      <div class="text-center signInForm-submitBtnwrapper">
+        <input type="submit" class="btnSubmit" value="Submit" title="Submit">
+        <input type="button" class="btnCancel" value="Cancel" title="Cancel" ng-click="close()">
+      </div>
+      <div class="text-right forgotLink">
+        <div class="passwordDiv text-right"><a ui-sref="forgotPasswordRegisteration" title="Forgot Password" class="forgotPasswordLinkPopup">Forgot Password</a></div>
+      </div>
+  </form>
+ </div>

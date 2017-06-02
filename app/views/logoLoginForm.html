@@ -1,0 +1,39 @@
+<div class="header">
+  <div class="navbar navbar-default" role="navigation">
+    <div class="logo">
+      <img src="images/logo.png" alt="Logo" ui-sref="home">
+    </div>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse" id="js-navbar-collapse">
+      <form role="form" name="signInForm" ng-submit="signInForm.$valid && onLoginFormSubmit()" class="form-inline loginForm" novalidate ng-controller="LoginCtrl">
+         <div class="form-group text-left"
+         ng-class="{'has-error' : signInForm.email.$invalid && signInForm.email.$pristine && submitted || signInForm.$error.pattern}">
+            <input type="text" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" class="form-control" name="email" id="email" ng-model="email" placeholder="Email address" ng-required="true" />
+            <p class="myerror" ng-show="(signInForm.$submitted || signInForm.email.$touched || submitted) && signInForm.email.$error.required">Email is required.</p>
+         </div>
+         <div class="form-group text-left"
+         ng-class="{'has-error' : signInForm.password.$invalid && signInForm.password.$pristine && submitted || signInForm.$error.pattern}">
+            <div class="passwordDiv">
+              <input type="password" class="form-control" name="password" id="password" ng-model="password" placeholder="Password" ng-required="true"/>
+              <p class="myerror passError" ng-show="(signInForm.$submitted || signInForm.password.$touched || submitted) && signInForm.password.$error.required">Password is required.</p>
+            </div>
+            <div class="passwordDiv text-right">
+              <a ui-sref="forgotPasswordRegisteration" title="Forgot Password" class="forgotPasswordLink">Forgot Password</a>
+            </div>
+         </div>
+         <div class="form-group signInForm-submitBtnwrapper">
+            <input type="submit" class="btnSubmit" value="Submit" title="Submit">
+            <div class="passwordDiv">&nbsp;</div>
+         </div>
+      </form>
+    </div>
+  </div>
+</div>

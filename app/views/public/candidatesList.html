@@ -1,0 +1,41 @@
+<div class="container-fluid">
+  <div class="modal-header">
+    <h4>Select Candidate For Apply
+      <p class="pull-right" ng-click="close()">X</p>
+    </h4>
+  </div>
+  <div class="modal-body">
+    <div ng-show="candidates.length <= 0">
+      <h4>No Candidates to apply</h4>
+    </div>
+    <div ng-show="candidates.length > 0">
+      <div class="row" style="margin-bottom: 12px;">
+        <div class="col-md-12">
+
+        </div>
+      </div>
+      <div class="row candidate-row" ng-repeat="candidate in candidates">
+        <div class="col-md-1">
+          <input type="checkbox" ng-click="selectCandidate(candidate.candidateId, candidate.checked)" ng-model="candidate.checked"/>
+        </div>
+        <div class="col-md-3">
+          <i class="glyphicon glyphicon-user"></i> {{candidate.firstName}} {{candidate.lastName}}
+        </div>
+        <div class="col-md-8">
+
+          <span ng-repeat="skillName in candidate.candidateSkills">
+            <i class="glyphicon glyphicon-star"></i>{{skillName.skillSetName}} ({{skillName.experience}}+ Years) &nbsp;
+          </span>
+        </div>
+        <!-- <div class="col-md-4">
+          <i class="glyphicon glyphicon-calendar"></i> {{candidate.candidateSkills[0].experience}}+ Years
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-info pull-left" ui-sref="employer.addNewCandidate">Click to Add a Candidate</button>
+    <button class="btn btn-primary text-right" ng-click="close()">Close</button>
+    <button class="btn btn-primary text-right" ng-click="applyCandidateForJob()">Click to Submit</button>
+  </div>
+</div>

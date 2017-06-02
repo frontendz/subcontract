@@ -1,0 +1,260 @@
+<div class="employer-my-added-candidates employer-all-pages container-fluid row" id="employerMyAllPostedJobs">
+  <!-- employerMyCandidatesCtrl -->
+  <h2 ng-if="employerMyCandidatesCtrl.candidates === 'all'">My Candidates</h2>
+  <h2 ng-if="employerMyCandidatesCtrl.candidates === 'active'">My Active Candidates</h2>
+  <h2 ng-if="employerMyCandidatesCtrl.candidates === 'inactive'">My Inactive Candidates</h2>
+
+  <div class="col-xs-12 text-right">
+    <ul class="filter">
+      <li><a ng-click="employerMyCandidatesCtrl.candidates = 'all'">All Candidate</a></li>
+      <li><a ng-click="employerMyCandidatesCtrl.candidates = 'active'">Active Candidate</a></li>
+      <li><a ng-click="employerMyCandidatesCtrl.candidates = 'inactive'">InActive Candidate</a></li>
+    </ul>
+  </div>
+  <div class="text-center" ng-show="employerMyCandidatesCtrl.result.length <= 0">
+    <h4>No Candidate Found</h4>
+  </div>
+  <div class="row" ng-if="employerMyCandidatesCtrl.candidates === 'all'">
+    <div class="col-xs-12 separatorJobs" ng-repeat="candidateData in employerMyCandidatesCtrl.result">
+      <div class="big-boxes">
+        <div class="row">
+          <div class="col-sm-8 col-xs-12">
+            <div class="row">
+              <div class="col-xs-12">
+                <span class="jobTitle candidate-data">{{candidateData.firstName}}</span>
+              </div>
+              <div class="col-xs-12">
+                <span class="aboutCompany candidate-data">{{candidateData.lastName}}</span>
+              </div>
+              <div class="col-xs-12">
+                <span class="location candidate-data">
+                  {{candidateData.currentLocation}}
+                </span>
+              </div>
+              <div class="col-xs-12">
+                <span class="skills candidate-data">
+                  Email
+                </span>
+                <span class="candidate-data">
+                  {{candidateData.email}}
+                </span>
+              </div>
+              <div class="col-xs-12">
+                <span class="job-desc candidate-data">
+                  Mobile:
+                </span>
+                <span class="candidate-data">
+                  {{candidateData.mobileNo}}
+                </span>
+              </div>
+              <div class="col-xs-12">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <span class="job-desc candidate-data availableData" ng-show="candidateData.active === true && candidateData.placed === false">
+                      Available
+                    </span>
+                    <span class="job-desc candidate-data notAvailableData" ng-show="candidateData.active !== true || candidateData.placed !== false">
+                      Not Available
+                    </span>
+                  </div>
+                  <div class="col-xs-6">
+                    <span class="job-desc candidate-data">
+                      Last Applied Job:
+                    </span>
+                    <span class="candidate-data">
+                      {{candidateData.lastAppliedTo}} >>
+                      {{candidateData.appliedBy}} >>
+                      {{candidateData.appliedAt}}
+                    </span>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 col-xs-12 text-right">
+            <div class="row">
+              <div class="col-xs-12">
+                <span class="dlmButtons">
+                  <input type="button" ng-show="candidateData.active === true" value="InActivate" title="InActivate" ng-click="employerMyCandidatesCtrl.activeInactive(candidateData, 'inactivate')"/>
+                  <input type="button" ng-show="candidateData.active === false" value="Activate" title="Activate" ng-click="employerMyCandidatesCtrl.activeInactive(candidateData, 'activate')"/>
+                </span>
+                <span class="dlmButtons">
+                  <input type="button" ng-show="candidateData.placed === false"  value="Placed"         title="Place" ng-click="employerMyCandidatesCtrl.placeOrOnBenchFunction(candidateData,'place')"/>
+                  <input type="button" ng-show="candidateData.placed === true"  value="Add To Bench" title="Add To Bench" ng-click="employerMyCandidatesCtrl.placeOrOnBenchFunction(candidateData, 'bench')"/>
+                </span>
+                <span class="dlmButtons">
+                  <input type="button" value="Edit" title="Edit" ng-click="employerMyCandidatesCtrl.editCandidate(candidateData)"/>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" ng-if="employerMyCandidatesCtrl.candidates === 'active'">
+    <div class="col-xs-12 separatorJobs" ng-repeat="candidateData in employerMyCandidatesCtrl.result" ng-if="candidateData.active === true &&
+    candidateData.placed === false">
+      <div >
+        <div class="big-boxes">
+          <div class="row">
+            <div class="col-sm-9 col-xs-12">
+              <div class="row">
+                <div class="col-xs-12">
+                  <span class="jobTitle candidate-data">{{candidateData.firstName}}</span>
+                </div>
+                <div class="col-xs-12">
+                  <span class="aboutCompany candidate-data">{{candidateData.lastName}}</span>
+                </div>
+                <div class="col-xs-12">
+                  <span class="location candidate-data">
+                    {{candidateData.currentLocation}}
+                  </span>
+                </div>
+                <div class="col-xs-12">
+                  <span class="skills candidate-data">
+                    Email
+                  </span>
+                  <span class="candidate-data">
+                    {{candidateData.email}}
+                  </span>
+                </div>
+                <div class="col-xs-12">
+                  <span class="job-desc candidate-data">
+                    Mobile:
+                  </span>
+                  <span class="candidate-data">
+                    {{candidateData.mobileNo}}
+                  </span>
+                </div>
+                <div class="col-xs-12">
+                  <div class="row">
+                    <div class="col-xs-6">
+                      <span class="job-desc candidate-data availableData" ng-show="candidateData.active === true && candidateData.placed === false">
+                        Available
+                      </span>
+                      <span class="job-desc candidate-data notAvailableData" ng-show="candidateData.active !== true || candidateData.placed !== false">
+                        Not Available
+                      </span>
+                    </div>
+                    <div class="col-xs-6">
+                      <span class="job-desc candidate-data">
+                        Last Applied Job:
+                      </span>
+                      <span class="candidate-data">
+                        {{candidateData.lastAppliedTo}} >>
+                        {{candidateData.appliedBy}} >>
+                        {{candidateData.appliedAt}}
+                      </span>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3 col-xs-12 text-right">
+              <div class="row">
+                <div class="col-xs-12">
+                  <span class="dlmButtons">
+                    <input type="button" ng-show="candidateData.active === true" value="InActivate" title="InActivate" ng-click="employerMyCandidatesCtrl.activeInactive(candidateData, 'inactivate')"/>
+                    <input type="button" ng-show="candidateData.active === false" value="Activate" title="Activate" ng-click="employerMyCandidatesCtrl.activeInactive(candidateData, 'activate')"/>
+                  </span>
+                  <span class="dlmButtons">
+                    <input type="button" ng-show="candidateData.placed === false"  value="Placed"         title="Place" ng-click="employerMyCandidatesCtrl.placeOrOnBenchFunction(candidateData,'place')"/>
+                    <input type="button" ng-show="candidateData.placed === true"  value="Add To Bench" title="Add To Bench" ng-click="employerMyCandidatesCtrl.placeOrOnBenchFunction(candidateData, 'bench')"/>
+                  </span>
+                  <span class="dlmButtons">
+                    <input type="button" value="Edit" title="Edit" ng-click="employerMyCandidatesCtrl.editCandidate(candidateData)"/>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" ng-if="employerMyCandidatesCtrl.candidates === 'inactive'">
+    <div class="col-xs-12 separatorJobs" ng-repeat="candidateData in employerMyCandidatesCtrl.result" ng-if="candidateData.active === false
+    || candidateData.placed !== false">
+      <div >
+        <div class="big-boxes">
+          <div class="row">
+            <div class="col-sm-9 col-xs-12">
+              <div class="row">
+                <div class="col-xs-12">
+                  <span class="jobTitle candidate-data">{{candidateData.firstName}}</span>
+                </div>
+                <div class="col-xs-12">
+                  <span class="aboutCompany candidate-data">{{candidateData.lastName}}</span>
+                </div>
+                <div class="col-xs-12">
+                  <span class="location candidate-data">
+                    {{candidateData.currentLocation}}
+                  </span>
+                </div>
+                <div class="col-xs-12">
+                  <span class="skills candidate-data">
+                    Email
+                  </span>
+                  <span class="candidate-data">
+                    {{candidateData.email}}
+                  </span>
+                </div>
+                <div class="col-xs-12">
+                  <span class="job-desc candidate-data">
+                    Mobile:
+                  </span>
+                  <span class="candidate-data">
+                    {{candidateData.mobileNo}}
+                  </span>
+                </div>
+                <div class="col-xs-12">
+                  <div class="row">
+                    <div class="col-xs-6">
+                      <span class="job-desc candidate-data availableData" ng-show="candidateData.active === true && candidateData.placed === false">
+                        Available
+                      </span>
+                      <span class="job-desc candidate-data notAvailableData" ng-show="candidateData.active !== true || candidateData.placed !== false">
+                        Not Available
+                      </span>
+                    </div>
+                    <div class="col-xs-6">
+                      <span class="job-desc candidate-data">
+                        Last Applied Job:
+                      </span>
+                      <span class="candidate-data">
+                        {{candidateData.lastAppliedTo}} >>
+                        {{candidateData.appliedBy}} >>
+                        {{candidateData.appliedAt}}
+                      </span>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3 col-xs-12 text-right">
+              <div class="row">
+                <div class="col-xs-12">
+                  <span class="dlmButtons">
+                    <input type="button" ng-show="candidateData.active === true" value="InActivate" title="InActivate" ng-click="employerMyCandidatesCtrl.activeInactive(candidateData, 'inactivate')"/>
+                    <input type="button" ng-show="candidateData.active === false" value="Activate" title="Activate" ng-click="employerMyCandidatesCtrl.activeInactive(candidateData, 'activate')"/>
+                  </span>
+                  <span class="dlmButtons">
+                    <input type="button" ng-show="candidateData.placed === false"  value="Placed"         title="Place" ng-click="employerMyCandidatesCtrl.placeOrOnBenchFunction(candidateData,'place')"/>
+                    <input type="button" ng-show="candidateData.placed === true"  value="Add To Bench" title="Add To Bench" ng-click="employerMyCandidatesCtrl.placeOrOnBenchFunction(candidateData, 'bench')"/>
+                  </span>
+                  <span class="dlmButtons">
+                    <input type="button" value="Edit" title="Edit" ng-click="employerMyCandidatesCtrl.editCandidate(candidateData)"/>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

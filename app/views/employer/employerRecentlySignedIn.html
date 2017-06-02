@@ -1,0 +1,58 @@
+<div class="employer-recentlySignedIn employer-all-pages container-fluid row" id="employerRecentlySignedIn">
+  <div class="col-xs-12">
+    <div class="row">
+    <div class="col-xs-6"><h2>Recently Signed Employers</h2></div>
+      <div class="col-xs-6 text-right">
+        <br />
+        <form role="frmSearch" name="searchForm" class="searchForm" novalidate ng-submit="employerRecentlySignedInCtrl.onSearchSubmit()">
+          <div class="input-group">
+            <input class="form-control" type="text"
+              placeholder="Search Employer" id="txtSearch" ng-model="employerRecentlySignedInCtrl.searchEmployer">
+            <span class="input-group-addon searchicon" type="submit" ng-click="employerRecentlySignedInCtrl.onSearchSubmit()" role="button" tabindex="0">
+              <i class="glyphicon glyphicon-search"></i>
+            </span>
+          </div>
+        </form>
+
+        <!-- <form class="frmSearch" ng-submit="employerRecentlySignedInCtrl.onSearchSubmit()">
+          <div class="col-xs-8 text-right">
+            <input class="form-control" type="text"
+              placeholder="Search Employer" id="txtSearch" ng-model="employerRecentlySignedInCtrl.searchEmployer">
+          </div>
+          <div class="col-xs-3 text-left">
+            <input type="submit" class="btnSubmit" ng-click="employerRecentlySignedInCtrl.onSearchSubmit()" value="Search" title="Search Employer">
+          </div>
+        </form> -->
+      </div>
+    </div>
+  </div>
+  <div class="section-separator">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12" ng-repeat="recentEmpData in employerRecentlySignedInCtrl.result">
+            <div class="row">
+              <div class="col-md-3 col-xs-6 employerImage">
+                <img ng-src="images/recent-employer.png" alt="Employer" />
+              </div>
+              <div class="col-md-6 col-xs-6">
+                <span class="companyName">
+                  <a ng-click="employerRecentlySignedInCtrl.redirectToEmployer(recentEmpData)">{{recentEmpData.name}}
+                  </a>
+                </span>
+                <span class="companyDesc">
+                  {{recentEmpData.industryType}}</a>
+                </span>
+              </div>
+              <div class="col-md-3 col-xs-12 text-right">
+                <span>
+                  <input type="submit" class="btnSubmit conntectBtn" ng-click="employerRecentlySignedInCtrl.connectToEmployer(recentEmpData)" value="Connect" title="Connect Employer">
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="employeeDashboard" id="employeeWrapper">
+    <div class="col-lg-9">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h4 class="text-center">Search For Companies</h4>
+          <hr>
+          <div class="col-lg-12">
+            <div class="form-group">
+              <label>Company Name</label>
+
+              <form role="form" name="searchForm" class="searchForm" novalidate ng-submit="employeeSearchByEmployersCtrl.searchEmployers()">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Enter Company Name" ng-model="employeeSearchByEmployersCtrl.searchEmployersText">
+                  <span class="input-group-addon searchicon" type="submit" ng-click="employeeSearchByEmployersCtrl.searchEmployers()" role="button" tabindex="0">
+                    <i class="glyphicon glyphicon-search"></i>
+                  </span>
+                </div>
+              </form>
+
+            </div>
+          </div>
+          <div class="col-sm-12 employeeDashboardCtrl" >
+            <div id="empData" style="min-height: 200px;">
+              <div class="" ng-show="employeeSearchByEmployersCtrl.empData.length <= 0">
+                <h4>No Company Found</h4>
+              </div>
+              <div class="well_look" ng-repeat="emp in employeeSearchByEmployersCtrl.empData"
+                   ng-show="employeeSearchByEmployersCtrl.empData.length > 0">
+                <div class="row paddingTop">
+                  <p class="col-sm-1"><i class="glyphicon glyphicon-bookmark"></i></p>
+                  <div class="col-sm-9">
+                    <div class="row" style="color: #16A085;font-size: 16px;">
+                      <a href="" style="color:#337ab7">{{emp.name}}</a>
+                    </div>
+                    <div class="row">
+                    <span style="font-size: 16px;" class="">
+                      <a href="" class="dice-btn-link" id="">{{emp.location}}</a>
+                    </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <span class="col-sm-1"></span>
+                  <div class="col-sm-9">
+                    <div class="row">
+                      <div class="col-sm-12" style="padding-left: 0">
+                        <div class="col-sm-3" style="padding-left:0;">
+                          <span style="color: #16A085;">Industry Type:</span>
+                        </div>
+                        <div>
+                          {{emp.industryType}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 addBlackBg">
+      <div ng-include src="'views/employee/employeeStatasticsData.html'" ng-controller="EmployeeStatasticsDataCtrl as employeeStatasticsDataCtrl"></div>
+    </div>
+  </div>
+</div>

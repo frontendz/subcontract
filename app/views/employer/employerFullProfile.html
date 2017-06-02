@@ -1,0 +1,246 @@
+<div class="employerProfile" id="employerWrapper">
+  <h2>My Profile</h2>
+  <div class="section-separator">
+    <div class="col-sm-12">
+      <form id="formFullProfile" autocomplete="off" class="row separator" name="formFullProfile" novalidate="novalidate">
+        <div class="employerProfileForm big-boxes">
+           <span class="box-header highlightValue">Company Info</span>
+           <div class="form-group text-left"
+           ng-class="{'has-error' : (formFullProfile.$submitted || formFullProfile.empName.$touched || submitted) && formFullProfile.empName.$error.required }">
+              <div class="row">
+                <div class="col-xs-3">Name<span class="estricSign">*</span></div>
+                <div class="col-xs-9">
+                  <span ng-hide="employerFullProfileCtrl.editCompanyInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.name}}</span>
+                  <input ng-show="employerFullProfileCtrl.editCompanyInfo" name="empName" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.name" placeholder="" ng-required="true" />
+                  <p ng-show="(formFullProfile.$submitted || formFullProfile.empName.$touched || submitted) && formFullProfile.empName.$error.required" class="help-block">Name is required.</p>
+                </div>
+              </div>
+           </div>
+           <div class="form-group text-left"
+           ng-class="{'has-error' : (formFullProfile.$submitted || formFullProfile.address.$touched || submitted) && formFullProfile.address.$error.required }">
+             <div class="row">
+               <div class="col-xs-3">Address<span class="estricSign">*</span></div>
+               <div class="col-xs-9">
+                 <span ng-hide="employerFullProfileCtrl.editCompanyInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.address}}</span>
+                 <input ng-show="employerFullProfileCtrl.editCompanyInfo" type="text" name="address" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.address" placeholder=""  ng-required="true" />
+                 <p ng-show="(formFullProfile.$submitted || formFullProfile.address.$touched || submitted) && formFullProfile.address.$error.required" class="help-block">Address is required.</p>
+               </div>
+             </div>
+           </div>
+           <div class="form-group text-left"
+           ng-class="{'has-error' : (formFullProfile.$submitted || formFullProfile.mobileNo.$touched || submitted ) && formFullProfile.mobileNo.$invalid && formFullProfile.mobileNo.$error.required || formFullProfile.mobileNo.$error.minlength || formFullProfile.mobileNo.$error.maxlength || formFullProfile.mobileNo.$error.pattern}">
+             <div class="row">
+               <div class="col-xs-3">Contact Number<span class="estricSign">*</span></div>
+               <div class="col-xs-9">
+                 <span ng-hide="employerFullProfileCtrl.editCompanyInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.contactNumber}}</span>
+                 <input ng-show="employerFullProfileCtrl.editCompanyInfo" class="form-control" type="text" name="mobileNo" ng-pattern="/^(0*[1-9]+0*)+$/" minlength="10" maxlength="10" placeholder="10 Digits Only" id="txtMobileNumber" value="" ng-model="employerFullProfileCtrl.result.contactNumber" ng-required="true">
+                 <p class="help-block" ng-show="(formFullProfile.$submitted || formFullProfile.mobileNo.$touched || submitted ) && formFullProfile.mobileNo.$invalid && formFullProfile.mobileNo.$error.required">Mobile number is mandatory.</p>
+                 <p class="help-block" ng-show="(formFullProfile.$submitted || formFullProfile.mobileNo.$touched || submitted ) && formFullProfile.mobileNo.$invalid && formFullProfile.mobileNo.$error.minlength">Mobile number must be of 10 digits.</p>
+                 <p class="help-block" ng-show="formFullProfile.mobileNo.$error.pattern">Only numbers are allowed.</p>
+               </div>
+             </div>
+           </div>
+           <div class="form-group text-left"
+            ng-class="{'has-error' : (formFullProfile.$submitted || formFullProfile.directNo.$touched || submitted) && formFullProfile.directNo.$error.pattern }">
+             <div class="row">
+               <div class="col-xs-3">Direct Line</div>
+               <div class="col-xs-9">
+                 <div class="row">
+                   <div class="col-xs-8">
+                     <span ng-hide="employerFullProfileCtrl.editCompanyInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.directLineNo}}</span>
+                     <input ng-show="employerFullProfileCtrl.editCompanyInfo" name="directNo"  maxlength="10" ng-pattern="/^(0*[1-9]+0*)+$/" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.directLineNo"  placeholder=""/>
+                     <p class="myerror" ng-show="formFullProfile.directNo.$error.pattern">Invalid number...!</p>
+                   </div>
+                   <div class="col-xs-4">
+                     <span ng-hide="employerFullProfileCtrl.editCompanyInfo" class="makeFloatLeft span-control">Extension</span>
+                     <span ng-hide="employerFullProfileCtrl.editCompanyInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.directLineExtn}}</span>
+                     <input width="100px" ng-show="employerFullProfileCtrl.editCompanyInfo" name="extNo" maxlength="4" ng-pattern="/^(0*[1-9]+0*)+$/" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.directLineExtn"  placeholder="Extension"/>
+                     <p class="myerror" ng-show="employerFullProfileCtrl.editCompanyInfo && formFullProfile.extNo.$error.pattern">Invalid number...!</p>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+           <div class="form-group text-left"
+           ng-class="{'has-error' : (formFullProfile.$submitted || formFullProfile.location.$touched || submitted) && formFullProfile.location.$error.required }">
+             <div class="row">
+               <div class="col-xs-3">Location<span class="estricSign">*</span></div>
+               <div class="col-xs-9">
+                 <span ng-hide="employerFullProfileCtrl.editCompanyInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.location}}</span>
+                 <input  id="txtEmployer" ng-model="employerFullProfileCtrl.result.location" ng-show="employerFullProfileCtrl.editCompanyInfo" type="text" typeahead-on-select='employerProfileCtrl.doSomething(jobLocation)' id="Autocomplete2" class="form-control" name="location" ng-autocomplete options="options" details="details" placeholder="Enter your Location" ng-required="true" />
+                 <p ng-show="(formFullProfile.$submitted || formFullProfile.location.$touched || submitted) && formFullProfile.location.$error.required" class="help-block">Location is required.</p>
+               </div>
+             </div>
+           </div>
+           <div class="form-group text-left"
+           ng-class="{'has-error' : (formFullProfile.$submitted || formFullProfile.compInfo.$touched || submitted) && formFullProfile.compInfo.$error.required }">
+             <div class="row">
+               <div class="col-xs-3">About Company<span class="estricSign">*</span></div>
+               <div class="col-xs-9">
+                 <span ng-hide="employerFullProfileCtrl.editCompanyInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.aboutCompany}}</span>
+                 <input ng-show="employerFullProfileCtrl.editCompanyInfo" name="compInfo" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.aboutCompany"  placeholder="Maximum 200 Characters" maxlength="200" ng-required="true" />
+                 <p ng-show="(formFullProfile.$submitted || formFullProfile.compInfo.$touched || submitted) && formFullProfile.compInfo.$error.required" class="help-block">About company is required.</p>
+               </div>
+             </div>
+           </div>
+           <span class="box-header highlightValue">Additional Info</span>
+           <div class="form-group text-left">
+             <div class="row datePickerClass fullProfile"
+             ng-class="{'has-error' : (formFullProfile.$submitted || formFullProfile.eDate.$touched || submitted) && formFullProfile.eDate.$error.required }">
+               <div class="col-xs-3">Established Date<span class="estricSign">*</span></div>
+               <div class="col-xs-9">
+                 <span ng-hide="employerFullProfileCtrl.editCompanyInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.establishedAt | amDateFormat:'YYYY-MM-DD'}}</span>
+                 <input  ng-show="employerFullProfileCtrl.editCompanyInfo" name="eDate" type="text" class="form-control"  uib-datepicker-popup="{{employerFullProfileCtrl.format}}" id="dtpPostDate" ng-model="employerFullProfileCtrl.result.establishedAt" is-open="employerFullProfileCtrl.opened" datepicker-options="employerFullProfileCtrl.dateOptions"  close-text="Close" alt-input-formats="altInputFormats"  ng-required="true" />
+                 <span  ng-show="employerFullProfileCtrl.editCompanyInfo" class="input-group-btn fullProfileBtn">
+                   <button type="button" class="btn btn-default" ng-click="employerFullProfileCtrl.open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                 </span>
+               </span>
+               <p ng-show="(formFullProfile.$submitted || formFullProfile.eDate.$touched || submitted) && formFullProfile.eDate.$error.required" class="help-block">Establishment Date is required.</p>
+               </div>
+             </div>
+           </div>
+           <div class="form-group text-left"
+           ng-class="{'has-error' : (formFullProfile.$submitted || formFullProfile.revenue.$touched || submitted) && formFullProfile.revenue.$error.required }">
+             <div class="row">
+               <div class="col-xs-3">Current Revenue / Year<span class="estricSign">*</span></div>
+               <div class="col-xs-9">
+                 <span ng-hide="employerFullProfileCtrl.editCompanyInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.revenue}}</span>
+                 <input ng-show="employerFullProfileCtrl.editCompanyInfo" name="revenue" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.revenue" placeholder=""placeholder="Enter URL with http://" ng-required="true" />
+                 <p ng-show="(formFullProfile.$submitted || formFullProfile.revenue.$touched || submitted) && formFullProfile.revenue.$error.required" class="help-block">Revenue is required.</p>
+               </div>
+             </div>
+           </div>
+           <div class="form-group text-left"
+           ng-class="{'has-error' : (formFullProfile.$submitted || formFullProfile.totalEmp.$touched || submitted) && formFullProfile.totalEmp.$error.required }">
+             <div class="row">
+               <div class="col-xs-3">Total Employees<span class="estricSign">*</span></div>
+               <div class="col-xs-9">
+                 <span ng-hide="employerFullProfileCtrl.editCompanyInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.employeeCount}}</span>
+                 <input ng-show="employerFullProfileCtrl.editCompanyInfo" name="totalEmp" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.employeeCount" placeholder="" ng-required="true" />
+                 <p ng-show="(formFullProfile.$submitted || formFullProfile.totalEmp.$touched || submitted) && formFullProfile.totalEmp.$error.required" class="help-block">Total Employee is required.</p>
+               </div>
+             </div>
+           </div>
+           <div class="form-group text-left">
+             <div class="row">
+               <div class="col-xs-3">Certificates:</div>
+               <div class="col-xs-9">
+                  <span ng-hide="employerFullProfileCtrl.editCompanyInfo" class="span-control setHeight" id="spnEmployer">{{employerFullProfileCtrl.result.certifications}}</span>
+                  <div ng-show="employerFullProfileCtrl.editCompanyInfo" ng-dropdown-multiselect="" class="customDropdown" options="employerFullProfileCtrl.certificateList" selected-model="employerFullProfileCtrl.certificateListModel" extra-settings="employerFullProfileCtrl.certificateSettings" translation-texts="employerFullProfileCtrl.certificateCustomText"></div>
+                </div>
+              </div>
+           </div>
+           <div class="form-group signInForm-submitBtnwrapper">
+              <input ng-hide="employerFullProfileCtrl.editCompanyInfo" type="button" ng-click="employerFullProfileCtrl.editCompanyInfoBtn()" class="btnSubmit" value="Edit Company Info" title="Edit Company Info">
+              <input ng-show="employerFullProfileCtrl.editCompanyInfo" type="submit" ng-click="formFullProfile.$valid && employerFullProfileCtrl.onProfileFormSubmit()" class="btnSubmit" value="Save Company Info" title="Save Company Info">
+              <input ng-show="employerFullProfileCtrl.editCompanyInfo" type="button" ng-click="employerFullProfileCtrl.cancelCompanyInfo()" class="btnSubmit" value="Cancel Company Info" title="Cancel Company Info">
+           </div>
+        </div>
+      </form>
+
+      <form id="formFullSocial" autocomplete="off" class="row separator" name="formFullProfileSocial" novalidate="novalidate">
+        <div class="employerProfileForm big-boxes">
+           <span class="box-header highlightValue">Social Links</span>
+           <div class="form-group text-left"
+           ng-class="{'has-error' : (formFullProfileSocial.$submitted || formFullProfileSocial.fbook.$touched || submitted) && formFullProfileSocial.fbook.$error.url }">
+              <div class="row">
+                <div class="col-xs-3">Facebook</div>
+                <div class="col-xs-9">
+                  <span ng-hide="employerFullProfileCtrl.editSocialInfo"  class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.facebook}}</span>
+                  <input ng-show="employerFullProfileCtrl.editSocialInfo" name="fbook"  type="url" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.facebook" placeholder="Enter URL with http://"/>
+                  <p class="myerror" ng-show="formFullProfileSocial.fbook.$error.url">Invalid URL...!</p>
+                </div>
+              </div>
+           </div>
+           <div class="form-group text-left"
+           ng-class="{'has-error' : (formFullProfileSocial.$submitted || formFullProfileSocial.gplus.$touched || submitted) && formFullProfileSocial.gplus.$error.url }">
+             <div class="row">
+               <div class="col-xs-3">Google Plus</div>
+               <div class="col-xs-9">
+                 <span ng-hide="employerFullProfileCtrl.editSocialInfo"  class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.googlePlus}}</span>
+                 <input ng-show="employerFullProfileCtrl.editSocialInfo" name="gplus"  type="url" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.googlePlus" placeholder="Enter URL with http://"/>
+                 <p class="myerror" ng-show="formFullProfileSocial.gplus.$error.url">Invalid URL...!</p>
+               </div>
+             </div>
+           </div>
+           <div class="form-group text-left"
+           ng-class="{'has-error' : (formFullProfileSocial.$submitted || formFullProfileSocial.twitter.$touched || submitted) && formFullProfileSocial.twitter.$error.url }">
+             <div class="row">
+               <div class="col-xs-3">Twitter</div>
+               <div class="col-xs-9">
+                 <span ng-hide="employerFullProfileCtrl.editSocialInfo"  class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.twitter}}</span>
+                 <input ng-show="employerFullProfileCtrl.editSocialInfo" name="twitter"  type="url" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.twitter" placeholder="Enter URL with http://"/>
+                 <p class="myerror" ng-show="formFullProfileSocial.twitter.$error.url">Invalid URL...!</p>
+               </div>
+             </div>
+           </div>
+           <div class="form-group text-left"
+           ng-class="{'has-error' : (formFullProfileSocial.$submitted || formFullProfileSocial.linked.$touched || submitted) && formFullProfileSocial.linked.$error.url }">
+             <div class="row">
+               <div class="col-xs-3">Linked In</div>
+               <div class="col-xs-9">
+                 <span ng-hide="employerFullProfileCtrl.editSocialInfo"  class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.linkedIn}}</span>
+                 <input ng-show="employerFullProfileCtrl.editSocialInfo" name="linked"  type="url" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.linkedIn" placeholder="Enter URL with http://"/>
+                 <p class="myerror" ng-show="formFullProfileSocial.linked.$error.url">Invalid URL...!</p>
+               </div>
+             </div>
+           </div>
+           <div class="form-group text-left"
+           ng-class="{'has-error' : (formFullProfileSocial.$submitted || formFullProfileSocial.website.$touched || submitted)  && formFullProfileSocial.website.$error.required && formFullProfileSocial.website.$error.url }">
+             <div class="row">
+               <div class="col-xs-3">Website<span class="estricSign">*</span></div>
+               <div class="col-xs-9">
+                 <span ng-hide="employerFullProfileCtrl.editSocialInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.website}}</span>
+                 <input ng-show="employerFullProfileCtrl.editSocialInfo" type="url" name="website" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.website" ng-required="true" placeholder="Enter URL with http://"/>
+                 <p class="myerror" ng-show="formFullProfileSocial.website.$error.url">Invalid Website...!</p>
+                 <p class="myerror" ng-show="formFullProfileSocial.website.$error.required">Website is mandatory.</p>
+               </div>
+             </div>
+           </div>
+           <div class="form-group signInForm-submitBtnwrapper">
+              <input ng-hide="employerFullProfileCtrl.editSocialInfo" type="button" ng-click="employerFullProfileCtrl.editSocialInfoBtn()" class="btnSubmit" value="Edit Social Info" title="Edit Social Info">
+              <input ng-show="employerFullProfileCtrl.editSocialInfo" type="button" ng-click="formFullProfileSocial.$valid && employerFullProfileCtrl.onProfileFormSubmit()" class="btnSubmit" value="Save Social Info" title="Save Social Info">
+              <input ng-show="employerFullProfileCtrl.editSocialInfo" type="button" ng-click="employerFullProfileCtrl.cancelSocialInfo()" class="btnSubmit" value="Cancel Social Info" title="Cancel Social Info">
+           </div>
+        </div>
+      </form>
+      <form id="formFullSocial" autocomplete="off" class="row separator" name="formFullProfileExpert" novalidate="novalidate">
+        <div class="employerProfileForm big-boxes">
+           <span class="box-header highlightValue">Expertise</span>
+           <div class="form-group text-left">
+              <div class="row">
+                <div class="col-xs-3">Doing Services In</div>
+                <div class="col-xs-9">
+                  <span ng-hide="employerFullProfileCtrl.editExpertiseInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.service}}</span>
+                  <input ng-show="employerFullProfileCtrl.editExpertiseInfo" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.service" placeholder=""/>
+                </div>
+              </div>
+           </div>
+           <div class="form-group text-left">
+             <div class="row">
+               <div class="col-xs-3">Expert In</div>
+               <div class="col-xs-9">
+                 <span ng-hide="employerFullProfileCtrl.editExpertiseInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.expert}}</span>
+                 <input ng-show="employerFullProfileCtrl.editExpertiseInfo" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.expert" placeholder=""/>
+               </div>
+             </div>
+           </div>
+           <div class="form-group text-left">
+             <div class="row">
+               <div class="col-xs-3">Major Clients In</div>
+               <div class="col-xs-9">
+                 <span ng-hide="employerFullProfileCtrl.editExpertiseInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.majorClient}}</span>
+                 <input ng-show="employerFullProfileCtrl.editExpertiseInfo" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.majorClient" placeholder=""/>
+               </div>
+             </div>
+           </div>
+           <div class="form-group signInForm-submitBtnwrapper">
+              <input ng-hide="employerFullProfileCtrl.editExpertiseInfo" type="button" ng-click="employerFullProfileCtrl.editExpertiseInfoBtn()" class="btnSubmit" value="Edit Expertise Info" title="Edit Expertise Info">
+              <input ng-show="employerFullProfileCtrl.editExpertiseInfo" type="button" ng-click="employerFullProfileCtrl.onProfileFormSubmit()" class="btnSubmit" value="Save Expertise Info" title="Save Expertise Info">
+              <input ng-show="employerFullProfileCtrl.editExpertiseInfo" type="button" ng-click="employerFullProfileCtrl.cancelExpertiseInfo()" class="btnSubmit" value="Cancel Expertise Info" title="Cancel Expertise Info">
+           </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

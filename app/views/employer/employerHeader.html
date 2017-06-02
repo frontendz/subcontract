@@ -1,0 +1,42 @@
+
+<div class="header" ng-controller="EmployerHeaderCtrl as employerHeaderCtrl">
+  <div class="row">
+    <div class="col-sm-6 " role="navigation">
+      <div class="logo">
+        <img src="images/logo.png" alt="Logo" ui-sref="employer.dashboard">
+      </div>
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+    </div>
+    <div class="LogoutDetail col-sm-6 text-right">
+      <input type="button" class="btnLink" value="Invite a friend" ng-click="employerHeaderCtrl.inviteFriend()" />
+      <form ng-submit="employerHeaderCtrl.searchData()">
+        <div class="form-group pull-left">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Job, Skill, Company, Location" ng-model="employerHeaderCtrl.searchQuery" />
+            <span class="input-group-addon" ng-click="employerHeaderCtrl.searchData()">
+              <i class="glyphicon glyphicon-search"></i>
+            </span>
+          </div>
+        </div>
+      </form>
+      <div class="btn-group" uib-dropdown>
+        <button id="btn-append-to-single-button" type="button" class=""  uib-dropdown-toggle>
+          {{employerHeaderCtrl.employerName}} <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
+          <li role="menuitem"><a ui-sref="employer.myFullProfile">My Profile</a></li>
+          <!-- <li role="menuitem"><a>Feedback</a></li> -->
+          <li class="divider"></li>
+          <li role="menuitem"><a href="#" ng-click="employerHeaderCtrl.logout()">Sign out</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

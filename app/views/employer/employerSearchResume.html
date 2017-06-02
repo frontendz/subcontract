@@ -1,0 +1,99 @@
+<!--controller as resumeSearchCtrl-->
+<div class="container-fluid row SearchResume">
+  <h2>Search for Resume</h2>
+  <div class="dash-left col-lg-9 col-md-9 col-sm-12 col-xs-12">
+    <!--style="background-color: #FFFFFF;width: 65%;"-->
+    <hr>
+
+      <div class="user">
+        <div class="col-md-12">
+          <form role="form" name="searchResume" ng-submit="resumeSearchCtrl.search()" class="searchForm" novalidate>
+            <div class="col-md-3 text-center control-label">
+              <label style="margin-top: 8px;">
+                Search for Resumes: <sup><span class="glyphicon glyphicon-asterisk text-sm"></span></sup>
+              </label>
+            </div>
+            <div class="col-md-9 control-label" ng-class="{'has-error' : (searchResume.$submitted || searchResume.searchText.$touched || submitted ) && searchResume.searchText.$invalid && searchResume.searchText.$error.required }">
+              <div class="input-group">
+                <input type="text" ng-model="resumeSearchCtrl.searchText" placeholder="Enter Skill" class="form-control" name="searchText" ng-required="true">
+                <span class="input-group-addon searchicon" type="submit" ng-click="searchResume.$valid && resumeSearchCtrl.search()" role="button" tabindex="0">
+                  <i class="glyphicon glyphicon-search"></i>
+                </span>
+              </div>
+              <p class="help-block" ng-show="(searchResume.$submitted || searchResume.searchText.required || submitted ) && searchResume.searchText.$invalid && searchResume.searchText.$error.required">Skill is required</p>
+            </div>
+          </form>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="col-md-12">
+          <div class="col-md-3 control-label">
+            <div class="form-group text-center">
+              <span class="labelValue">Search By</span><br />
+              <span class="textValue" ng-init="resumeSearchCtrl.searchBy = 'First Name'">
+                <input type="radio" name="jobVisibility" ng-model="resumeSearchCtrl.searchBy" value="First Name" ng-required="true">First name
+                <input type="radio" name="jobVisibility" ng-model="resumeSearchCtrl.searchBy" value="Last Name" ng-required="true">Last name
+              </span>
+            </div>
+          </div>
+          <div class="col-md-9 control-label">
+            <input class="form-control" placeholder="Optional Enter First Name / Last Name" type="text" ng-model="resumeSearchCtrl.searchFLName" name="searchFLName" />
+          </div>
+        </div>
+      </div>
+    <br>
+    <div class="row" ng-show="!resumeSearchCtrl.loading">
+      <div class="form-group col-md-12" id="searchResultDiv">
+        <h4 id="result_none" align="center" ng-show="resumeSearchCtrl.candidates.length === 0">No Resumes Found </h4>
+
+        <div ng-show="resumeSearchCtrl.candidates.length > 0">
+          <h2 class="text-center">Results</h2>
+          <div class="col-sm-12 vendors2" ng-repeat="candidate in resumeSearchCtrl.candidates">
+            <div class="">
+              <i class="glyphicon glyphicon-user"></i>
+              <strong>
+                <a class="canBox capitalize">
+                  {{candidate.firstName}} {{candidate.lastName}}
+                </a>
+              </strong>
+            </div>
+            <div class="col-sm-12">
+              <div id="circle_9" class="canCircle col-sm-6" style="margin-top: 10px;">
+                <div style="padding-top: 20px;">
+                  {{candidate.candidateSkills[0].skillSetName}}<br> {{candidate.candidateSkills[0].experience}}+ Years
+                </div>
+              </div>
+              <div class="col-sm-9" style="width: 85%;">
+                <table class="table table-hover">
+                  <tbody>
+                    <tr>
+                      <td style="border:0;"><i class="glyphicon glyphicon-flag"></i>{{candidate.candidateProfessional[0].employer}}</td>
+                      <td style="border:0;"><i class="glyphicon glyphicon-bookmark"> </i> full-time-Contract</td>
+                      <td style="border:0;"></td>
+                    </tr>
+                    <tr>
+                      <td style="border:0;"><i class="glyphicon glyphicon-usd"></i> {{candidate.candidateProfessional[0].annualSalary}}</td>
+                      <td style="border: 0;"><i class="glyphicon glyphicon-inbox"></i> {{candidate.email}}</td>
+                      <td style="border:0;"></td>
+                    </tr>
+                    <tr>
+                      <td style="border:0;"><i class="glyphicon glyphicon-map-marker"></i> {{candidate.currentLocation}}</td>
+                      <td style="border:0;"><i class="glyphicon glyphicon-phone"></i> {{candidate.mobileNo}}</td>
+                      <td style="border:0;"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <a class="btn btnView" ng-click="resumeSearchCtrl.downloadResume(candidate.candidateId)">Download Resume</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

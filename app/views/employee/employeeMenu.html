@@ -1,0 +1,15 @@
+<div class="left-navigation" role="navigation" ng-controller="EmployerNavigationCtrl">
+  <ul class="employer-menu">
+    <li ng-class="{ active: isActive('/employee/dashboard')}"><a ui-sref="employee.dashboard" target="_self" class="myDashboard">Home</a></li>
+    <li class="text-uppercase">
+      <span class="menu-heading">Jobs</span>
+    </li>
+    <li ng-class="{ active: isActive('/employee/suggestedJobs')}"><a ui-sref="employee.suggestedJobs" target="_self" class="suggestedJobs">Suggested Jobs</a></li>
+    <li ng-class="{ active: isActive('/employee/searchJobs')}"><a ui-sref="employee.searchForJobs" target="_self" class="searchJobs">Search Jobs</a></li>
+    <li ng-class="{ active: isActive('/employee/appliedJobs')}"><a ui-sref="employee.appliedJobs" target="_self" class="appliedJobs">Applied Jobs</a></li>
+    <li class="text-uppercase">
+      <span class="menu-heading">Companies</span>
+    </li>
+    <li ng-class="{ active: isActive('/employee/searchEmployers')}"><a ui-sref="employee.searchEmployers" target="_self" class="searchEmployers">Search Companies</a></li>
+  </ul>
+</div>

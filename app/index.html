@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SubContract</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/menu.css"></link>
+    <!-- endbuild -->
+
+  </head>
+  <body ng-app="scApp">
+    <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- <uib-alert style="z-index:9999; position:absolute; width:100%;" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}}</uib-alert> -->
+
+    <div class="scApp" ui-view autoscroll="true"></div>
+    <div class="socialLinks">
+      <span class="social facebook">
+        <a href="https://www.facebook.com/Subcontractcom-Inc-1686946371597678" target="_blank">
+          <img src="images/facebook.png" width="30" height="30" title="Facebook" />
+        </a>
+      </span>
+      <span class="social twitter">
+        <a href="https://twitter.com/SubContractJobs" target="_blank">
+          <img src="images/twitter.png" width="30" height="30" title="twitter" />
+        </a>
+      </span>
+      <span class="social linkedIn">
+        <a href="https://www.linkedin.com/company/subcontract-com" target="_blank">
+          <img src="images/linkedin.png" width="30" height="30" title="linkedin" />
+        </a>
+      </span>
+    </div>
+
+    <div id="mydiv">
+      <img src="images/ajax-loader.gif" class="ajax-loader"/>
+    </div>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-moment/angular-moment.js"></script>
+    <script src="bower_components/angularjs-dropdown-multiselect/src/angularjs-dropdown-multiselect.js"></script>
+    <script src="bower_components/ng-tags-input/ng-tags-input.js"></script>
+    <script src="bower_components/ngmap/build/scripts/ng-map.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBSHXNEd26_nj56p6hfLnx3TiOm5aY7YFk"></script>
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/constants/constants.js"></script>
+        <script src="scripts/configs/routes.js"></script>
+        <!-- All Controllers -->
+        <script src="scripts/controllers/HomeCtrl.js"></script>
+        <script src="scripts/controllers/CustomMessageDialogCtrl.js"></script>
+        <script src="scripts/controllers/ContactUsCtrl.js"></script>
+        <script src="scripts/controllers/FeedbackCtrl.js"></script>
+        <script src="scripts/controllers/HomeSearchCtrl.js"></script>
+        <script src="scripts/controllers/LoginCtrl.js"></script>
+        <script src="scripts/controllers/LoginPopupCtrl.js"></script>
+        <script src="scripts/controllers/ForgotPasswordCtrl.js"></script>
+        <script src="scripts/controllers/EmployerRegisterationCtrl.js"></script>
+        <script src="scripts/controllers/EmployerProfileCtrl.js"></script>
+        <script src="scripts/controllers/EmployerHeaderCtrl.js"></script>
+        <script src="scripts/controllers/EmployerNavigationCtrl.js"></script>
+        <script src="scripts/controllers/EmployerAddNewJobCtrl.js"></script>
+        <script src="scripts/controllers/EmployerDashboard.js"></script>
+        <script src="scripts/controllers/EmployerMyPostedJobsCtrl.js"></script>
+        <script src="scripts/controllers/EmployerMyConnectionJobPostCtrl.js"></script>
+        <script src="scripts/controllers/EmployerMyConnectionCtrl.js"></script>
+        <script src="scripts/controllers/EmployerSentConnectionRequestCtrl.js"></script>
+        <script src="scripts/controllers/EmployerPendingNetworkRequestCtrl.js"></script>
+        <script src="scripts/controllers/EmployerRecentlySignedInCtrl.js"></script>
+        <script src="scripts/controllers/EmployerYouMayKnowCtrl.js"></script>
+        <script src="scripts/controllers/EmployerChangePasswordCtrl.js"></script>
+        <script src="scripts/controllers/EmployerPublicJobsCtrl.js"></script>
+        <script src="scripts/controllers/RecruiterPostedJobsCtrl.js"></script>
+        <script src="scripts/controllers/ViewJobCtrl.js"></script>
+        <script src="scripts/controllers/EmployerAddNewCandidateCtrl.js"></script>
+        <script src="scripts/controllers/EmployerMyCandidatesCtrl.js"></script>
+        <script src="scripts/controllers/EmployerFullProfileCtrl.js"></script>
+        <script src="scripts/controllers/EmployerSearchCtrl.js"></script>
+        <script src="scripts/controllers/EmployerViewConnectionCtrl.js"></script>
+        <script src="scripts/controllers/EmployerSearchResumeCtrl.js"></script>
+        <script src="scripts/controllers/EmployerRequestManagementCtrl.js"></script>
+        <script src="scripts/controllers/InviteTeamCtrl.js"></script>
+        <script src="scripts/controllers/ViewTeamCtrl.js"></script>
+        <script src="scripts/controllers/ShareJobCtrl.js"></script>
+        <script src="scripts/controllers/AskForDemoCtrl.js"></script>
+        <script src="scripts/controllers/ViewSingleJobCtrl.js"></script>
+        <!-- <script src="scripts/controllers/EditTeamMembersCtrl.js"></script> -->
+        <script src="scripts/controllers/EmployerApplyCandidateCtrl.js"></script>
+        <script src="scripts/controllers/EmployerAppliedCandidatesCtrl.js"></script>
+        <script src="scripts/controllers/EmployerCandidateDetailsCtrl.js"></script>
+        <script src="scripts/controllers/EmployerRecentJobsCtrl.js"></script>
+        <!-- Employee Controller -->
+        <script src="scripts/controllers/EmployeeHeaderCtrl.js"></script>
+        <script src="scripts/controllers/EmployeeDashboardCtrl.js"></script>
+        <script src="scripts/controllers/EmployeeFullProfileCtrl.js"></script>
+        <script src="scripts/controllers/EmployeeNavigationCtrl.js"></script>
+        <script src="scripts/controllers/EmployeeRegistrationCtrl.js"></script>
+        <script src="scripts/controllers/EmployeeSearchByLocationCtrl.js"></script>
+        <script src="scripts/controllers/EmployeeSearchBySkillsCtrl.js"></script>
+        <script src="scripts/controllers/EmployeeSearchByCompanyCtrl.js"></script>
+        <script src="scripts/controllers/EmployeeSearchByEmployersCtrl.js"></script>
+        <script src="scripts/controllers/EmployeeStatasticsDataCtrl.js"></script>
+        <script src="scripts/controllers/EmployeeSearchForJobsCtrl.js"></script>
+        <script src="scripts/controllers/ResetPasswordCtrl.js"></script>
+        <script src="scripts/controllers/InviteFriendCtrl.js"></script>
+        <script src="scripts/controllers/TermsAndConditionsCtrl.js"></script>
+        <script src="scripts/controllers/EmployerMyConnectionGraphCtrl.js"></script>
+        <script src="scripts/controllers/EmployeeJobAppliedCtrl.js"></script>
+        <script src="scripts/controllers/ViewAppliedJobCtrl.js"></script>
+        <script src="scripts/controllers/EmployeeJobRecentCtrl.js"></script>
+        <script src="scripts/controllers/EmployeeSuggestedJobCtrl.js"></script>
+
+        <!-- All Services & Factories -->
+        <script src="scripts/services/authService.js"></script>
+        <script src="scripts/services/customAlertService.js"></script>
+        <script src="scripts/services/userMetaDataService.js"></script>
+        <script src="scripts/services/employerAllServices.js"></script>
+        <script src="scripts/services/employeeAllServices.js"></script>
+        <script src="scripts/directives/passwordmatch.js"></script>
+        <!-- All directives -->
+        <script src="scripts/directives/ngAutocomplete.js"></script>
+        <script src="scripts/directives/validSubmit.js"></script>
+        <!-- <script src="scripts/directives/stringToNumber.js"></script> -->
+        <!-- All Filters -->
+        <script src="scripts/filters/dateToCustomString.js"></script>
+
+        <!-- endbuild -->
+</body>
+</html>

@@ -1,0 +1,306 @@
+<div class="container-fluid row ConnectionDetails">
+  <h3 style="text-align: center">
+    <a href="" style="text-decoration: none; font-weight: bold">
+      {{connectionCtrl.currentConnection.name}}
+    </a>
+  </h3>
+  <div class="panel panel-default">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="text-right">
+          <div style="border-color: #428bca;" ng-if="connectionCtrl.currentConnection.status === undefined || connectionCtrl.currentConnection.status === 'Cancelled' ||  connectionCtrl.currentConnection.status === 'Deleted'">
+            <button class="btn btn-success btn-md" ng-click="connectionCtrl.connect()">
+              <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Connect
+            </button>
+          </div>
+
+          <div style="border-color: #428bca;" ng-if="connectionCtrl.currentConnection.status != undefined && connectionCtrl.currentConnection.status === 'Requested'">
+            <button class="btn btn-success btn-md" ng-if="" ng-click="connectionCtrl.cancelRequest()">
+              <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Cancel Request
+            </button>
+          </div>
+
+          <div style="border-color: #428bca;" ng-if="connectionCtrl.currentConnection.status === 'Active' && connectionCtrl.currentConnection.employerNetworkId !== undefined">
+            <button class="btn btn-success btn-md" disabled="">
+              <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Connected
+            </button>
+            <button class="btn btn-danger btn-md" ng-click="connectionCtrl.disconnect()">
+              <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Disconnect
+            </button>
+            <button class="btn btn-warning btn-md" ng-click="connectionCtrl.addTrusted()">
+              <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Add Trusted
+            </button>
+          </div>
+
+          <div style="border-color: #428bca;" ng-if="connectionCtrl.currentConnection.status === 'Active Trusted' && connectionCtrl.currentConnection.employerNetworkId !== undefined">
+            <button class="btn btn-success btn-md" disabled="">
+              <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Connected
+            </button>
+            <button class="btn btn-danger btn-md" ng-click="connectionCtrl.disconnect()">
+              <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Disconnect
+            </button>
+            <button class="btn btn-danger btn-md" ng-if="connectionCtrl.currentConnection.status === 'Active Trusted' && connectionCtrl.currentConnection.employerNetworkId !== undefined" ng-click="connectionCtrl.delTrust()">
+              <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Delete Trusted
+            </button>
+          </div>
+
+          <div style="border-color: #428bca;" ng-if="connectionCtrl.currentConnection.status === 'Request Trust' && connectionCtrl.currentConnection.employerNetworkId !== undefined">
+            <button class="btn btn-success btn-md" disabled="">
+              <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Connected
+            </button>
+            <button class="btn btn-danger btn-md" ng-click="connectionCtrl.disconnect()">
+              <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Disconnect
+            </button>
+            <button class="btn btn-danger btn-md" ng-if="connectionCtrl.loggedInEmployerId ===  connectionCtrl.currentConnection.requestedEmpBy" ng-click="connectionCtrl.cancelTrust()">
+              <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Deny Trust Request
+            </button>
+            <button class="btn btn-warning btn-md" ng-if="connectionCtrl.loggedInEmployerId ===  connectionCtrl.currentConnection.requestedEmpTo" ng-click="connectionCtrl.acceptTrust()">
+              <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Accept Trust
+            </button>
+            <button class="btn btn-danger btn-md" ng-if="connectionCtrl.loggedInEmployerId ===  connectionCtrl.currentConnection.requestedEmpTo" ng-click="connectionCtrl.cancelTrust()">
+              <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Deny Trust Request
+            </button>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <div style=" padding-top: 4px;">
+          <ul role="tablist" class="nav nav-tabs" id="myTab">
+            <li class="active" role="presentation">
+              <a aria-expanded="true" aria-controls="home" data-toggle="tab" role="tab" href=""
+                 ng-click="connectionCtrl.switchTab('view1')">
+                Main Details
+              </a>
+            </li>
+            <li role="presentation">
+              <a aria-expanded="true" aria-controls="Social" data-toggle="tab" role="tab" href=""
+                 ng-click="connectionCtrl.switchTab('view2')">
+                Social Links
+              </a>
+            </li>
+            <li role="presentation">
+              <a aria-expanded="true" aria-controls="Expertise" data-toggle="tab" role="tab" href=""
+                 ng-click="connectionCtrl.switchTab('view3')">
+                Expertise
+              </a>
+            </li>
+            <li role="presentation">
+              <a aria-expanded="true" aria-controls="Jobs" data-toggle="tab" role="tab" id="jp-con" href=""
+                 ng-click="connectionCtrl.switchTab('view4')">
+                Jobs of This Employer
+              </a>
+            </li>
+          </ul>
+
+          <div class="tab-content" style="padding:0;">
+            <div id="view1" class="tab-pane active">
+              <div class="user">
+                <div class="col-sm-12">
+                  <table class="table table-striped" style="margin-top: 15px;">
+                    <tbody>
+                    <tr>
+                      <td class="col-sm-3" style="border: 0">User Type :</td>
+                      <td class="col-sm-9" style="border: 0"> Employer</td>
+                    </tr>
+                    <tr>
+                      <td class="col-sm-3" style="border: 0">Industry :</td>
+                      <td class="col-sm-9" style="border: 0">{{connectionCtrl.currentConnection.industryType}}</td>
+                    </tr>
+                    <tr>
+                      <td class="col-sm-3" style="border: 0">About Company :</td>
+                      <td class="col-sm-9" style="border: 0">{{connectionCtrl.currentConnection.aboutCompany}}</td>
+                    </tr>
+                    <tr>
+                      <td class="col-sm-3" style="border: 0">Email:</td>
+                      <td class="col-sm-9" style="border: 0; text-transform: none">{{connectionCtrl.currentConnection.email}}</td>
+                    </tr>
+                    <tr>
+                      <td class="col-sm-3" style="border: 0">Mobile:</td>
+                      <td class="col-sm-9" style="border: 0">{{connectionCtrl.currentConnection.contactNumber}}</td>
+                    </tr>
+                    <tr>
+                      <td class="col-sm-3" style="border: 0">Direct Line:</td>
+                      <td class="col-sm-9" style="border: 0">{{connectionCtrl.currentConnection.directLineNo}}</td>
+                    </tr>
+                    <tr>
+                      <td class="col-sm-3" style="border: 0">Extension:</td>
+                      <td class="col-sm-9" style="border: 0">{{connectionCtrl.currentConnection.directLineExtn}}</td>
+                    </tr>
+                    <tr>
+                      <td class="col-sm-3" style="border: 0">Location:</td>
+                      <td class="col-sm-9" style="border: 0">{{connectionCtrl.currentConnection.location}}</td>
+                    </tr>
+                    <tr>
+                      <td class="col-sm-3" style="border: 0">Address:</td>
+                      <td class="col-sm-9" style="border: 0">{{connectionCtrl.currentConnection.address}}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+
+                  <h4 style="color: #1D7FB0"><i class="glyphicon glyphicon-building"></i> Additional Info</h4>
+                  <table class="table table-striped" style="margin-top: 15px;">
+                    <tbody>
+                      <tr>
+                        <td class="col-sm-3" style="border: 0">Certificates:</td>
+                        <td class="col-sm-9" style="border: 0">{{connectionCtrl.currentConnection.certifications | splitValues}}</td>
+                      </tr>
+                      <tr>
+                        <td class="col-sm-3" style="border: 0">Total Employees:</td>
+                        <td class="col-sm-9" style="border: 0">{{connectionCtrl.currentConnection.employeeCount}}</td>
+                      </tr>
+                      <tr>
+                        <td class="col-sm-3" style="border: 0">Established At:</td>
+                        <td class="col-sm-9" style="border: 0">{{connectionCtrl.currentConnection.establishedAt | dateToCustomString}}</td>
+                      </tr>
+                      <tr>
+                        <td class="col-sm-3" style="border: 0">Current Revenue:</td>
+                        <td class="col-sm-9" style="border: 0">{{connectionCtrl.currentConnection.revenue }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div id="view2" style="min-height: 200px;" class="tab-pane">
+              <div class="user">
+                <div class="col-sm-12">
+                  <table class="table table-striped" style="margin-top: 15px;">
+                    <tbody>
+                    <tr>
+                      <td class="col-sm-3" style="border: 0">Facebook:</td>
+                      <td class="col-sm-9" style="border: 0; text-transform: none">
+                        <a ng-href="{{connectionCtrl.currentConnection.facebook}}">
+                          {{connectionCtrl.currentConnection.facebook}}
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="col-sm-3" style="border: 0">Google Plus:</td>
+                      <td class="col-sm-9" style="border: 0; text-transform: none">
+                        <a ng-href="{{connectionCtrl.currentConnection.googlePlus}}">
+                          {{connectionCtrl.currentConnection.googlePlus}}
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="col-sm-3" style="border: 0">Twitter:</td>
+                      <td class="col-sm-9" style="border: 0; text-transform: none">
+                        <a ng-href="{{connectionCtrl.currentConnection.twitter}}">
+                          {{connectionCtrl.currentConnection.twitter}}
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="col-sm-3" style="border: 0">Linked In:</td>
+                      <td class="col-sm-9" style="border: 0; text-transform: none">
+                        <a ng-href="{{connectionCtrl.currentConnection.linkedIn}}">
+                          {{connectionCtrl.currentConnection.linkedIn}}
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="col-sm-3" style="border: 0">Website:</td>
+                      <td class="col-sm-9" style="border: 0; text-transform: none">
+                        <a ng-href="{{connectionCtrl.currentConnection.website}}">
+                          {{connectionCtrl.currentConnection.website}}
+                        </a>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div id="view3" style="min-height: 200px;" class="tab-pane">
+              <div class="user">
+                <div class="col-sm-12">
+                   <a href=""></a>{{connectionCtrl.currentConnection.name}}
+                  <table class="table table-striped" style="margin-top: 15px;">
+                    <tbody>
+                    <tr>
+                      <td class="col-sm-3" style="border: 0">Doing Services in:</td>
+                      <td class="col-sm-9" style="border: 0">{{connectionCtrl.currentConnection.service}}</td>
+                    </tr>
+                    <tr>
+                      <td class="col-sm-3" style="border: 0">Expert In:</td>
+                      <td class="col-sm-9" style="border: 0">{{connectionCtrl.currentConnection.expert}}</td>
+                    </tr>
+                    <tr>
+                      <td class="col-sm-3" style="border: 0">Major client is:</td>
+                      <td class="col-sm-9" style="border: 0">{{connectionCtrl.currentConnection.majorClient}}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div id="view4" class="tab-pane">
+              <div id="main_content2">
+                <div class="col-sm-12 each_job_post">
+                  <div class="well_look dataSeparator" ng-repeat="job in connectionCtrl.jobs"
+                       ng-show="connectionCtrl.jobs.length > 0">
+                    <div class="row extraPadding15">
+                      <div class="col-sm-9">
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <div class="jobTitle">
+                              <a href="" ng-click="connectionCtrl.viewJob(job, 'public')">{{job.jobTitle}}</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <a href="" class="dice-btn-link" id="">{{job.aboutCompany}}</a>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-5">
+                            <span>
+                              <i class="glyphicon glyphicon-calendar"> </i> {{job.expFrom}}+  -  {{job.expTo}}+  Years
+                            </span>
+                          </div>
+                          <div class="col-sm-7">
+                            <i class="glyphicon glyphicon-map-marker"></i> {{job.location}}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-5 labelsData"><span style="">Key Skills:</span></div>
+                          <div class="col-sm-7"><span>{{job.skill}}</span></div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-5 labelsData"><span style="">Description:</span></div>
+                          <div class="col-sm-7">{{job.jobDesc}}</div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-5 labelsData"><span style="">Salary:</span></div>
+                          <div class="col-sm-7">{{job.salaryFrom}} - {{job.salaryTo}}</div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-5 labelsData"><span style="">Industry:</span></div>
+                          <div class="col-sm-7">{{job.industry}}</div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-5 labelsData"><span style="">Posted on:</span></div>
+                          <div class="col-sm-7">{{job.createdAt  | dateToCustomString}}</div>
+                        </div>
+                      </div>
+                      <div class="col-sm-3 text-right extraRightPadding30">
+                        <div class="row">
+                          <p><img class="companylogo" src="images/sample.jpg"></p>
+                        </div>
+                        <div class="row">
+                          <a href="" ng-click="connectionCtrl.viewJob(job, 'public')" class="btn btnView btn-md">View Job</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
