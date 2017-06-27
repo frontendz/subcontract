@@ -1,260 +1,170 @@
-<div class="employer-my-added-candidates employer-all-pages container-fluid row" id="employerMyAllPostedJobs">
-  <!-- employerMyCandidatesCtrl -->
-  <h2 ng-if="employerMyCandidatesCtrl.candidates === 'all'">My Candidates</h2>
-  <h2 ng-if="employerMyCandidatesCtrl.candidates === 'active'">My Active Candidates</h2>
-  <h2 ng-if="employerMyCandidatesCtrl.candidates === 'inactive'">My Inactive Candidates</h2>
+<!-- Page Content -->
+<div class="middle-section">
+	<div class="employer_info list_jobs all_candidate">
+		<div class="employer_info_title">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3"> <span>All Candidate</span> </div>
+					<div class="col-md-3 floatR">
+						<h5>Showing <strong>1-8</strong> of <strong>254</strong></h5>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="left_bar">
+						<div class="job-search">
+							<div class="input-group"> <span class="input-group-addon" id="j_title"> <i class="fa fa-pencil" aria-hidden="true"></i> </span>
+								<input class="form-control" type="text" placeholder="Job title ..." aria-describedby="j_title">
+							</div>
+							<div class="input-group"> <span class="input-group-addon" id="j_exp"> <i class="fa fa-user" aria-hidden="true"></i> </span>
+								<select aria-describedby="j_exp">
+									<option selected="selected">Exp (years)</option>
+									<option>Exp (years01)</option>
+									<option>Exp (years02)</option>
+									<option>Exp (years03)</option>
+								</select>
+							</div>
+							<div class="input-group"> <span class="input-group-addon" id="j_exp"> <i class="fa fa-map-marker" aria-hidden="true"></i> </span>
+								<select aria-describedby="j_exp">
+									<option selected="selected">Location</option>
+									<option>Location 01</option>
+									<option>Location 02</option>
+									<option>Location 03</option>
+								</select>
+							</div>
+							<a href="#" class="btn_orange">Search Job Results</a> </div>
+						<div class="job_cat">
+							<h3>Candidate Type</h3>
+							<form>
+								<ul>
+									<li>
+										<input type="checkbox"  />
+										<label>Active Candidate</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>In Active Candidate</label>
+									</li>
+								</ul>
+							</form>
+						</div>
+						<div class="job_cat">
+							<h3>Job Type</h3>
+							<form>
+								<ul>
+									<li>
+										<input type="checkbox"  />
+										<label>All Type</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>Full Time</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>Part Time</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>Freelancer</label>
+									</li>
+								</ul>
+							</form>
+						</div>
+						<div class="job_cat">
+							<h3>Salary Range</h3>
+							<form>
+								<ul>
+									<li>
+										<input type="checkbox"  />
+										<label>1000$ - 1700$</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>1700$ - 2100$</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>1000$ - 1700$</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>1700$ - 2100$</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>1000$ - 1700$</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>1700$ - 2100$</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>1000$ - 1700$</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>1700$ - 2100$</label>
+									</li>
+								</ul>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-9">
+					<div class="right_bar">
+						<ul class="clearfix">
+							<li ng-repeat="candidateData in employerMyCandidatesCtrl.result">
+								<div class="job-list">
+									<div class="job-info">
+										<div class="job-info-image"> <img src="images/candidate1.jpg" alt="candidate1" /> </div>
+										<div class="jb-info">
+											<div class="sec-one">
+												<h6>Full Time</h6>
+												<h4 class="not_avail"> <i class="fa fa-circle" aria-hidden="true"></i> Not Available </h4>
+												<span><a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i> Share Candidate </a></span> </div>
+											<h1>{{candidateData.firstName}} {{candidateData.lastName}}</h1>
+											<ul>
+												<li><i class="fa fa-map-signs" aria-hidden="true"></i>{{candidateData.currentLocation}}</li>
+												<li><i class="fa fa-tags" aria-hidden="true"></i> Team of PHP MySQL Developers </li>
+											</ul>
+											<p><b>Ph.</b>: <a href="tel:{{candidateData.mobileNo}}">{{candidateData.mobileNo}}</a> | <b>E.</b>: <a href="mailto:{{candidateData.email}}">{{candidateData.email}}</a></p>
+										</div>
+									</div>
+									<div class="job-btn">
+										<ul>
+											<li><a class="btn_orange" ng-click="employerMyCandidatesCtrl.placeOrOnBenchFunction(candidateData, 'bench')">Add to Bench</a></li>
+											<li><a class="btn_orange" ng-click="employerMyCandidatesCtrl.editCandidate(candidateData)">Edit</a></li>
+										</ul>
+									</div>
+								</div>
+							</li>
 
-  <div class="col-xs-12 text-right">
-    <ul class="filter">
-      <li><a ng-click="employerMyCandidatesCtrl.candidates = 'all'">All Candidate</a></li>
-      <li><a ng-click="employerMyCandidatesCtrl.candidates = 'active'">Active Candidate</a></li>
-      <li><a ng-click="employerMyCandidatesCtrl.candidates = 'inactive'">InActive Candidate</a></li>
-    </ul>
-  </div>
-  <div class="text-center" ng-show="employerMyCandidatesCtrl.result.length <= 0">
-    <h4>No Candidate Found</h4>
-  </div>
-  <div class="row" ng-if="employerMyCandidatesCtrl.candidates === 'all'">
-    <div class="col-xs-12 separatorJobs" ng-repeat="candidateData in employerMyCandidatesCtrl.result">
-      <div class="big-boxes">
-        <div class="row">
-          <div class="col-sm-8 col-xs-12">
-            <div class="row">
-              <div class="col-xs-12">
-                <span class="jobTitle candidate-data">{{candidateData.firstName}}</span>
-              </div>
-              <div class="col-xs-12">
-                <span class="aboutCompany candidate-data">{{candidateData.lastName}}</span>
-              </div>
-              <div class="col-xs-12">
-                <span class="location candidate-data">
-                  {{candidateData.currentLocation}}
-                </span>
-              </div>
-              <div class="col-xs-12">
-                <span class="skills candidate-data">
-                  Email
-                </span>
-                <span class="candidate-data">
-                  {{candidateData.email}}
-                </span>
-              </div>
-              <div class="col-xs-12">
-                <span class="job-desc candidate-data">
-                  Mobile:
-                </span>
-                <span class="candidate-data">
-                  {{candidateData.mobileNo}}
-                </span>
-              </div>
-              <div class="col-xs-12">
-                <div class="row">
-                  <div class="col-xs-6">
-                    <span class="job-desc candidate-data availableData" ng-show="candidateData.active === true && candidateData.placed === false">
-                      Available
-                    </span>
-                    <span class="job-desc candidate-data notAvailableData" ng-show="candidateData.active !== true || candidateData.placed !== false">
-                      Not Available
-                    </span>
-                  </div>
-                  <div class="col-xs-6">
-                    <span class="job-desc candidate-data">
-                      Last Applied Job:
-                    </span>
-                    <span class="candidate-data">
-                      {{candidateData.lastAppliedTo}} >>
-                      {{candidateData.appliedBy}} >>
-                      {{candidateData.appliedAt}}
-                    </span>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4 col-xs-12 text-right">
-            <div class="row">
-              <div class="col-xs-12">
-                <span class="dlmButtons">
-                  <input type="button" ng-show="candidateData.active === true" value="InActivate" title="InActivate" ng-click="employerMyCandidatesCtrl.activeInactive(candidateData, 'inactivate')"/>
-                  <input type="button" ng-show="candidateData.active === false" value="Activate" title="Activate" ng-click="employerMyCandidatesCtrl.activeInactive(candidateData, 'activate')"/>
-                </span>
-                <span class="dlmButtons">
-                  <input type="button" ng-show="candidateData.placed === false"  value="Placed"         title="Place" ng-click="employerMyCandidatesCtrl.placeOrOnBenchFunction(candidateData,'place')"/>
-                  <input type="button" ng-show="candidateData.placed === true"  value="Add To Bench" title="Add To Bench" ng-click="employerMyCandidatesCtrl.placeOrOnBenchFunction(candidateData, 'bench')"/>
-                </span>
-                <span class="dlmButtons">
-                  <input type="button" value="Edit" title="Edit" ng-click="employerMyCandidatesCtrl.editCandidate(candidateData)"/>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row" ng-if="employerMyCandidatesCtrl.candidates === 'active'">
-    <div class="col-xs-12 separatorJobs" ng-repeat="candidateData in employerMyCandidatesCtrl.result" ng-if="candidateData.active === true &&
-    candidateData.placed === false">
-      <div >
-        <div class="big-boxes">
-          <div class="row">
-            <div class="col-sm-9 col-xs-12">
-              <div class="row">
-                <div class="col-xs-12">
-                  <span class="jobTitle candidate-data">{{candidateData.firstName}}</span>
-                </div>
-                <div class="col-xs-12">
-                  <span class="aboutCompany candidate-data">{{candidateData.lastName}}</span>
-                </div>
-                <div class="col-xs-12">
-                  <span class="location candidate-data">
-                    {{candidateData.currentLocation}}
-                  </span>
-                </div>
-                <div class="col-xs-12">
-                  <span class="skills candidate-data">
-                    Email
-                  </span>
-                  <span class="candidate-data">
-                    {{candidateData.email}}
-                  </span>
-                </div>
-                <div class="col-xs-12">
-                  <span class="job-desc candidate-data">
-                    Mobile:
-                  </span>
-                  <span class="candidate-data">
-                    {{candidateData.mobileNo}}
-                  </span>
-                </div>
-                <div class="col-xs-12">
-                  <div class="row">
-                    <div class="col-xs-6">
-                      <span class="job-desc candidate-data availableData" ng-show="candidateData.active === true && candidateData.placed === false">
-                        Available
-                      </span>
-                      <span class="job-desc candidate-data notAvailableData" ng-show="candidateData.active !== true || candidateData.placed !== false">
-                        Not Available
-                      </span>
-                    </div>
-                    <div class="col-xs-6">
-                      <span class="job-desc candidate-data">
-                        Last Applied Job:
-                      </span>
-                      <span class="candidate-data">
-                        {{candidateData.lastAppliedTo}} >>
-                        {{candidateData.appliedBy}} >>
-                        {{candidateData.appliedAt}}
-                      </span>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-3 col-xs-12 text-right">
-              <div class="row">
-                <div class="col-xs-12">
-                  <span class="dlmButtons">
-                    <input type="button" ng-show="candidateData.active === true" value="InActivate" title="InActivate" ng-click="employerMyCandidatesCtrl.activeInactive(candidateData, 'inactivate')"/>
-                    <input type="button" ng-show="candidateData.active === false" value="Activate" title="Activate" ng-click="employerMyCandidatesCtrl.activeInactive(candidateData, 'activate')"/>
-                  </span>
-                  <span class="dlmButtons">
-                    <input type="button" ng-show="candidateData.placed === false"  value="Placed"         title="Place" ng-click="employerMyCandidatesCtrl.placeOrOnBenchFunction(candidateData,'place')"/>
-                    <input type="button" ng-show="candidateData.placed === true"  value="Add To Bench" title="Add To Bench" ng-click="employerMyCandidatesCtrl.placeOrOnBenchFunction(candidateData, 'bench')"/>
-                  </span>
-                  <span class="dlmButtons">
-                    <input type="button" value="Edit" title="Edit" ng-click="employerMyCandidatesCtrl.editCandidate(candidateData)"/>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row" ng-if="employerMyCandidatesCtrl.candidates === 'inactive'">
-    <div class="col-xs-12 separatorJobs" ng-repeat="candidateData in employerMyCandidatesCtrl.result" ng-if="candidateData.active === false
-    || candidateData.placed !== false">
-      <div >
-        <div class="big-boxes">
-          <div class="row">
-            <div class="col-sm-9 col-xs-12">
-              <div class="row">
-                <div class="col-xs-12">
-                  <span class="jobTitle candidate-data">{{candidateData.firstName}}</span>
-                </div>
-                <div class="col-xs-12">
-                  <span class="aboutCompany candidate-data">{{candidateData.lastName}}</span>
-                </div>
-                <div class="col-xs-12">
-                  <span class="location candidate-data">
-                    {{candidateData.currentLocation}}
-                  </span>
-                </div>
-                <div class="col-xs-12">
-                  <span class="skills candidate-data">
-                    Email
-                  </span>
-                  <span class="candidate-data">
-                    {{candidateData.email}}
-                  </span>
-                </div>
-                <div class="col-xs-12">
-                  <span class="job-desc candidate-data">
-                    Mobile:
-                  </span>
-                  <span class="candidate-data">
-                    {{candidateData.mobileNo}}
-                  </span>
-                </div>
-                <div class="col-xs-12">
-                  <div class="row">
-                    <div class="col-xs-6">
-                      <span class="job-desc candidate-data availableData" ng-show="candidateData.active === true && candidateData.placed === false">
-                        Available
-                      </span>
-                      <span class="job-desc candidate-data notAvailableData" ng-show="candidateData.active !== true || candidateData.placed !== false">
-                        Not Available
-                      </span>
-                    </div>
-                    <div class="col-xs-6">
-                      <span class="job-desc candidate-data">
-                        Last Applied Job:
-                      </span>
-                      <span class="candidate-data">
-                        {{candidateData.lastAppliedTo}} >>
-                        {{candidateData.appliedBy}} >>
-                        {{candidateData.appliedAt}}
-                      </span>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-3 col-xs-12 text-right">
-              <div class="row">
-                <div class="col-xs-12">
-                  <span class="dlmButtons">
-                    <input type="button" ng-show="candidateData.active === true" value="InActivate" title="InActivate" ng-click="employerMyCandidatesCtrl.activeInactive(candidateData, 'inactivate')"/>
-                    <input type="button" ng-show="candidateData.active === false" value="Activate" title="Activate" ng-click="employerMyCandidatesCtrl.activeInactive(candidateData, 'activate')"/>
-                  </span>
-                  <span class="dlmButtons">
-                    <input type="button" ng-show="candidateData.placed === false"  value="Placed"         title="Place" ng-click="employerMyCandidatesCtrl.placeOrOnBenchFunction(candidateData,'place')"/>
-                    <input type="button" ng-show="candidateData.placed === true"  value="Add To Bench" title="Add To Bench" ng-click="employerMyCandidatesCtrl.placeOrOnBenchFunction(candidateData, 'bench')"/>
-                  </span>
-                  <span class="dlmButtons">
-                    <input type="button" value="Edit" title="Edit" ng-click="employerMyCandidatesCtrl.editCandidate(candidateData)"/>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+						</ul>
+						<div class="row pagi">
+							<div class="col-md-12">
+								<nav aria-label="Page navigation">
+									<ul class="pagination">
+										<li><a class="btn_orange" href="#" aria-label="Previous">Previous</a></li>
+										<li><a href="#">1</a></li>
+										<li><a href="#">2</a></li>
+										<li><a href="#">3</a></li>
+										<li><a href="#">4</a></li>
+										<li><a href="#">5</a></li>
+										<li><a href="#">...</a></li>
+										<li><a href="#">36</a></li>
+										<li><a class="btn_blue" href="#" aria-label="Next">Next</a></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

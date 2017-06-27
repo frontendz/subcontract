@@ -1,0 +1,266 @@
+/* iPad 1024px View */
+@media screen and (max-width:1199px) {
+.all_candidate .job-info{width:100%;}
+.all_candidate .job-btn{width:100%;}
+.all_candidate .jb-info{border:none;}
+.all_candidate .job-btn ul{padding:0; -webkit-transform:translate(0, 0%); -ms-transform:translate(0, 0%); -moz-transform:translate(0, 0%); -o-transform:translate(0, 0%); transform:translate(0, 0%); display:block; position:relative; margin-top:0%;}
+.job-btn ul li{float:left; margin-right:10px;}
+}
+@media screen and (max-width:1139px) {
+/*Header & Banner*/
+.navbar .logo {margin-left:0;}
+#navbar {margin-right:0;}
+.home-banner {height: 500px;}
+
+/*Section2*/
+.section2:before, .section2:after {width:300px;}
+.section3 p {font-size:20px;}
+.section3 .subtitle {font-size:16px; margin:0;}
+
+.jb-info ul li{margin-right:15px; margin-bottom:5px;}
+.all_key p{padding:0;}
+
+.apply_popup .modal-lg{width:95%; margin:60px auto;}
+}
+
+/* iPad 768px view*/
+@media screen and (max-width:1023px) {
+body {padding:60px 0 0;}
+h1 {font-size:24px;}
+h2 {font-size:20px;}
+h3 {font-size:16px; line-height:normal;}
+h4 {font-size:15px; line-height:normal;}
+h5, h6 {font-size:14px; line-height:normal;}
+
+/*Header & Banner*/
+.navbar,
+.home .navbar-inverse{height:55px;}
+.navbar .logo{margin-top:10px;}
+.navbar #navbar {margin-top:10px;}
+.navbar .navbar-nav .dropdown-menu {margin-top:10px !important;}
+.navbar-nav > li {margin-right:24px;}
+.navbar-inverse .navbar-nav > li.login {margin-left: 0;}
+.navbar-nav .dropdown-menu {margin-right:0 !important;}
+.home-banner {height: 400px;}
+.search-main {max-width:740px;}
+.search-form .input-group, .search-form .input-group.year, .search-form .input-group.location {width:33.33%;}
+.employer .navbar.header-fixed .logo,
+.employer .navbar .logo{margin-top:15px;}
+
+/*profile_section*/
+.employer .navbar-inverse .navbar-nav > li > a{padding:15px;}
+.employer .navbar-nav > li.log-out > a{padding-right:0; margin-left:20px;}
+.employer .navbar-nav > li {margin-right:10px;}
+.employer .navbar.header-fixed .navbar-nav > li > a{padding:15px 10px;}
+
+/*Section1*/
+.section1 {padding: 40px 0;}
+.section1-inner {padding: 0;}
+.section1 h2 {font-size: 24px; line-height: 24px; margin: 0 0 15px;}
+.section1 p {font-size:16px; margin:0 0 20px;}
+.three-infobox {margin:40px 0 0;}
+.three-infobox li strong {font-size: 32px; line-height: 32px;}
+.three-infobox li span {font-size:16px;}
+
+/*Section2*/
+.section2-inner {padding:40px 0;}
+.section2:before, .section2:after {width:160px;}
+.section2-inner:before, .section2-inner:after {width:35px;}
+.section2 h2 {font-size: 24px; line-height: 24px;}
+.section2 p {font-size:16px; margin:0 0 15px;}
+
+/*Section2*/
+.section3{padding:30px 0;}
+.signup-form {margin-top:20px;}
+
+/*Footer*/
+.footer {padding:20px 0;}
+.footer h4 {font-size:16px; margin:0 0 6px;}
+.footer-right, .footer-bottom {margin-top:20px; padding-top:20px; border-top:1px solid rgba(0,0,0,0.1);}
+.copyright {margin:0;}
+
+.job-btn ul{-webkit-transform:translate(0, 0%); -ms-transform:translate(0, 0%); -moz-transform:translate(0, 0%); -o-transform:translate(0, 0%); transform:translate(0, 0%);}
+.apply_popup .modal-body .row.candidate{margin:0;}
+}
+
+@media screen and (max-width:991px) {
+.list_jobs .employer_info_title .col-md-3{padding-right:15px; width:100%; text-align:center;}
+.list_jobs .employer_info_title h5{text-align:center;}
+.left_bar{padding-right:0;}
+.right_bar::before{display:none;}
+
+.all_key .keys{border-bottom:1px solid #a8bdbe; border-right:none; min-height:100px;}
+.apply_popup .modal-body{padding:30px 10px 0px 10px;}
+.apply_popup .modal-body .candidate h4{margin:22px 0 0 4px; font-size:14px;}
+#companyLogo{width:auto; float:none; display:block;}
+}
+
+/* iPhone-6 plus 736 (Landscape) view */
+@media screen and (max-width:767px) {
+body {padding:55px 0 0;}
+/*Header & Banner*/
+.navbar, .navbar.header-fixed,
+.home .navbar-inverse{height:55px;}
+.navbar-header {margin:0;}
+.navbar .logo {display:inline-block; margin-left:15px !important;}
+.navbar-toggle {margin-top:10px;}
+.navbar.header-fixed #navbar {margin:0;}
+.navbar-inverse .navbar-toggle {border-color:#fff;}
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {background-color:#ff8800; border-color:#ff8800;}
+.navbar #navbar {margin:0; padding:0; width:auto; position:absolute; left:0; right:0; top:100%; background:#434a54; border:none; max-height:inherit;}
+.navbar-nav {margin:0; padding:0;}
+.navbar-nav li {margin:0; padding:0;}
+.navbar-inverse .navbar-nav li + li {border-top:1px solid rgba(255,255,255,0.1);}
+.navbar-inverse .navbar-nav > li.login .fa, .navbar-inverse .navbar-nav > li.login:after {display:none;}
+.navbar-inverse .caret {position:absolute; right:20px; top:50%; margin-top:-2px;}
+.navbar-inverse .navbar-nav > li > a {padding:10px 20px;}
+.navbar-inverse .navbar-nav > li > a:hover {background:#ff8800; color:#fff;}
+.navbar .navbar-nav .dropdown-menu {margin:0 0 10px !important;}
+.navbar-nav .dropdown-menu li {border:none !important;}
+.navbar .navbar-nav li.register .dropdown-menu li {display:inline-block; margin-left:20px; padding:10px 0;}
+.navbar .navbar-nav li.register .dropdown-menu li a {display:block; background:#ff8800; font-size:13px; color:#fff; padding:10px 15px; -webkit-border-radius: 2px;-moz-border-radius: 2px;border-radius:2px; text-align:center;}
+.navbar .navbar-nav li.register .dropdown-menu li a:hover {background:#f28100; color:#fff;}
+
+/*profile_section*/
+.employer .navbar-inverse .navbar-nav > li > a{padding:10px 15px; margin-left:0;}
+.employer .navbar-inverse .navbar-nav .dropdown-menu{position:relative; width:100%; padding:5px 15px;}
+
+.search-main {max-width: 100%; padding:0 10px; margin:30px 0 0;}
+.search-form {padding:15px 20px;}
+.search-form .input-group, .search-form .input-group.year, .search-form .input-group.location {width:100%; float:none; margin:0 0 5px;border-left:none;border-bottom:1px solid rgba(0,0,0,0.1);}
+.search-form .input-group .fa {line-height:40px; left:0; width:20px;}
+.search-form .form-input, .search-form .selector span {height:40px; line-height:40px; padding-left:20px; font-size:14px;}
+.search-form div.selector span::after {right:20px;}
+.search-form .btn-box {position:static; width:100%; margin:15px 0 0;}
+.search-form .btn {height:40px; width:100%; padding:5px 10px; text-align:center;}
+
+/*===========:: Employer Theme ::========*/
+.employee-theme .navbar #navbar{background:#0099cc;}
+.employee-theme .navbar-inverse .navbar-nav > li > a:hover {background:#82b440; color: #fff; text-decoration:none;}
+.employee-theme .navbar .navbar-nav li.register .dropdown-menu li a {background:#82b440; color:#fff;}
+.employee-theme .navbar .navbar-nav li.register .dropdown-menu li a:hover {background:#659525; color:#fff;}
+/*=====:: End ::=====*/
+
+/*Section1*/
+.section1 {padding: 30px 0;}
+.section1 h2, .section2 h2 {font-size:20px;line-height: 20px;}
+.section1 p, .section2 p {font-size: 15px;margin: 0 0 15px;}
+.three-infobox {margin: 20px 0 0;}
+.three-infobox li {padding:15px 0;}
+.three-infobox li strong {font-size: 22px; line-height: 24px; margin:0 0 5px;}
+.three-infobox li span {font-size: 13px;}
+
+/*Section2*/
+.section2 .btn {margin: 0 0 10px; min-width: 280px;}
+
+/*Section3*/
+.section3 p {font-size: 18px;}
+.section3 .subtitle {font-size: 15px;}
+.signup-form .input-group {padding-right:138px;}
+.signup-form .input-group .fa {line-height:38px;}
+.signup-form .form-input {height:40px; line-height:40px; font-size:14px;}
+.signup-form .btn {min-width:140px; padding:4px 20px;}
+
+/*Footer*/
+.footer-links {display:none; padding:10px 20px 20px; border-bottom:1px solid rgba(0,0,0,0.1);}
+.footer-right {border:none; margin: 0; padding-top: 0;}
+.footer h4 {display:block; position:relative; padding:8px 10px; margin:0 0 1px; border-bottom:1px solid rgba(0,0,0,0.1); cursor:pointer;}
+.footer h4:after {display:block; content:"\f107"; font-family: 'FontAwesome'; position:absolute; right:10px; top:15px;}
+.footer h4.boxOpen {border-bottom:1px solid rgba(0,0,0,0);}
+.footer h4.boxOpen:after {content:"\f106";}
+.footer .social-media {margin: 10px 0 0;padding: 0 10px;text-align: center;}
+.footer .social-media h4{border:none; cursor:inherit; padding:10px 0;}
+.footer .social-media h4:after {display:none;}
+.contact-details p.phone {margin:0 0 10px;}
+.copyright {text-align: center;}
+
+
+.employer_info form .image_upload label{width:100%;}
+.employer_info form .image_upload #companyLogo{width:auto;}
+
+.jb-info{border:none; width:80%; padding:15px 0px 0px 30px;}
+.job-info-image{width:20%;}
+.job-info{width:100%;}
+.job-btn{width:100%; float:left;}
+.job-btn ul{padding:0; -webkit-transform:translate(0, 0%); -ms-transform:translate(0, 0%); -moz-transform:translate(0, 0%); -o-transform:translate(0, 0%); transform:translate(0, 0%); display:block; position:relative; margin-top:0%;}
+.job-btn ul li{float:left; margin-right:10px;}
+.jb-info h1{font-size:20px;}
+
+.apply_popup .modal-body .candidate{text-align:left;}
+.apply_popup .modal-body .candidate input[type="checkbox"]{float:none; margin:15px 0px;}
+.apply_popup .modal-body .candidate p{margin:5px 0px;}
+.apply_popup .modal-body .cand_photo{float:none; display:inline-block; margin-bottom:10px;}
+.apply_popup .modal-body .candidate h4{float:none; display:inline-block;}
+
+.employer .navbar-nav > li {margin-right:0px;}
+.employer .navbar-nav > li.log-out > a:hover > i{color:#fff;}
+}
+
+/* iPhone-5 480 view */
+@media screen and (max-width:567px) {
+/*profile_section*/
+.profile_section h1{float:left; width:100%; text-align:center;}
+
+.profile_section{padding:15px 0px;}
+
+.job-info{text-align:left;}
+.job-info-image,
+.view_jobs .job-info-image{float:none; width:auto; display:inline-block; margin-bottom:0px;}
+.all_candidate .job-info-image{float:left; width:160px;}
+.all_candidate .jb-info .sec-one h6, .all_candidate .jb-info .sec-one h5{float:left;}
+.all_candidate .jb-info{width:100%;}
+.jb-info,
+.view_jobs .jb-info{width:100%; padding:20px 0px 0px 0px;}
+.all_candidate .jb-info .sec-one span{margin-top:10px;}
+.job-btn ul li{float:none; display:inline-block;}
+.all_candidate .job-btn ul li{float:left;}
+.job-btn ul{text-align:left;}
+.jb-info p span, .jb-info .sec-one span{float:right;}
+.jb-info .sec-one h6,
+.jb-info .sec-one h5{float:none; display:inline-block;}
+.jb-info ul li{float:none; display:inline-block; margin:0px 10px 0px 0px;}
+.right_bar ul.pagination > li > a{float:none;}
+.right_bar ul.pagination > li:first-child{float:none; width:100%; margin-bottom:10px;}
+.right_bar ul.pagination > li:last-child{float:none; width:100%; margin-top:20px;}
+
+.box{float:right; width:100%; margin:10px 0px;}
+.search{position:relative; width:100%; right:0; opacity:1; max-width:100%;}
+.search.expanded{max-width:100%;}
+.box .icon{right:15px;}
+.left_bar .job_cat{margin-bottom:20px;}
+.right_bar{border-top:1px solid #a8bdbe; padding-top:25px;}
+.job-info{padding-bottom:0;}
+.view_jobs ul li{margin-bottom:15px; font-size:14px;}
+.view_jobs ul li span{width:auto;}
+.view_jobs ul li section{margin:0px 10px;}
+.apply_popup .modal-header .close{margin-top:5px;}
+}
+
+/*View :: 320px ::*/
+@media screen and (max-width:479px) {
+h1 {font-size:20px;}
+h2 {font-size: 18px;}
+
+.navbar .navbar-nav li.register .dropdown-menu li {display:block; margin:10px 0 0; padding:0 20px;}
+.three-infobox li {width: 100%; border-left:1px solid #a8bdbe; border-right:1px solid #a8bdbe;}
+.three-infobox li + li {border-top:1px solid #a8bdbe;}
+
+.section2 .btn {margin: 0 0 10px;min-width: inherit;width: 100%;}
+.signup-form .input-group {padding-right: 0;}
+.signup-form .btn {margin: 15px 0 0; padding: 12px 10px; position: static; width: 100%;}
+.footer p {font-size:14px;}
+.share_job{float:left; width:100%; margin-bottom:15px; text-align:center;}
+.jb-info p span, .jb-info .sec-one span{float:left; width:100%; margin-top:10px;}
+.all_candidate .jb-info .sec-one h4{float:right;}
+.all_candidate .job-btn ul li .btn_orange{min-width:130px;}
+.resume label{float:none;}
+}
+
+/************  employer_info  ************/
+@media screen and (max-width:567px) {
+.employer_info ul.nav li{width:100%;}
+.employer_info ul.nav li.active:after{display:none;}
+}
+@media screen and (max-width:398px) {
+.employer_info form .btn_blue{float:none; display:inline-block; margin-top:5px;}
+}

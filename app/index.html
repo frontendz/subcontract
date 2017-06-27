@@ -27,23 +27,6 @@
     <!-- <uib-alert style="z-index:9999; position:absolute; width:100%;" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}}</uib-alert> -->
 
     <div class="scApp" ui-view autoscroll="true"></div>
-    <div class="socialLinks">
-      <span class="social facebook">
-        <a href="https://www.facebook.com/Subcontractcom-Inc-1686946371597678" target="_blank">
-          <img src="images/facebook.png" width="30" height="30" title="Facebook" />
-        </a>
-      </span>
-      <span class="social twitter">
-        <a href="https://twitter.com/SubContractJobs" target="_blank">
-          <img src="images/twitter.png" width="30" height="30" title="twitter" />
-        </a>
-      </span>
-      <span class="social linkedIn">
-        <a href="https://www.linkedin.com/company/subcontract-com" target="_blank">
-          <img src="images/linkedin.png" width="30" height="30" title="linkedin" />
-        </a>
-      </span>
-    </div>
 
     <div id="mydiv">
       <img src="images/ajax-loader.gif" class="ajax-loader"/>
@@ -82,6 +65,7 @@
         <script src="scripts/controllers/HomeCtrl.js"></script>
         <script src="scripts/controllers/CustomMessageDialogCtrl.js"></script>
         <script src="scripts/controllers/ContactUsCtrl.js"></script>
+        <script src="scripts/controllers/AboutUsCtrl.js"></script>
         <script src="scripts/controllers/FeedbackCtrl.js"></script>
         <script src="scripts/controllers/HomeSearchCtrl.js"></script>
         <script src="scripts/controllers/LoginCtrl.js"></script>
@@ -155,6 +139,24 @@
         <!-- <script src="scripts/directives/stringToNumber.js"></script> -->
         <!-- All Filters -->
         <script src="scripts/filters/dateToCustomString.js"></script>
+
+        <script src="scripts/custom/modernizr.custom.79639.js"></script>
+        <!-- <script src="scripts/custom/bootstrap.min.js"></script> -->
+        <script src="scripts/custom/commonscript.js"></script>
+        <script src="scripts/custom/main.js"></script>
+
+
+        <script src="scripts/custom/browse.js"></script>
+        <script src="scripts/custom/chosen.js"></script>
+        <script src="scripts/custom/datepicker.js"></script>
+        <script type="text/javascript">
+        jQuery(document).ready(function(){
+        	jQuery('.icon').click(function () {
+        		jQuery('.search').toggleClass('expanded');
+        	});
+        	jQuery(".chosen-select").chosen();
+        });
+        </script>
 
         <!-- endbuild -->
 </body>

@@ -1,4 +1,4 @@
-<div class="employerSection container-fluid">
+<!-- <div class="employerSection container-fluid">
   <div class="row">
      <div class="employer-header col-sm-12">
       <div ng-include src ="'views/employer/employerHeader.html'"></div>
@@ -8,7 +8,23 @@
           <div ng-controller="EmployerNavigationCtrl" ng-include src ="'views/employer/employerMenu.html'">
          </div>
         </div><!--END OF navigationSection-->
-        <div ui-view class="col-sm-10 dashboardViewSection"></div>
+        <!-- <div ui-view class="col-sm-10 dashboardViewSection"></div>
     </div>
   </div>
-</div>
+</div> -->
+
+<div ng-include src ="'views/employer/employerHeader.html'"></div>
+<div ui-view></div>
+
+<!-- Footer -->
+<footer class="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 footer-bottom">
+				<div class="copyright">
+					<p>© 2017 <a href="SubContract.com">SubContract.com</a> - All Rights Reserved</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>

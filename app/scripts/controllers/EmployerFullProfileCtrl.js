@@ -4,6 +4,10 @@
 angular.module('scApp.controllers')
   .controller('EmployerFullProfileCtrl', ['$scope', '$state', 'EmployerServices', 'AuthService', '_', function($scope, $state, EmployerServices, AuthService, _) {
     var vm = this;
+    var userId = AuthService.getUserId();
+
+    vm.editQuestionInfo = false;
+    vm.questions = [];
 
     vm.open1 = function() {
        vm.opened = true;
@@ -121,6 +125,55 @@ angular.module('scApp.controllers')
       EmployerServices.getEmployerAllDetail(vm.employerId, vm.onSuccessGetEmployerAllDetail, vm.onErrorGetEmployerAllDetail);
     };
 
+    vm.getQuestions = function(){
+      EmployerServices.getAllQuestions(vm.onSuccessGetAllQuestions, vm.onErrorGetAllQuestions);
+    };
+
+    vm.onSuccessGetAllQuestions = function(response){
+        vm.questions = response.data;
+    };
+
+    vm.onErrorGetAllQuestions = function(response){
+        console.log("error block");
+    };
+
+    vm.editQuestionInfoBtn = function(){
+      vm.editQuestionInfo = true;
+    };
+
+    vm.cancelQuestionInfo = function(){
+      vm.editQuestionInfo = false;
+    };
+
+    vm.onQuestionFormSubmit = function() {
+      //console.log(vm.questionData);
+      vm.requestParams = [
+              {
+                "questionId": vm.questionData.firstQues.questionId,
+                "answer": vm.questionData.firstAnswer
+              },
+              {
+                "questionId": vm.questionData.secondQues.questionId,
+                "answer": vm.questionData.secondAnswer
+              },
+              {
+                "questionId": vm.questionData.thirdQues.questionId,
+                "answer": vm.questionData.thirdAnswer
+              }
+            ];
+            EmployerServices.saveAllQuestions(vm.requestParams, userId, vm.onSuccessSaveAllQuestions, vm.onErrorSaveQuestions);
+    };
+
+    vm.onSuccessSaveAllQuestions = function(response){
+      console.log(response);
+    };
+
+    vm.onErrorSaveQuestions = function(response){
+      console.log(response);
+    };
+
     vm.initialize();
+    vm.getQuestions();
+
   }]);
 })();

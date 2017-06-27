@@ -1,159 +1,202 @@
-<div class="landingPage" ng-controller="HomeCtrl as homeCtrl">
-  <!-- ============ NAVBAR START ============ -->
+<div  ng-controller="HomeCtrl as homeCtrl">
 
-  <!-- <div class="fm-container"> -->
-    <!-- Menu -->
-    <div class="menu">
-      <div class="button-close text-right">
-        <a class="fm-button"><i class="fa fa-close fa-2x"></i></a>
-      </div>
-      <ul class="nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a ng-click="homeCtrl.redirectToContactUs()">Contact us</a></li>
-        <li><a ng-click="homeCtrl.redirectToRAP()">Report a Problem</a></li>
-        <li><a ng-click="homeCtrl.redirectToAboutUs()">About us</a></li>
-        <li><a ng-click="homeCtrl.openTermsConditionPopup()">Terms & Conditions</a></li>
-        <li><a ng-click="homeCtrl.redirectToPP()">Privacy Policy</a></li>
-        <!-- <li></li> -->
-      </ul>
-    </div>
-    <!-- end Menu -->
-  <!-- </div> -->
+  <!--Header Start-->
+<header class="header">
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+			  <a class="logo" href="#"><img src="images/logo.png" alt=""></a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse pull-right">
+			  <ul class="nav navbar-nav navbar-right">
+				<li><a href="#">Services</a></li>
+				<li><a ng-click="homeCtrl.redirectToAboutUs()">About Us</a></li>
+				<li><a ng-click="homeCtrl.redirectToContactUs()">Contact Us</a></li>
+				<li class="login"><a ng-click="homeCtrl.openLoginPopup()"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Login</a></li>
+				<li class="register"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a id="btnRecruiterSignUp" ng-click="homeCtrl.recruiterSignup()">Employer Registration</a></li>
+						<li><a id="btnConsultantSignUp" ng-click="homeCtrl.consultantSignup()">Employee Registration</a></li>
+					</ul>
+				</li>
+			  </ul>
+			</div>
+		</div>
+	</div>
+</header>
+<!--Header End-->
 
-  <!-- ============ NAVBAR END ============ -->
+<!-- Page Content -->
+<div class="middle-section">
 
-  <!-- ============ HEADER START ============ -->
+	<div class="home-banner">
+		<div class="search-main">
+			<div class="search-box">
+				<form class="search-form clearfix" name="searchForm" ng-submit="homeCtrl.onSearchSubmit()" novalidate>
+					<div class="input-group">
+					  <i class="fa fa-pencil" aria-hidden="true"></i>
+					  <input class="form-input" type="text" ng-model="homeCtrl.jobTitle" placeholder="Job title ...">
+					</div>
+					<div class="input-group year">
+						<i class="fa fa-user" aria-hidden="true"></i>
+						<select class="select" id="exampleSelect1" ng-model="homeCtrl.experience">
+						  <option>Exp (years)</option>
+						  <option>Exp (years)</option>
+						  <option>Exp (years)</option>
+						</select>
+					</div>
+					<div class="input-group location">
+						<i class="fa fa-map-marker" aria-hidden="true"></i>
+						<select class="select" id="exampleSelect1" ng-model="homeCtrl.location">
+						  <option>Location</option>
+						</select>
+					</div>
+					<div class="btn-box">
+						<button type="submit" class="btn"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+					</div>
+				</form>
+			</div>
+			<a class="text-link" href="#">Advanced Job Search <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+		</div>
+	</div>
 
-  <header>
-    <div id="header-background"></div>
-    <div class="container">
-      <div class="pull-left">
-        <div id="logo"><a href="index.html"><img src="images/logo.png" alt="Jobseek - Job Board Responsive HTML Template" /></a></div>
-      </div>
-      <div id="login" class="pull-right loginHeaderBtn">
-        <a class="" ng-click="homeCtrl.openLoginPopup()">Login</a>
-      </div>
-      <div id="menu-open" class="pull-right">
-        <a class="fm-button"><i class="fa fa-bars fa-lg"></i></a>
-      </div>
-      <div id="searchbox" class="pull-right">
-        <form role="form" name="searchForm" ng-submit="homeCtrl.onSearchSubmit()" class="searchForm" novalidate>
-          <div class="form-group">
-            <label class="sr-only" for="searchfield">Searchbox</label>
-            <input type="text" class="form-control" name="jobType" id="searchfield" ng-model="homeCtrl.searchStr" placeholder=" Jobs, Skills, Company Name, Location">
-          </div>
-        </form>
-      </div>
-      <div id="search" class="pull-right">
-        <a ng-click="homeCtrl.onSearchSubmit()"><i class="fa fa-search fa-lg"></i></a>
-      </div>
-
-    </div>
-  </header>
-
-  <!-- ============ HEADER END ============ -->
-
-  <!-- ============ SLIDES END ============ -->
-
-  <div id="slider" class="sl-slider-wrapper">
-
-		<div class="sl-slider">
-
-			<div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
-				<div class="sl-slide-inner">
-					<div class="bg-img bg-img-1"></div>
-					<div class="tint"></div>
-          <div class="slide-content">
-						<h2>Need an employee?</h2>
-						<h3>We've got perfect candidates</h3>
-						<!-- <p><a href="candidates.html" class="btn btn-lg btn-default">Post a job</a></p> -->
-            <input type="submit" class="btn btn-lg btn-default" value="Employer Registration" id="btnRecruiterSignUp" ng-click="homeCtrl.recruiterSignup()">
+	<!--Section1-->
+	<div class="section1">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="section1-inner">
+					<h2>About SubContract.com</h2>
+					<p>Subcontract.com is an online service provider catering to staffing firms, recruitment agencies, consulting firms and outsourcers. The company provides the first and only "staffing exchange" which is a communications platform to execute inter-vendor strategies and transactions within a community of regional, national and global vendors.</p>
+					<a class="btn" ng-click="homeCtrl.redirectToAboutUs()">Discover More</a>
+					<ul class="three-infobox clearfix">
+						<li>
+							<strong>21,285</strong>
+							<span>Registered Member</span>
+						</li>
+						<li>
+							<strong>4,285</strong>
+							<span>Joblist Posted</span>
+						</li>
+						<li>
+							<strong>18,945</strong>
+							<span>Awesome Company</span>
+						</li>
+					</ul>
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
 
-			<div class="sl-slide" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
-				<div class="sl-slide-inner">
-					<div class="bg-img bg-img-2"></div>
-					<div class="tint"></div>
-          <div class="slide-content">
-						<h2>Looking for a job?</h2>
-						<h3>There’s no better place to start</h3>
-						<!-- <p><a href="jobs.html" class="btn btn-lg btn-default">Find a job</a></p> -->
-            <input type="submit" class="btn btn-lg btn-default" value="Employee Registration" id="btnConsultantSignUp" ng-click="homeCtrl.consultantSignup()">
+	<!--Section2-->
+	<div class="section2">
+		<div class="section2-inner">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 registration">
+					<h2>Need Job or Employee?</h2>
+					<p>There’s no better place to start</p>
+					<a class="btn" id="btnConsultantSignUp" ng-click="homeCtrl.consultantSignup()">Employee Registration</a>
+					<a class="btn btn-primary" id="btnRecruiterSignUp" ng-click="homeCtrl.recruiterSignup()">Employer Registration</a>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+
+	<!--Section3-->
+	<div class="section3">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<p>Get to know more updates about us by email.</p>
+					<span class="subtitle">No registration needed</span>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<form class="signup-form clearfix">
+						<div class="input-group">
+						  <i class="fa fa-envelope-open-o" aria-hidden="true"></i>
+						  <input class="form-input" type="email" placeholder="Enter your email ...">
+						  <button type="submit" class="btn">Sign Up Now!</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 footer-left">
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<h4>Job Seekers</h4>
+						<ul class="footer-links">
+							<li><a href="#">Search Jobs</a></li>
+							<li><a href="#">View All Jobs</a></li>
+							<li><a href="#">Get Jobs in Email</a></li>
+							<li><a href="#">About Companies</a></li>
+							<li><a href="#">Career Center</a></li>
+							<li><a href="#">Help</a></li>
+						</ul>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<h4>Quick Link</h4>
+						<ul class="footer-links">
+							<li><a ng-click="homeCtrl.redirectToRAP()">Report a Problem</a></li>
+							<li><a ng-click="homeCtrl.openTermsConditionPopup()">Terms & Conditions</a></li>
+							<li><a ng-click="homeCtrl.redirectToPP()">Privacy Policy</a></li>
+						</ul>
 					</div>
 				</div>
 			</div>
-
-			<div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
-				<div class="sl-slide-inner">
-					<div class="bg-img bg-img-3"></div>
-					<div class="tint"></div>
-					<div class="slide-content">
-						<h2>Need a demo?</h2>
-						<h3>Find here how SubContract works</h3>
-						<!-- <p><a href="jobs.html" class="btn btn-lg btn-default">Demo</a></p> -->
-            <input type="button" value="Demo" class="btn btn-lg btn-default" ng-click="homeCtrl.askForDemo()">
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 footer-right">
+				<div class="row">
+					<div class="col-lg-7 col-md-7 col-sm-6 col-xs-12 contact-details">
+						<h4>Contact Info</h4>
+						<div class="footer-links">
+							<p class="address"><i class="fa fa-map-marker" aria-hidden="true"></i> #68 Landover Dr. West Brandywine, PA - 19320.</p>
+							<p class="phone"><i class="fa fa-phone" aria-hidden="true"></i> Toll Free: <a href="+1 (877) 738 7227">+1 (877) 738 7227</a></p>
+							<p class="email"><i class="fa fa-envelope-open-o" aria-hidden="true"></i><a href="mailto:support@subcontract.com">support@subcontract.com</a></p>
+						</div>
+					</div>
+					<div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 social">
+						<div class="social-media">
+							<h4>Get Social: </h4>
+							<ul>
+								<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</div>
-		<nav id="nav-arrows" class="nav-arrows">
-			<span class="nav-arrow-prev">Previous</span>
-			<span class="nav-arrow-next">Next</span>
-		</nav>
+		</div>
 
-		<nav id="nav-dots" class="nav-dots">
-			<span class="nav-dot-current"></span>
-			<span></span>
-			<span></span>
-		</nav>
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 footer-bottom">
+				<div class="copyright">
+					<p>© 2017 <a href="SubContract.com">SubContract.com</a> - All Rights Reserved</p>
+				</div>
+			</div>
+		</div>
 
 	</div>
-</div>
-<script src="scripts/custom/modernizr.custom.79639.js"></script>
+</footer>
 
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<!-- <script src="scripts/custom/jquery-1.11.2.min.js"></script> -->
-
-		<!-- Bootstrap Plugins -->
-		<!-- <script src="scripts/custom/bootstrap.min.js"></script> -->
-
-		<!-- Retina Plugin -->
-		<script src="scripts/custom/retina.min.js"></script>
-
-		<!-- ScrollReveal Plugin -->
-		<script src="scripts/custom/scrollReveal.min.js"></script>
-
-		<!-- Flex Menu Plugin -->
-		<script src="scripts/custom/jquery.flexmenu.js"></script>
-
-		<!-- Slider Plugin -->
-		<script src="scripts/custom/jquery.ba-cond.min.js"></script>
-		<script src="scripts/custom/jquery.slitslider.js"></script>
-
-		<!-- Carousel Plugin -->
-		<script src="scripts/custom/owl.carousel.min.js"></script>
-
-		<!-- Parallax Plugin -->
-		<script src="scripts/custom/parallax.js"></script>
-
-		<!-- Counterup Plugin -->
-		<script src="scripts/custom/jquery.counterup.min.js"></script>
-		<script src="scripts/custom/waypoints.min.js"></script>
-
-		<!-- No UI Slider Plugin -->
-		<script src="scripts/custom/jquery.nouislider.all.min.js"></script>
-
-		<!-- Bootstrap Wysiwyg Plugin -->
-		<script src="scripts/custom/bootstrap3-wysihtml5.all.min.js"></script>
-
-		<!-- Flickr Plugin -->
-		<script src="scripts/custom/jflickrfeed.min.js"></script>
-
-		<!-- Fancybox Plugin -->
-		<script src="scripts/custom/fancybox.pack.js"></script>
-
-		<!-- Magic Form Processing -->
-		<script src="scripts/custom/magic.js"></script>
-		<!-- jQuery Settings -->
-		<script src="scripts/custom/settings.js"></script>
+<!-- <script src="scripts/custom/modernizr.custom.79639.js"></script> -->
+<!-- <script src="scripts/custom/bootstrap.min.js"></script> -->
+<script src="scripts/custom/commonscript.js"></script>
+<script src="scripts/custom/main.js"></script>

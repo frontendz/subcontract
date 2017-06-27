@@ -130,6 +130,7 @@
                 </div>
               </div>
            </div>
+
            <div class="form-group signInForm-submitBtnwrapper">
               <input ng-hide="employerFullProfileCtrl.editCompanyInfo" type="button" ng-click="employerFullProfileCtrl.editCompanyInfoBtn()" class="btnSubmit" value="Edit Company Info" title="Edit Company Info">
               <input ng-show="employerFullProfileCtrl.editCompanyInfo" type="submit" ng-click="formFullProfile.$valid && employerFullProfileCtrl.onProfileFormSubmit()" class="btnSubmit" value="Save Company Info" title="Save Company Info">
@@ -238,6 +239,61 @@
               <input ng-hide="employerFullProfileCtrl.editExpertiseInfo" type="button" ng-click="employerFullProfileCtrl.editExpertiseInfoBtn()" class="btnSubmit" value="Edit Expertise Info" title="Edit Expertise Info">
               <input ng-show="employerFullProfileCtrl.editExpertiseInfo" type="button" ng-click="employerFullProfileCtrl.onProfileFormSubmit()" class="btnSubmit" value="Save Expertise Info" title="Save Expertise Info">
               <input ng-show="employerFullProfileCtrl.editExpertiseInfo" type="button" ng-click="employerFullProfileCtrl.cancelExpertiseInfo()" class="btnSubmit" value="Cancel Expertise Info" title="Cancel Expertise Info">
+           </div>
+        </div>
+      </form>
+
+      <form id="formFullSocial" autocomplete="off" class="row separator" name="formFullProfileQuestion" novalidate="novalidate">
+        <div class="employerProfileForm big-boxes">
+           <span class="box-header highlightValue">Security Questions</span>
+           <div class="form-group text-left"
+           ng-class="{'has-error' : (formFullProfileQuestion.$submitted || formFullProfileQuestion.firstAnswer.$touched || submitted ) && formFullProfileQuestion.firstAnswer.$invalid && formFullProfileQuestion.firstAnswer.$error.required }">
+              <div class="row">
+                <div class="col-xs-3">
+                  <select ng-disabled="!employerFullProfileCtrl.editQuestionInfo"  class="form-control" ng-options="qtn.question for qtn in employerFullProfileCtrl.questions" ng-model="employerFullProfileCtrl.questionData.firstQues" ng-required="true">
+                     <option value="">Select</option>
+                   </select>
+                </div>
+                <div class="col-xs-9">
+                  <span ng-hide="employerFullProfileCtrl.editQuestionInfo" class="span-control" id="spnEmployer">Answer 1</span>
+                  <input ng-show="employerFullProfileCtrl.editQuestionInfo" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.questionData.firstAnswer" name="firstAnswer" placeholder="" ng-required="true"/>
+                  <p ng-show="(employerFullProfileCtrl.$submitted) && employerFullProfileCtrl.firstAnswer.$error.required" class="help-block">Total Employee is required.</p>
+                </div>
+              </div>
+            </div>
+            <div class="form-group text-left"
+            ng-class="{'has-error' : (formFullProfileQuestion.$submitted || formFullProfileQuestion.secondAnswer.$touched || submitted ) && formFullProfileQuestion.secondAnswer.$invalid && formFullProfileQuestion.secondAnswer.$error.required }">
+              <div class="row">
+                <div class="col-xs-3">
+                  <select ng-disabled="!employerFullProfileCtrl.editQuestionInfo"  class="form-control" ng-options="qtn.question for qtn in employerFullProfileCtrl.questions  | filter:{ questionId : '!' + employerFullProfileCtrl.questionData.firstQues.questionId }"  ng-model="employerFullProfileCtrl.questionData.secondQues" ng-required="true">
+                     <option value="">Select</option>
+                   </select>
+                </div>
+                <div class="col-xs-9">
+                  <span ng-hide="employerFullProfileCtrl.editQuestionInfo" class="span-control" id="spnEmployer">Answer 2</span>
+                  <input ng-show="employerFullProfileCtrl.editQuestionInfo" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.questionData.secondAnswer" name="secondAnswer" placeholder="" ng-required="true"/>
+                </div>
+              </div>
+            </div>
+            <div class="form-group text-left"
+            ng-class="{'has-error' : (formFullProfileQuestion.$submitted || formFullProfileQuestion.thirdAnswer.$touched || submitted ) && formFullProfileQuestion.thirdAnswer.$invalid && formFullProfileQuestion.thirdAnswer.$error.required }">
+              <div class="row">
+                <div class="col-xs-3">
+                  <select ng-disabled="!employerFullProfileCtrl.editQuestionInfo"  class="form-control" ng-options="qtn.question for qtn in employerFullProfileCtrl.questions | filter:{ questionId : '!' + employerFullProfileCtrl.questionData.firstQues.questionId } | filter:{ questionId : '!' + employerFullProfileCtrl.questionData.secondQues.questionId }" ng-model="employerFullProfileCtrl.questionData.thirdQues" ng-required="true">
+                     <option value="">Select</option>
+                   </select>
+                </div>
+                <div class="col-xs-9">
+                  <span ng-hide="employerFullProfileCtrl.editQuestionInfo" class="span-control" id="spnEmployer">Answer 3</span>
+                  <input ng-show="employerFullProfileCtrl.editQuestionInfo" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.questionData.thirdAnswer" name="thirdAnswer" placeholder="" ng-required="true"/>
+                </div>
+              </div>
+           </div>
+
+           <div class="form-group signInForm-submitBtnwrapper">
+              <input ng-hide="employerFullProfileCtrl.editQuestionInfo" type="button" ng-click="employerFullProfileCtrl.editQuestionInfoBtn()" class="btnSubmit" value="Edit Question Info" title="Edit Question Info">
+              <input ng-show="employerFullProfileCtrl.editQuestionInfo" type="submit" ng-click="formFullProfileQuestion.$valid && employerFullProfileCtrl.onQuestionFormSubmit()" class="btnSubmit" value="Save Question Info" title="Save Question Info">
+              <input ng-show="employerFullProfileCtrl.editQuestionInfo" type="button" ng-click="employerFullProfileCtrl.cancelQuestionInfo()" class="btnSubmit" value="Cancel Question Info" title="Cancel Question Info">
            </div>
         </div>
       </form>

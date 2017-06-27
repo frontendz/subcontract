@@ -6,7 +6,7 @@ angular.module('scApp.controllers')
     function ($scope, $state, EmployerServices, AuthService, $uibModal, $stateParams) {
     var vm = this;
     var employerId = '';
-    
+
     if ($stateParams.candidates !== undefined) {
       vm.candidates = $stateParams.candidates;
     }

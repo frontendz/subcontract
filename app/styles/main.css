@@ -1,4 +1,6 @@
 @import url(style.css);
+@import url(new_main.css);
+@import url(new_media.css);
 .btnSubmit, .btnCancel {
   color: #fff;
   padding: 5px 15px;
@@ -119,13 +121,13 @@ body {
   width: 500px;
   margin: 0 auto; }
 
-.collapse.navbar-collapse {
-  padding-top: 20px; }
+/*.collapse.navbar-collapse {
+  padding-top: 20px; }*/
 
-.logo {
+/*.logo {
   display: inline-block;
   cursor: pointer;
-  padding: 20px; }
+  padding: 20px; }*/
 
 .collapse {
   float: right; }
@@ -245,8 +247,8 @@ body {
     margin-left: 15px; }
   .landingPage .header .navbar-collapse {
     padding: 0px; }
-    .landingPage .header .navbar-collapse li a {
-      color: #000; }
+    /*.landingPage .header .navbar-collapse li a {
+      color: #000; }*/
 
 .employeeRegisteration .datePickerClass {
   position: relative;
@@ -332,9 +334,9 @@ input[type=number]::-webkit-outer-spin-button {
   appearance: none;
   margin: 0; }
 
-.navbar {
+/*.navbar {
   margin-bottom: 0px;
-  padding-bottom: 30px; }
+  padding-bottom: 30px; }*/
 
 .navbar.navbar-default {
   background: #14b1bb; }
@@ -701,8 +703,8 @@ span.menu-heading {
 .text-success {
   color: #000; }
 
-p {
-  margin-bottom: 10px !important; }
+/*p {
+  margin-bottom: 10px !important; }*/
 
 .companylogo {
   border: 1px solid #ccc;
@@ -714,16 +716,16 @@ p {
   border: 1px solid #14b1bb; }
 
 @media only screen and (max-width: 767px) {
-  .navbar-collapse.collapse.in {
+  /*.navbar-collapse.collapse.in {
     position: absolute;
     background: #fff !important;
     width: 100%;
-    padding-top: 15px; }
+    padding-top: 15px; }*/
 
-  .navbar-header {
+  /*.navbar-header {
     position: absolute;
     top: 10px;
-    right: 0; }
+    right: 0; }*/
 
   .landingPage .carousel-caption {
     width: 100%; }
@@ -862,12 +864,12 @@ hr {
 
 /* 1.1. HEADERS
 ---------------------------------------------------------------*/
-h1, h2, h3, h4, h5, h6 {
+/*h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.05em;
   margin: 0;
-  text-transform: uppercase; }
+  text-transform: uppercase; }*/
 
-h2 {
+/*h2 {
   padding-top: 20px;
   margin-bottom: 20px; }
 
@@ -878,7 +880,7 @@ h2::after {
   height: 5px;
   margin-top: 10px;
   width: 60px; }
-
+*/
 h3 {
   margin: 2em 0 1em 0; }
 
@@ -907,10 +909,10 @@ button {
   -webkit-transition: all .5s ease;
   -o-transition: all .5s ease; }
 
-.btn {
+/*.btn {
   font-family: "Montserrat", Arial;
   text-transform: uppercase;
-  white-space: normal; }
+  white-space: normal; }*/
 
 .btn-primary {
   border: 0; }
@@ -931,8 +933,8 @@ article .btn-default.btn-lg {
 
 /* 1.3. SECTIONS
 ---------------------------------------------------------------*/
-section {
-  padding: 80px 0; }
+/*section {
+  padding: 80px 0; }*/
 
 .color1 {
   background: #f8f8f8; }
@@ -2334,8 +2336,8 @@ label {
 .LoginFormWindow .forgotLink {
   padding: 15px 5px; }
 
-body {
-  padding: 0px; }
+/*body {
+  padding: 0px; }*/
 
 /*# sourceMappingURL=main.css.map */
 .no-scroll {

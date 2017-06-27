@@ -2,8 +2,8 @@
 'use strict';
 
 angular.module('scApp.controllers')
-  .controller('ForgotPasswordCtrl', ['$scope', 'CustomAlertService', '$state', '$rootScope', '$timeout', 'AuthService',
-    function ($scope, CustomAlertService, $state, $rootScope, $timeout, AuthService){
+  .controller('ForgotPasswordCtrl', ['$scope', 'CustomAlertService', '$state', '$rootScope', '$timeout', 'AuthService','EmployerServices',
+    function ($scope, CustomAlertService, $state, $rootScope, $timeout, AuthService, EmployerServices){
     $scope.errorMsg = '';
       $scope.emailError = false;
 
@@ -38,7 +38,39 @@ angular.module('scApp.controllers')
           'email': $scope.email,
           'mobile': $scope.mobile
         };
-        AuthService.forgotPassword(requestParams, $scope.onSuccessEmail, $scope.onErrorEmail);
+        if($scope.resetOption === 'mobileNumber'){
+            AuthService.forgotPassword(requestParams, $scope.onSuccessEmail, $scope.onErrorEmail);
+        }
+        else{
+          angular.forEach($scope.securityQuestions, function(val){
+            delete val.question
+          });
+          AuthService.checkSecurityQuestionsByEmail($scope.securityQuestions, $scope.email, $scope.onSuccessCheckSucurityQuestions, $scope.onErroCheckSecurity)
+        }
     };
+
+    $scope.onSuccessCheckSucurityQuestions = function(response){
+      console.log(response);
+    };
+
+    $scope.onErroCheckSecurity = function(response){
+      console.log(response);
+    }
+
+    $scope.getQuestions = function(){
+      if($scope.email && $scope.resetOption ==='securityQuestion'){
+        AuthService.getSecurityQuestionByEmail($scope.email, $scope.onSuccessSecurityQuestions, $scope.onErrorSecurityQuestions)
+      };
+    };
+
+    $scope.onSuccessSecurityQuestions = function(response){
+      console.log(response);
+      $scope.securityQuestions = response.data;
+    };
+
+    $scope.onErrorSecurityQuestions = function(response){
+      console.log(response);
+    };
+
   }]);
 })();

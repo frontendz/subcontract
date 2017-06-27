@@ -1,5 +1,5 @@
 
-<div class="header" ng-controller="EmployerHeaderCtrl as employerHeaderCtrl">
+<!-- <div class="header" ng-controller="EmployerHeaderCtrl as employerHeaderCtrl">
   <div class="row">
     <div class="col-sm-6 " role="navigation">
       <div class="logo">
@@ -33,10 +33,73 @@
         <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
           <li role="menuitem"><a ui-sref="employer.myFullProfile">My Profile</a></li>
           <!-- <li role="menuitem"><a>Feedback</a></li> -->
-          <li class="divider"></li>
+          <!-- <li class="divider"></li>
           <li role="menuitem"><a href="#" ng-click="employerHeaderCtrl.logout()">Sign out</a></li>
         </ul>
       </div>
     </div>
   </div>
+</div> -->
+
+<!--Header Start-->
+<header class="header" ng-controller="EmployerNavigationCtrl">
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+				<a class="logo" ui-sref="employer.dashboard"><img src="images/logo.png" alt=""></a> </div>
+			<div id="navbar" class="navbar-collapse collapse pull-right">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jobs</a>
+						<ul class="dropdown-menu">
+							<li ng-class="{ active: isActive('/employer/addNewJob')}"><a ui-sref="employer.postJob" target="_self">New Job Post</a></li>
+							<li ng-class="{ active: isActive('/employer/myPostedJobs')}"><a ui-sref="employer.viewMyPostedJobs" target="_self">My Job Posts</a></li>
+							<li ng-class="{ active: isActive('/employer/myConnectionPostedJobs')}"><a ui-sref="employer.viewMyConnectionPostedJobs" target="_self">My Connection Job Posts</a></li>
+							<li ng-class="{ active: isActive('/employer/publicJobs')}"><a ui-sref="employer.viewPublicJobs" target="_self">Public Jobs</a></li>
+						</ul>
+					</li>
+          <li><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Candidates</a>
+						<ul class="dropdown-menu">
+							<li ng-class="{ active: isActive('/employer/addNewCandidate')}"><a ui-sref="employer.addNewCandidate" target="_self">Add New Candidate</a></li>
+              <li ng-class="{ active: isActive('/employer/myCandidates')}"><a ui-sref="employer.myCandidates" target="_self">My Candidates</a></li>
+              <li ng-class="{ active: isActive('/employer/resume')}"><a ui-sref="employer.searchResume" target="_self">Search Candidate Resume</a></li>
+						</ul>
+					</li>
+          <li><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Network</a>
+            <ul class="dropdown-menu">
+              <li ng-class="{ active: isActive('/employer/myConnection')}"><a ui-sref="employer.myConnection" target="_self">My Connections</a></li>
+              <li ng-class="{ active: isActive('/employer/pendingNetworkRequest')}"><a ui-sref="employer.pendingNetworkRequest" target="_self">Pending Requests</a></li>
+              <li ng-class="{ active: isActive('/employer/sentNetworkRequest')}"><a ui-sref="employer.sentConnectionRequest" target="_self">Sent Requests</a></li>
+              <li ng-class="{ active: isActive('/employer/myConnectionGraph')}"><a ui-sref="employer.myConnectionGraph" target="_self">My Network</a></li>
+            </ul>
+          </li>
+          <li><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile</a>
+            <ul class="dropdown-menu">
+              <li ng-class="{ active: isActive('/employer/myProfile')}"><a ui-sref="employer.myFullProfile" target="_self" class="myConnection">My Profile</a></li>
+              <li ng-class="{ active: isActive('/employer/changePassword')}"><a ui-sref="employer.changePassword" target="_self" class="myConnection">Change Password</a></li>
+            </ul>
+          </li>
+          <li><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Team</a>
+            <ul class="dropdown-menu">
+              <li ng-class="{ active: isActive('/employer/inviteTeam')}"><a ui-sref="employer.inviteTeam" target="_self" class="inviteTeam">Invite Team</a></li>
+              <li ng-class="{ active: isActive('/employer/viewTeam')}"><a ui-sref="employer.viewTeam" target="_self" class="viewTeam">View Team</a></li>
+            </ul>
+          </li>
+					<li class="log-out"><a href="#"><i class="fa fa-power-off" aria-hidden="true"></i></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</header>
+<!--Header End-->
+
+
+<div class="profile_section">
+	<div class="container">
+		<div class="box">
+			<input class="search" type="search" placeholder="Search" />
+			<div class="icon"><i class="fa fa-search" aria-hidden="true"></i></div>
+		</div>
+		<h1>My Posted Jobs</h1>
+	</div>
 </div>

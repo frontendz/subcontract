@@ -1,86 +1,208 @@
-<div class="employer-my-posted-jobs employer-all-pages container-fluid row" id="employerMyAllPostedJobs">
-  <!-- employerMyPostedJobsCtrl -->
-  <div class="row">
-    <div class="col-xs-6">
-      <h2>My Posted Jobs</h2>
-    </div>
-    <div class="col-xs-6 text-right">
-        <h5><input type="submit" class="btnSubmit" value="Click to Post A Job" ui-sref="employer.postJob"></h5>
-    </div>
-  </div>
 
-  <div class="text-center" ng-show="employerMyPostedJobsCtrl.result.length <= 0">
-    <h4>No Job Found</h4>
-  </div>
 
-  <div class="">
-    <div class="well_look dataSeparator" ng-repeat="job in employerMyPostedJobsCtrl.postedJobs"
-           ng-show="employerMyPostedJobsCtrl.postedJobs.length > 0">
-      <div class="row extraPadding15">
-        <div class="col-sm-9">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="jobTitle">
-                <a href="" ng-click="employerMyPostedJobsCtrl.viewJob(job)">{{job.jobTitle}}</a>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <a href="" class="dice-btn-link" id="">{{job.aboutCompany}}</a>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-5">
-              <span>
-                <i class="glyphicon glyphicon-calendar"> </i> {{job.expFrom}}+  -  {{job.expTo}}+  Years
-              </span>
-            </div>
-            <div class="col-sm-7">
-              <i class="glyphicon glyphicon-map-marker"></i> {{job.location}}
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-5 labelsData"><span style="">Key Skills:</span></div>
-            <div class="col-sm-7"><span>{{job.skill}}</span></div>
-          </div>
-          <div class="row">
-            <div class="col-sm-5 labelsData"><span style="">Description:</span></div>
-            <div class="col-sm-7">{{job.jobDesc}}</div>
-          </div>
-          <div class="row">
-            <div class="col-sm-5 labelsData"><span style="">Salary:</span></div>
-            <div class="col-sm-7">{{job.salaryFrom}} - {{job.salaryTo}}</div>
-          </div>
-          <div class="row">
-            <div class="col-sm-5 labelsData"><span style="">Industry:</span></div>
-            <div class="col-sm-7">{{job.industry}}</div>
-          </div>
-          <div class="row">
-            <div class="col-sm-5 labelsData"><span style="">Posted on:</span></div>
-            <div class="col-sm-7">{{job.createdAt  | dateToCustomString}}</div>
-          </div>
-        </div>
-        <div class="col-sm-3 text-right extraRightPadding30">
-          <div class="row">
-            <p><img class="companylogo" src="images/sample.jpg"></p>
-          </div>
-          <div class="row">
-            <p>
-              <button class="btn btnView btn-md btn-primary" type="button" ng-click="employerMyPostedJobsCtrl.editJobData(job)">
-                Edit Job
-              </button>
-            </p>
-          </div>
-          <div class="row">
-            <p>
-              <a href="" ng-click="employerMyPostedJobsCtrl.viewJob(job)" class="btn btnView btn-md">View Job</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <input type="button" ng-if="employerMyPostedJobsCtrl.showMyLoadMore === true" ng-click="employerMyPostedJobsCtrl.loadMoreMyJobs()" class="btnSubmit" value="Load More" title="Load More">
-  </div>
-
+<!-- Page Content -->
+<div class="middle-section">
+	<div class="employer_info list_jobs">
+		<div class="employer_info_title">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3"> <span>Post A Job</span> </div>
+					<div class="col-md-3 floatR">
+						<h5>Showing <strong>1-8</strong> of <strong>254</strong></h5>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="left_bar">
+						<div class="job-search">
+							<div class="input-group"> <span class="input-group-addon" id="j_title"> <i class="fa fa-pencil" aria-hidden="true"></i> </span>
+								<input class="form-control" type="text" placeholder="Job title ..." aria-describedby="j_title">
+							</div>
+							<div class="input-group"> <span class="input-group-addon" id="j_exp"> <i class="fa fa-user" aria-hidden="true"></i> </span>
+								<select aria-describedby="j_exp">
+									<option selected="selected">Exp(years)</option>
+									<option>Exp(years01)</option>
+									<option>Exp(years02)</option>
+									<option>Exp(years03)</option>
+								</select>
+							</div>
+							<div class="input-group"> <span class="input-group-addon" id="j_exp"> <i class="fa fa-map-marker" aria-hidden="true"></i> </span>
+								<select aria-describedby="j_exp">
+									<option selected="selected">Location</option>
+									<option>Location 01</option>
+									<option>Location 02</option>
+									<option>Location 03</option>
+								</select>
+							</div>
+							<a href="#" class="btn_orange">Search Job Results</a> </div>
+						<div class="job_cat">
+							<h3>Job Categories</h3>
+							<form>
+								<ul>
+									<li>
+										<input type="checkbox"  />
+										<label>Accounting Jobs</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>Interior Design Jobs</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>Bank Jobs</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>Content Writing Jobs</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>Consultant Jobs</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>Engineering Jobs</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>Export Import Jobs</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>Merchandiser Jobs</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>Security Jobs</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>HR Jobs</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>Hotel Jobs</label>
+									</li>
+								</ul>
+							</form>
+						</div>
+						<div class="job_cat">
+							<h3>Job Type</h3>
+							<form>
+								<ul>
+									<li>
+										<input type="checkbox"  />
+										<label>All Type</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>Full Time</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>Part Time</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>Freelancer</label>
+									</li>
+								</ul>
+							</form>
+						</div>
+						<div class="job_cat">
+							<h3>Salary Range</h3>
+							<form>
+								<ul>
+									<li>
+										<input type="checkbox"  />
+										<label>1000$ - 1700$</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>1700$ - 2100$</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>1000$ - 1700$</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>1700$ - 2100$</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>1000$ - 1700$</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>1700$ - 2100$</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>1000$ - 1700$</label>
+									</li>
+									<li>
+										<input type="checkbox"  />
+										<label>1700$ - 2100$</label>
+									</li>
+								</ul>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-9">
+					<div class="right_bar">
+						<ul class="clearfix">
+							<li ng-repeat="job in employerMyPostedJobsCtrl.postedJobs">
+								<div class="job-list">
+									<div class="job-info">
+										<div class="job-info-image"> <img src="images/img1.jpg" alt="img1" /> </div>
+										<div class="jb-info">
+											<div class="sec-one">
+												<h6>{{job.employmentType}}</h6>
+												<h5 class="highlited"><a data-toggle="tooltip" data-placement="bottom" title="Closing Date"><i class="fa fa-clock-o" aria-hidden="true"></i> 21.02.2017</a></h5>
+												<span>POSTED 2HR AGO</span> </div>
+											<h1>{{job.jobTitle}}</h1>
+											<ul>
+												<li><i class="fa fa-map-signs" aria-hidden="true"></i>{{job.location}}</li>
+												<li><i class="fa fa-tags" aria-hidden="true"></i>{{job.skill}}</li>
+												<li><i class="fa fa-industry" aria-hidden="true"></i>{{job.industry}}</li>
+											</ul>
+											<p>Salary: <i class="fa fa-inr" aria-hidden="true"></i> {{job.salaryFrom}} - <i class="fa fa-inr" aria-hidden="true"></i> {{job.salaryTo}} p/m | Ex: {{job.expFrom}} - {{job.expTo}}+ Years <span><i class="fa fa-eye" aria-hidden="true"></i> 25</span></p>
+										</div>
+									</div>
+									<div class="job-btn">
+										<ul>
+											<li><a class="btn_orange" ng-click="employerMyPostedJobsCtrl.editJobData(job)">Edit Job</a></li>
+											<li><a class="btn_blue" ng-click="employerMyPostedJobsCtrl.viewJob(job)">View Job</a></li>
+										</ul>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<div class="row pagi">
+							<div class="col-md-12">
+								<nav aria-label="Page navigation">
+									<ul class="pagination">
+										<li><a class="btn_orange" href="#" aria-label="Previous">Previous</a></li>
+										<li><a href="#">1</a></li>
+										<li><a href="#">2</a></li>
+										<li><a href="#">3</a></li>
+										<li><a href="#">4</a></li>
+										<li><a href="#">5</a></li>
+										<li><a href="#">...</a></li>
+										<li><a href="#">36</a></li>
+										<li><a class="btn_blue" href="#" aria-label="Next">Next</a></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

@@ -11,6 +11,8 @@
         .state('about', {
           url: '/aboutUs',
           templateUrl: 'views/public/aboutUs.html',
+          // controller : 'AboutUsCtrl',
+          // controllerAs : 'aboutUsCtrl',
           authenticate: false,
         })
         .state('contact', {

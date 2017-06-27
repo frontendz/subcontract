@@ -1052,9 +1052,39 @@
             successCallback(response);
           },
           function onError(response) {
-            errorCallback(response);
+            errorCallback(response)
           });
         },
+
+        getAllQuestions : function(successCallback, errorCallback){
+            $http({
+              method : 'GET',
+              url : API_URL + 'v1/user/questions',
+              headers : {
+                  'authToken' : AuthService.getToken(),
+              }
+            }).then(function onSuccess(response){
+              successCallback(response);
+            }, function onError(response){
+              errorCallback(response);
+            })
+        },
+
+        saveAllQuestions : function(requestParams, userId, successCallback, errorCallback){
+          $http({
+            method : 'PUT',
+            url : API_URL + 'v1/user/'+ userId +'/answer',
+            data : JSON.stringify(requestParams),
+            headers : {
+              'authToken' : AuthService.getToken(),
+            }
+          }).then(function onSuccess(response){
+            successCallback(response);
+          },function onError() {
+            errorCallback(response);
+          })
+        },
+
       };
     }]);
 })();

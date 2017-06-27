@@ -134,6 +134,36 @@
             errorCallback(response);
           });
         },
+
+        getSecurityQuestionByEmail : function(user_email_id, successCallback, errorCallback){
+          $http({
+            method : 'GET',
+            url : API_URL + 'v1/user/'+ user_email_id +'/questions',
+            headers : {
+                'Content-Type' : 'application/json',
+            }
+          }).then(function onSuccess(response){
+            successCallback(response);
+          }, function onError(response){
+            errorCallback(response);
+          })
+        },
+
+        checkSecurityQuestionsByEmail : function(requestParams, user_email_id, successCallback, errorCallback){
+          $http({
+            method : 'PUT',
+            url : API_URL + 'v1/user/' + user_email_id + '/answer/validate',
+            data : requestParams,
+            headers : {
+              'Content-Type' : 'application/json'
+            }
+          }).then(function onSuccess(response){
+            successCallback(response);
+          },function onError(response){
+            errorCallback(response)
+          })
+        }
+
       };
     }]);
 })();

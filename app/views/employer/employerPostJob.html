@@ -1,338 +1,298 @@
-<div class="employer-add-new-job employer-all-pages container-fluid" id="employerAddNewJob">
-  <h2>Post Job</h2>
-  <form id="formEmployerAddNewJob" autocomplete="off" class="row separator" name="newjobForm" novalidate="novalidate">
-    <div class="form-group employer-fields-section">
-      <div class="col-sm-12">
-        <div class="row">
-      		<div class="col-sm-6 fieldGroup" ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.jobTitle.$touched || submitted) && newjobForm.jobTitle.$error.required }">
-      		  <label for="posttitle" class="control-label pull-left">Job Title:<sup><span class="estricSign"> *</span></sup>
-      		  </label>
-      		  <input class="form-control" type="text" placeholder="Job Title" id="txtJobTitle" value="" name="jobTitle" ng-required="true" ng-model="employerAddNewJobCtrl.jobDetailData.jobTitle">
-      		  <p ng-show="(newjobForm.$submitted || newjobForm.jobTitle.$touched || submitted) && newjobForm.jobTitle.$error.required" class="help-block">Job Title is required.</p>
-      		</div>
-      		<div class="col-sm-6 fieldGroup" ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.JobID.$touched || submitted) && newjobForm.JobID.$error.required }">
-      		  <label for="posttitle" class="control-label pull-left">Job ID:<sup><span class="estricSign"> *</span></sup>
-      		  </label>
-      		  <input class="form-control" type="text" placeholder="Ex: SAP_Tech_Functional" id="txtJobId" name="JobID" value="" ng-required="true" ng-model="employerAddNewJobCtrl.jobDetailData.userJobId">
-      		  <p ng-show="(newjobForm.$submitted || newjobForm.JobID.$touched || submitted) && newjobForm.JobID.$error.required" class="help-block">You Job ID is required.</p>
-      		</div>
-        </div>
-
-        <div class="row">
-      		<div class="col-sm-6 fieldGroup" ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.txtJobDesc.$touched || submitted) && newjobForm.txtJobDesc.$error.required }">
-      		  <label for="postDescription" class="control-label pull-left">Job Description:<sup><span class="estricSign"> *</span></sup></label>
-      		  <textarea class="form-control txtAreaJobDesc" placeholder="Post Description" id="txtJobDesc" name="txtJobDesc" ng-model="employerAddNewJobCtrl.jobDetailData.jobDesc" ng-required="true"></textarea>
-            <p ng-show="(newjobForm.$submitted || newjobForm.txtJobDesc.$touched || submitted) && newjobForm.txtJobDesc.$error.required" class="help-block">Job Description is required.</p>
-      		</div>
-          <div class="col-sm-6 fieldGroup">
-        		<div ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.location.$touched || submitted) && newjobForm.location.$error.required }">
-        		  <label for="location" class="control-label">Location<sup><span class="estricSign"> *</span></sup>
-        		  </label>
-        		  <input typeahead-on-select='employerAddNewJobCtrl.doSomething(jobLocation)' id="Autocomplete2" class="form-control"  ng-autocomplete options="options" details="details" type="text" placeholder="Type your Location" ng-model="employerAddNewJobCtrl.jobDetailData.jobLocation" name="location" ng-required="true">
-        		  <p ng-show="(newjobForm.$submitted || newjobForm.location.$touched || submitted) && newjobForm.location.$error.required" class="help-block">Location is required.</p>
-        		</div>
-        		<div ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.dt.$touched || submitted) && newjobForm.dt.$error.required }">
-        		  <label for="date close" class="control-label"> Closing Date: <sup><span class="estricSign"> *</span></sup>
-        		  </label>
-        		  <div class="form-group text-left datePickerClass">
-        			<input type="text" class="form-control" name="dt" uib-datepicker-popup="{{employerAddNewJobCtrl.format}}" id="dtpPostDate" ng-model="employerAddNewJobCtrl.jobDetailData.dt" is-open="employerAddNewJobCtrl.opened" datepicker-options="employerAddNewJobCtrl.dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
-        			 <span class="input-group-btn">
-        			   <button type="button" class="btn btn-default dateBtn" ng-click="employerAddNewJobCtrl.open1()"><i class="glyphicon glyphicon-calendar"></i></button>
-        			 </span>
-        		   </div>
-        		  <p ng-show="(newjobForm.$submitted || newjobForm.dt.$touched || submitted) && newjobForm.dt.$error.required" class="help-block">Job Closing Date is required.</p>
-        		</div>
-          </div>
-        </div>
-        <div class="row">
-      		<div class="col-sm-6 fieldGroup" ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.skills.$touched || submitted) && newjobForm.skills.$error.required }">
-      		  <label for="skills" class="control-label">Skills: <sup><span class="estricSign"> *</span></sup></label>
-
-      		  <span class="textValue">
-              <tags-input ng-model="employerAddNewJobCtrl.skillList"
-                                placeholder="Find Skills..."
-                                replace-spaces-with-dashes="false"
-                                add-from-autocomplete-only="true"
-                                display-property="skillName"
-                                ng-required="true"
-                                on-tag-added="employerAddNewJobCtrl.addTagToSkillData($tag)"
-                                on-tag-removed="employerAddNewJobCtrl.removeTagFromSkillData($tag)">
-                      <auto-complete source="employerAddNewJobCtrl.loadSkillData($query)"
-                                     displayProperty="skillName"
-                                     debounce-delay="0" min-length="1"></auto-complete>
-                    </tags-input>
-
-
-      			<input  placeholder="Skills" id="txtJobSkills" name="skills" value="" ng-model="employerAddNewJobCtrl.jobDetailData.jobSkills" ng-change="employerAddNewJobCtrl.changeInSkillsInput()" class="form-control hidden addNewAppSiteSearchBox {{employerAddNewJobCtrl.inputBoxShowListClass}}" ng-required="true"/>
-      			<ul class="addNewAppSiteList" ng-show="employerAddNewJobCtrl.isAppSiteListShow === true">
-      			  <li ng-repeat="item in employerAddNewJobCtrl.appDataList" class="row" ng-click="employerAddNewJobCtrl.appSiteSelectedFromList(item)">
-      				  <div class="appName">{{item.skillName}}</div>
-      			  </li>
-      			  <li class="{{employerAddNewJobCtrl.searchResultNotFoundClass}}">No search result found</li>
-      			</ul>
-      		  </span>
-      		  <p ng-show="(newjobForm.$submitted || newjobForm.skills.$touched || submitted) && newjobForm.skills.$error.required" class="help-block">Skills is required.</p>
-      		</div>
-          <div class="col-sm-6 fieldGroup">
-        		<div ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.jobLength.$touched || submitted) && newjobForm.jobLength.$error.required }">
-        		  <label for="joblength" class="control-label pull-left">Job Length:<sup><span class="estricSign"> *</span></sup>
-        		  </label>
-        		  <input class="form-control" type="text" placeholder="Job Length" name="jobLength" id="txtJobLength" value="" ng-model="employerAddNewJobCtrl.jobDetailData.jobLength" ng-required="true" />
-        		  <p ng-show="(newjobForm.$submitted || newjobForm.jobLength.$touched || submitted) && newjobForm.jobLength.$error.required" class="help-block">Job Length is required.</p>
-        		</div>
-        		<div
-            ng-class="{'has-error' : ((employerAddNewJobCtrl.jobDetailData.txtExpFrom|num) > (employerAddNewJobCtrl.jobDetailData.txtExpTo|num)) }">
-        		  <label for="experience_from" class="control-label">Experience Range:<sup><span class="estricSign"> *</span></sup></label>
-        		  <div class="row">
-        			<div class="col-sm-12">
-        			  <div class="col-sm-6 fieldGroup" style="padding-left:0px;"
-                ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.expFrom.$touched || submitted) && newjobForm.expFrom.$error.required }">
-                  <select class="form-control" ng-model="employerAddNewJobCtrl.jobDetailData.txtExpFrom" name="expFrom" ng-required="true">
-                    <option value="" selected="selected" disabled="" hidden="" class="">From</option>
-                    <option label="Fresher" value="0">Fresher</option>
-                    <option label="1 years" value="1">1 years</option>
-                    <option label="2 years" value="2">2 years</option>
-                    <option label="3 years" value="3">3 years</option>
-                    <option label="4 years" value="4">4 years</option>
-                    <option label="5 years" value="5">5 years</option>
-                    <option label="6 years" value="6">6 years</option>
-                    <option label="7 years" value="7">7 years</option>
-                    <option label="8 years" value="8">8 years</option>
-                    <option label="9 years" value="9">9 years</option>
-                    <option label="10 years" value="10">10 years</option>
-                    <option label="11 years" value="11">11 years</option>
-                    <option label="12 years" value="12">12 years</option>
-                    <option label="13 years" value="13">13 years</option>
-                    <option label="14 years" value="14">14 years</option>
-                    <option label="15 years" value="15">15 years</option>
-                    <option label="16 years" value="16">16 years</option>
-                    <option label="17 years" value="17">17 years</option>
-                    <option label="18 years" value="18">18 years</option>
-                    <option label="19 years" value="19">19 years</option>
-                    <option label="20 years" value="20">20 years</option>
-                  </select>
-                  <p ng-show="(newjobForm.$submitted || newjobForm.expFrom.$touched || submitted) && newjobForm.expFrom.$error.required" class="help-block">Experince from is required.</p>
-    				      <p ng-if="((employerAddNewJobCtrl.jobDetailData.txtExpFrom|num) > (employerAddNewJobCtrl.jobDetailData.txtExpTo|num))" class="help-block No-Valid-Form">Experience From must be less than Experience To.</p>
-        			  </div>
-        			  <div class="col-sm-6 fieldGroup" style="padding-right:0px;"
-                ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.expTo.$touched || submitted) && newjobForm.expTo.$error.required }">
-                  <select class="form-control" ng-model="employerAddNewJobCtrl.jobDetailData.txtExpTo" name="expTo" ng-required="true">
-                    <option value="" selected="selected" disabled="" hidden="" class="">To</option>
-                    <option label="Fresher" value="0">Fresher</option>
-                    <option label="1 years" value="1">1 years</option>
-                    <option label="2 years" value="2">2 years</option>
-                    <option label="3 years" value="3">3 years</option>
-                    <option label="4 years" value="4">4 years</option>
-                    <option label="5 years" value="5">5 years</option>
-                    <option label="6 years" value="6">6 years</option>
-                    <option label="7 years" value="7">7 years</option>
-                    <option label="8 years" value="8">8 years</option>
-                    <option label="9 years" value="9">9 years</option>
-                    <option label="10 years" value="10">10 years</option>
-                    <option label="11 years" value="11">11 years</option>
-                    <option label="12 years" value="12">12 years</option>
-                    <option label="13 years" value="13">13 years</option>
-                    <option label="14 years" value="14">14 years</option>
-                    <option label="15 years" value="15">15 years</option>
-                    <option label="16 years" value="16">16 years</option>
-                    <option label="17 years" value="17">17 years</option>
-                    <option label="18 years" value="18">18 years</option>
-                    <option label="19 years" value="19">19 years</option>
-                    <option label="20 years" value="20">20 years</option>
-                  </select>
-                  <p ng-show="(newjobForm.$submitted || newjobForm.expTo.$touched || submitted) && newjobForm.expTo.$error.required" class="help-block">Experince To is required.</p>
-        			  </div>
-        			</div>
-        		  </div>
-        		</div>
-          </div>
-        </div>
-        <div class="row">
-      		<div class="col-sm-6 fieldGroup" ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.employmentType.$touched || submitted) && newjobForm.employmentType.$error.required }">
-      		  <label for="emp_type" class="control-label">Employment type:<sup><span class="estricSign"> *</span></sup>
-      		  </label>
-      		  <select  ng-required="true" class="form-control" name="employmentType" ng-options="item.displayTitle for item in employerAddNewJobCtrl.employmentType track by item.masterId" ng-model="employerAddNewJobCtrl.jobDetailData.employmentType">
-      			 <option value="" selected disabled hidden>Select Employement Type</option>
-      		   </select>
-      		  <p ng-show="(newjobForm.$submitted || newjobForm.employmentType.$touched || submitted) && newjobForm.employmentType.$error.required" class="help-block">Employment type is required.</p>
-      		</div>
-      		<div class="col-sm-6 fieldGroup">
-      		  <label for="numberOfPositions" class="control-label pull-left">Number of positions:</label>
-      		  <input class="form-control" type="number" placeholder="Number of Positions" id="txtNumberPosition" value="" ng-model="employerAddNewJobCtrl.jobDetailData.noOfPositions">
-      		  <div class="val-err" id="numPosErr"></div>
-      		</div>
-        </div>
-        <div class="row">
-      		<div class="col-sm-6 fieldGroup">
-      		  <label for="recruiter" class="control-label">Recruiter:<sup><span class="estricSign"> *</span></sup>
-      		  </label>
-      		  <select class="form-control" ng-options="item.firstName for item in employerAddNewJobCtrl.allTeamMember track by item.id" ng-model="employerAddNewJobCtrl.jobDetailData.recruiterAssigned">
-      			<option value="" selected>Self</option>
-      		  </select>
-      		  <div class="val-err" id="recErr"></div>
-      		</div>
-      		<div class="col-sm-6 fieldGroup">
-      		  <label for="telecommute" class="control-label">Remote: </label>
-      		  <select class="form-control" id="txtRemoteList"
-            ng-model="employerAddNewJobCtrl.jobDetailData.remote"
-            ng-options="option.name for option in employerAddNewJobCtrl.remoteList track by option.value">
-      			<option value="">Select</option>
-      		  </select>
-      		  <div class="val-err" id="telcomErr"></div>
-      		</div>
-        </div>
-        <div class="row">
-      		<div class="col-sm-6 fieldGroup">
-      		  <label for="Qualification" class="control-label pull-left">Qualification:</label>
-      		  <input class="form-control" type="text" placeholder="MSC/MCA/BTech/MBA/etc." id="txtQualification" value=""  maxlength="18" ng-model="employerAddNewJobCtrl.jobDetailData.qualification">
-      		  <div class="val-err" id="qualErr"></div>
-      		</div>
-      		<div class="col-sm-6 fieldGroup">
-      		  <label for="req_type" class="control-label">Requirement type:</label>
-      		  <select class="form-control" ng-options="item.displayTitle for item in employerAddNewJobCtrl.requirementType track by item.masterId" ng-model="employerAddNewJobCtrl.jobDetailData.requirementType">
-      			<option value="" selected disabled hidden>Select Requirement Type</option>
-      		  </select>
-      		  <div class="val-err" id="reqTypeErr"></div>
-      		</div>
-        </div>
-        <div class="row">
-      		<div class="col-sm-6 fieldGroup">
-      		  <div class="row">
-      			<div class="col-sm-12">
-      			  <div class="col-sm-3" style="padding-left:0px;">
-      				<label for="rate" class="control-label pull-left">Currency:</label>
-      				<select class="form-control FontAwesomeClass" type="text" id="currency" ng-model="employerAddNewJobCtrl.jobDetailData.currency">
-      				  <option ng-selected="true" value="dollar">$</option>
-      				  <option value="rupee">&#xf156;</option>
-      				</select>
-      			  </div>
-      			  <div class="col-sm-9" style="padding-right:0px;">
-      				<label for="ctc_from" class="control-label">Rate Type:</label>
-      				<select class="form-control" ng-options="item.displayTitle for item in employerAddNewJobCtrl.rateType track by item.masterId"
+<!-- Page Content -->
+<div class="middle-section">
+	<div class="employer_info">
+		<div class="employer_info_title"></div>
+		<div class="container">
+			<form name="newjobForm" ng-submit="newjobForm.$valid && employerAddNewJobCtrl.postNewJob()" novalidate>
+				<div class="row">
+					<div class="col-md-6" ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.jobTitle.$touched || submitted) && newjobForm.jobTitle.$error.required }">
+						<label>Job Title<span>*</span></label>
+						<input type="text" placeholder="Job Title" id="txtJobTitle" name="jobTitle" ng-required="true" ng-model="employerAddNewJobCtrl.jobDetailData.jobTitle" />
+						<p ng-show="(newjobForm.$submitted || newjobForm.jobTitle.$touched || submitted) && newjobForm.jobTitle.$error.required" class="help-block">Job Title is required.</p>
+					</div>
+					<div class="col-md-6" ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.JobID.$touched || submitted) && newjobForm.JobID.$error.required }">
+						<label>Job ID<span>*</span></label>
+						<input type="text" placeholder="Ex: SAP_Tech_Functional" id="txtJobId" name="JobID" ng-required="true" ng-model="employerAddNewJobCtrl.jobDetailData.userJobId"/>
+						<p ng-show="(newjobForm.$submitted || newjobForm.JobID.$touched || submitted) && newjobForm.JobID.$error.required" class="help-block">You Job ID is required.</p>
+					</div>
+					<div class="col-md-12" ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.txtJobDesc.$touched || submitted) && newjobForm.txtJobDesc.$error.required }">
+						<label>Job Description<span>*</span></label>
+						<textarea class="discription" placeholder="Type your Description" id="txtJobDesc" name="txtJobDesc" ng-model="employerAddNewJobCtrl.jobDetailData.jobDesc" ng-required="true"></textarea>
+						<p ng-show="(newjobForm.$submitted || newjobForm.txtJobDesc.$touched || submitted) && newjobForm.txtJobDesc.$error.required" class="help-block">Job Description is required.</p>
+					</div>
+					<div class="col-md-12" ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.location.$touched || submitted) && newjobForm.location.$error.required }">
+						<label>Location<span>*</span></label>
+						<input type="text" typeahead-on-select='employerAddNewJobCtrl.doSomething(jobLocation)' id="Autocomplete2" ng-autocomplete options="options" details="details" placeholder="Type your Location" ng-model="employerAddNewJobCtrl.jobDetailData.jobLocation" name="location" ng-required="true" />
+						<p ng-show="(newjobForm.$submitted || newjobForm.location.$touched || submitted) && newjobForm.location.$error.required" class="help-block">Location is required.</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12" ng-class="{'has-error' : (employerAddNewJobCtrl.jobDetailData.salaryRangeFrom|num) >= (employerAddNewJobCtrl.jobDetailData.salaryRangeTo|num) }">
+						<label>Salary</label>
+					</div>
+					<div class="col-md-3" ng-class="{'has-error' : (employerAddNewJobCtrl.jobDetailData.salaryRangeFrom|num) >= (employerAddNewJobCtrl.jobDetailData.salaryRangeTo|num) }">
+						<input type="number" placeholder="From" id="txtSalaryRangeFrom" value="" ng-model="employerAddNewJobCtrl.jobDetailData.salaryRangeFrom" />
+						<p ng-if="(employerAddNewJobCtrl.jobDetailData.salaryRangeFrom|num) >= (employerAddNewJobCtrl.jobDetailData.salaryRangeTo|num)" class="help-block No-Valid-Form">Salary From must be less than Salary To.</p>
+					</div>
+					<div class="col-md-3">
+						<input type="number" placeholder="To" id="txtSalaryRangeTo" value="" ng-model="employerAddNewJobCtrl.jobDetailData.salaryRangeTo" />
+						<div class="val-err" id="ctcToErr"></div>
+					</div>
+					<div class="col-md-3">
+						<select ng-model="employerAddNewJobCtrl.jobDetailData.currency">
+							<option value="">Currency</option>
+							<option ng-selected="true" value="dollar">$</option>
+      				<option value="rupee" class="fa">&#xf156;</option>
+						</select>
+					</div>
+					<div class="col-md-3">
+						<select ng-options="item.displayTitle for item in employerAddNewJobCtrl.rateType track by item.masterId"
               ng-model="employerAddNewJobCtrl.jobDetailData.rateType">
-      				   <option value="" selected disabled hidden>Select Rate Type</option>
-      				 </select>
-      				<div class="val-err" id="reteErr"></div>
-      			  </div>
-      			</div>
-      		  </div>
-      		</div>
-
-      		<div class="col-sm-6 fieldGroup"  ng-class="{'has-error' : (employerAddNewJobCtrl.jobDetailData.salaryRangeFrom|num) >= (employerAddNewJobCtrl.jobDetailData.salaryRangeTo|num) }">
-      		  <label for="ctc_from" class="control-label">Rate/Salary Range:</label>
-      		  <div class="row">
-      			<div class="col-sm-12">
-      			  <div class="col-sm-5 nopadding" style="padding-left:0px;">
-      				<input class="form-control" type="number" placeholder="From" id="txtSalaryRangeFrom" value="" ng-model="employerAddNewJobCtrl.jobDetailData.salaryRangeFrom">
-      				<p ng-if="(employerAddNewJobCtrl.jobDetailData.salaryRangeFrom|num) >= (employerAddNewJobCtrl.jobDetailData.salaryRangeTo|num)" class="help-block No-Valid-Form">Salary From must be less than Salary To.</p>
-      			  </div>
-      			  <div class="col-sm-1 text-center nopadding midd" style="padding-left:0px;">-</div>
-      			  <style>
-      				.nopadding {
-      				  margin: 0px;
-      				  padding: 0px;
-      				}
-      				.midd {
-      				  margin: 10px 0px 0px 0px;
-      				}
-      			  </style>
-      			  <div class="col-sm-6 nopadding" style="padding-right:0px;">
-        				<input class="form-control" type="number" placeholder="To" id="txtSalaryRangeTo" value="" ng-model="employerAddNewJobCtrl.jobDetailData.salaryRangeTo">
-        				<div class="val-err" id="ctcToErr"></div>
-        			  </div>
-        			</div>
-      		  </div>
-      		</div>
-        </div>
-        <div class="row">
-      		<div class="col-sm-6 fieldGroup">
-      		  <label for="contract_terms" class="control-label">Contract Terms:</label>
-      		  <select class="form-control" multiple size="3" type="text" placeholder="" id="txtContractTerms" value="" ng-model="employerAddNewJobCtrl.jobDetailData.contractTerms">
-      			<option value="" selected disabled hidden>Select Contract Terms</option>
-      			<option value="Corp to Corp">Corp to Corp</option>
-      			<option value="Contract to Hire">Contract to Hire</option>
-      			<option value="Contract-w2">Contract-w2</option>
-      		  </select>
-      		</div>
-          <div class="col-sm-6 fieldGroup">
-        		<div>
-        		  <label for="industry_name" class="control-label">Industry:</label>
-        		  <select class="form-control" ng-options="item.displayTitle for item in employerAddNewJobCtrl.industryType track by item.masterId" ng-model="employerAddNewJobCtrl.jobDetailData.industry">
-        			<option value="" selected disabled hidden>Select an Industry</option>
-        		  </select>
-              <div class="val-err" id="industryErr"></div>
-        		</div>
-        		<div>
-        		  <label for="FunctionalArea" class="control-label pull-left">Functional Area:</label>
-        		  <input class="form-control" type="text" placeholder="Functional Area" id="txtFunctionalArea" value=""  pattern="[a-zA-Z\s]+" ng-model="employerAddNewJobCtrl.jobDetailData.functionalArea" />
-        		  <div class="val-err" id="funAreaErr"></div>
-        		</div>
-          </div>
-        </div>
-        <div class="row">
-      		<div class="col-sm-6 fieldGroup">
-      		  <label for="travel" class="control-label">Travel Type:</label>
-      		  <select class="form-control" ng-options="item.displayTitle for item in employerAddNewJobCtrl.travelType track by item.masterId" ng-model="employerAddNewJobCtrl.jobDetailData.travelType">
-      			<option value="" selected disabled hidden>Select Travel Type</option>
-      		  </select>
-      		  <div class="val-err" id="travelErr"></div>
-      		</div>
-      		<div class="col-sm-6 fieldGroup">
-      		  <label for="compDescription" class="control-label pull-left">End Client Details:</label>
-      		  <input class="form-control" type="text" placeholder="Client Description" id="txtECD" value="" ng-model="employerAddNewJobCtrl.jobDetailData.endClientDesc" />
-      		</div>
-        </div>
-        <div class="row">
-      		<div class="col-sm-6 fieldGroup" style="height: 34px;"
-            ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.jobVisibility.$touched || submitted ) && newjobForm.jobVisibility.$invalid && newjobForm.jobVisibility.$error.required }">
-      		  <label for="Job Visible" class="control-label">Job Visibility<sup><span class="estricSign"> *</span></sup></label>
-      		  <div class="row">
-        			<div class="col-sm-12">
-        			  <span class="textValue" ng-init="employerAddNewJobCtrl.jobDetailData.jobVisibility = 'Public'">
-          				<input type="radio" name="jobVisibility" class="btn btn-warning" ng-model="employerAddNewJobCtrl.jobDetailData.jobVisibility" value="Internal">Internal
-          				<input type="radio" name="jobVisibility" class="btn btn-info" ng-model="employerAddNewJobCtrl.jobDetailData.jobVisibility" value="Network">My Network
-          				<input type="radio" name="jobVisibility" class="btn btn-success" ng-model="employerAddNewJobCtrl.jobDetailData.jobVisibility" value="Public" >Public
-        			  </span>
-        			  <p ng-show="(newjobForm.$submitted || newjobForm.jobVisibility.$touched || submitted ) && newjobForm.jobVisibility.$invalid && newjobForm.jobVisibility.$error.required" class="help-block">Resume Status is required.</p>
-        			</div>
-      		  </div>
-      		</div>
-      		<div class="col-sm-6 fieldGroup">
-      		  <div class="row">
-        			<div class="col-sm-12">
-        				<label for="onboardby" class="control-label pull-left">Start date :</label>
-        				<select class="form-control" id="txtNoticePeriodDays" ng-init="employerAddNewJobCtrl.jobDetailData.noticeInDays = employerAddNewJobCtrl.noticePeriodList[2]" ng-model="employerAddNewJobCtrl.jobDetailData.noticeInDays" ng-options="option.name for option in employerAddNewJobCtrl.noticePeriodList track by option.value">
-        				  <option value="">Please Select Days</option>
-        				</select>
-        				<div class="val-err" id="onBoardErr"></div>
-        			</div>
-      		  </div>
-      		</div>
-        </div>
-        <div class="row">
-      		<div class="col-sm-6 fieldGroup">
-      		  <label for="refresh" class="control-label">Refresh job by:</label>
-      		  <select class="form-control" placeholder="Please Select" id="txtRefreshJobBy" value="" ng-model="employerAddNewJobCtrl.jobDetailData.refreshJobBy">
-      			<option value="">Please Select</option>
-      			<option value="daily">Daily</option>
-      			<option value="weekly">Weekly</option>
-      			<option value="fortnight">Fortnight</option>
-      			<option value="monthly">Monthly</option>
-      		  </select>
-      		  <div class="val-err" id="refJobErr"></div>
-      		</div>
-      		<div class="col-sm-6 fieldGroup">
-      		  <label for="keywords" class="control-label pull-left">Keywords:</label>
-      		  <input class="form-control" placeholder="Keywords" id="txtJobKeywords" value="" ng-model="employerAddNewJobCtrl.jobDetailData.jobKeywords" />
-      		</div>
-        </div>
-        <div class="row">
-      		<div class="col-sm-6 addNewJobForm" style="padding-top: 20px;">
-      		  <input type="submit" class="btnSubmit"  value="Submit Post" title="Search" ng-click="newjobForm.$valid && employerAddNewJobCtrl.postNewJob()">
-            <input type="button" class="btnCancel" value="Back" ui-sref="employer.dashboard" />
-      		</div>
-        </div>
-      </div>
-  	</div>
-  </form>
+							<option value="">Rate Type</option>
+							<option>Rate Type 01</option>
+							<option>Rate Type 02</option>
+							<option>Rate Type 03</option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-12" ng-class="{'has-error' : ((employerAddNewJobCtrl.jobDetailData.txtExpFrom|num) > (employerAddNewJobCtrl.jobDetailData.txtExpTo|num)) }">
+								<label>Experience<span>*</span></label>
+							</div>
+							<div class="col-md-6"  ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.expFrom.$touched || submitted) && newjobForm.expFrom.$error.required }">
+								<select ng-model="employerAddNewJobCtrl.jobDetailData.txtExpFrom" name="expFrom" ng-required="true">
+									<option value="">From</option>
+									<option label="Fresher" value="0">Fresher</option>
+									 <option label="1 years" value="1">1 years</option>
+									 <option label="2 years" value="2">2 years</option>
+									 <option label="3 years" value="3">3 years</option>
+									 <option label="4 years" value="4">4 years</option>
+									 <option label="5 years" value="5">5 years</option>
+									 <option label="6 years" value="6">6 years</option>
+									 <option label="7 years" value="7">7 years</option>
+									 <option label="8 years" value="8">8 years</option>
+									 <option label="9 years" value="9">9 years</option>
+									 <option label="10 years" value="10">10 years</option>
+									 <option label="11 years" value="11">11 years</option>
+									 <option label="12 years" value="12">12 years</option>
+									 <option label="13 years" value="13">13 years</option>
+									 <option label="14 years" value="14">14 years</option>
+									 <option label="15 years" value="15">15 years</option>
+									 <option label="16 years" value="16">16 years</option>
+									 <option label="17 years" value="17">17 years</option>
+									 <option label="18 years" value="18">18 years</option>
+									 <option label="19 years" value="19">19 years</option>
+									 <option label="20 years" value="20">20 years</option>
+								</select>
+								<p ng-show="(newjobForm.$submitted || newjobForm.expFrom.$touched || submitted) && newjobForm.expFrom.$error.required" class="help-block">Experince from is required.</p>
+    				    <p ng-if="((employerAddNewJobCtrl.jobDetailData.txtExpFrom|num) > (employerAddNewJobCtrl.jobDetailData.txtExpTo|num))" class="help-block No-Valid-Form">Experience From must be less than Experience To.</p>
+							</div>
+							<div class="col-md-6" ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.expTo.$touched || submitted) && newjobForm.expTo.$error.required }">
+								<select ng-model="employerAddNewJobCtrl.jobDetailData.txtExpTo" name="expTo" ng-required="true">
+									<option value="">To</option>
+									<option label="Fresher" value="0">Fresher</option>
+                    <option label="1 years" value="1">1 years</option>
+                    <option label="2 years" value="2">2 years</option>
+                    <option label="3 years" value="3">3 years</option>
+                    <option label="4 years" value="4">4 years</option>
+                    <option label="5 years" value="5">5 years</option>
+                    <option label="6 years" value="6">6 years</option>
+                    <option label="7 years" value="7">7 years</option>
+                    <option label="8 years" value="8">8 years</option>
+                    <option label="9 years" value="9">9 years</option>
+                    <option label="10 years" value="10">10 years</option>
+                    <option label="11 years" value="11">11 years</option>
+                    <option label="12 years" value="12">12 years</option>
+                    <option label="13 years" value="13">13 years</option>
+                    <option label="14 years" value="14">14 years</option>
+                    <option label="15 years" value="15">15 years</option>
+                    <option label="16 years" value="16">16 years</option>
+                    <option label="17 years" value="17">17 years</option>
+                    <option label="18 years" value="18">18 years</option>
+                    <option label="19 years" value="19">19 years</option>
+                    <option label="20 years" value="20">20 years</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-12">
+								<label>Number of Positions</label>
+								<input type="text" ng-model="employerAddNewJobCtrl.jobDetailData.noOfPositions" placeholder="No of Positions"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6" ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.employmentType.$touched || submitted) && newjobForm.employmentType.$error.required }">
+						<label>Employment Type<span>*</span></label>
+						<select  ng-required="true" name="employmentType" ng-options="item.displayTitle for item in employerAddNewJobCtrl.employmentType track by item.masterId" ng-model="employerAddNewJobCtrl.jobDetailData.employmentType">
+							<option value="">Select Employement Type</option>
+						</select>
+						 <p ng-show="(newjobForm.$submitted || newjobForm.employmentType.$touched || submitted) && newjobForm.employmentType.$error.required" class="help-block">Employment type is required.</p>
+					</div>
+					<div class="col-md-6">
+						<label>Requirement type</label>
+						<select ng-options="item.displayTitle for item in employerAddNewJobCtrl.requirementType track by item.masterId" ng-model="employerAddNewJobCtrl.jobDetailData.requirementType">
+							<option value="">Select Requirement Type</option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<label>Functional Area</label>
+						<input type="text" type="text" placeholder="Functional Area" id="txtFunctionalArea" value=""  pattern="[a-zA-Z\s]+" ng-model="employerAddNewJobCtrl.jobDetailData.functionalArea" />
+					</div>
+					<div class="col-md-6">
+						<label>Industry</label>
+						<select ng-options="item.displayTitle for item in employerAddNewJobCtrl.industryType track by item.masterId" ng-model="employerAddNewJobCtrl.jobDetailData.industry">
+							<option value="">Select an Industry</option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<label>Contract Terms</label>
+						<select placeholder="" id="txtContractTerms" ng-model="employerAddNewJobCtrl.jobDetailData.contractTerms">
+							<option value="">Select contact Terms</option>
+							<option value="Corp to Corp">Corp to Corp</option>
+      				<option value="Contract to Hire">Contract to Hire</option>
+      				<option value="Contract-w2">Contract-w2</option>
+						</select>
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-6">
+								<label>Travel Type</label>
+								<select  ng-options="item.displayTitle for item in employerAddNewJobCtrl.travelType track by item.masterId" ng-model="employerAddNewJobCtrl.jobDetailData.travelType">
+									<option value="">Select Travel Type</option>
+								</select>
+							</div>
+							<div class="col-md-6">
+								<label>Remote</label>
+								<select ng-model="employerAddNewJobCtrl.jobDetailData.remote"
+            ng-options="option.name for option in employerAddNewJobCtrl.remoteList track by option.value">
+									<option value="">Select</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12" ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.skills.$touched || submitted) && newjobForm.skills.$error.required }">
+						<label>Keyskills<span>*</span></label>
+						<select name="skills" ng-model="employerAddNewJobCtrl.jobDetailData.jobSkills" ng-repeat="item in employerAddNewJobCtrl.appDataList" ng-change="employerAddNewJobCtrl.changeInSkillsInput()" ng-required="true" class="chosen-select" multiple="" data-placeholder="Choose Your Skills...">
+							<option selected="selected">Graphic Designer</option>
+							<option value="{{item.skillName}}">{{item.skillName}}</option>
+						</select>
+						<p ng-show="(newjobForm.$submitted || newjobForm.skills.$touched || submitted) && newjobForm.skills.$error.required" class="help-block">Skills is required.</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<label>Qualification</label>
+					</div>
+					<div class="col-md-6">
+						<select ng-model="employerAddNewJobCtrl.jobDetailData.qualification">
+							<option value="">Select your Educational Qualification</option>
+						</select>
+					</div>
+					<div class="col-md-6">
+						<input type="text" placeholder="Any other Qualification" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<label>Key Word</label>
+						<input type="text" placeholder="Type your Keywords"  ng-model="employerAddNewJobCtrl.jobDetailData.jobKeywords" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3" ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.dt.$touched || submitted) && newjobForm.dt.$error.required }">
+						<label>Closing Date<span>*</span></label>
+						<input class="Date" type="text" placeholder="" uib-datepicker-popup="{{employerAddNewJobCtrl.format}}" id="dtpPostDate" ng-model="employerAddNewJobCtrl.jobDetailData.dt" is-open="employerAddNewJobCtrl.opened" datepicker-options="employerAddNewJobCtrl.dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats">
+						<!-- <span class="input-group-btn">
+        		   <button type="button" class="btn btn-default dateBtn" ng-click="employerAddNewJobCtrl.open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+        		</span> -->
+						<p ng-show="(newjobForm.$submitted || newjobForm.dt.$touched || submitted) && newjobForm.dt.$error.required" class="help-block">Job Closing Date is required.</p>
+					</div>
+					<div class="col-md-3">
+						<label>Start Date</label>
+						<select ng-init="employerAddNewJobCtrl.jobDetailData.noticeInDays = employerAddNewJobCtrl.noticePeriodList[2]" ng-model="employerAddNewJobCtrl.jobDetailData.noticeInDays" ng-options="option.name for option in employerAddNewJobCtrl.noticePeriodList track by option.value">
+							<option value="">Please Select Days</option>
+						</select>
+					</div>
+					<div class="col-md-3">
+						<label>Job Visible</label>
+						<select>
+							<option>Please Select</option>
+							<option>Please Select Job 01</option>
+							<option>Please Select Job 02</option>
+							<option>Please Select Job 03</option>
+						</select>
+					</div>
+					<div class="col-md-3">
+						<label>Refresh job by</label>
+						<select  ng-model="employerAddNewJobCtrl.jobDetailData.refreshJobBy">
+							<option value="">Please Select</option>
+							<option value="daily">Daily</option>
+      				<option value="weekly">Weekly</option>
+      				<option value="fortnight">Fortnight</option>
+      				<option value="monthly">Monthly</option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<label>Company<span>*</span></label>
+						<select>
+							<option value="">Select contact Terms</option>
+							<option>Select contact Terms 01</option>
+							<option>Select contact Terms 02</option>
+							<option>Select contact Terms 03</option>
+						</select>
+					</div>
+					<div class="col-md-3" ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.recruiter.$touched || submitted) && newjobForm.recruiter.$error.required }">
+						<label>Recruiter<span>*</span></label>
+						<select name="recruiter" ng-options="item.firstName for item in employerAddNewJobCtrl.allTeamMember track by item.id" ng-model="employerAddNewJobCtrl.jobDetailData.recruiterAssigned" ng-required="true">
+							<option value="">Please Select</option>
+						</select>
+						<p ng-show="(newjobForm.$submitted || newjobForm.recruiter.$touched || submitted) && newjobForm.recruiter.$error.required" class="help-block">Recruiter is required.</p>
+					</div>
+					<div class="col-md-3">
+						<label>Contact Email</label>
+						<input type="text" placeholder="Type your emaill">
+					</div>
+				</div>
+				<div class="row image_upload">
+					<div class="col-md-3">
+						<label>Company Logo</label>
+						<img id="companyLogo" src="images/upload-image.png" data-type="editable" height="235" width="235" /> </div>
+					<div class="col-md-9">
+						<label>End Client Details</label>
+						<textarea class="discription"  ng-model="employerAddNewJobCtrl.jobDetailData.endClientDesc" placeholder="Type your Description"></textarea>
+					</div>
+				</div>
+				<div class="row button_style">
+					<div class="col-md-12">
+						<button class="btn_orange" type="submit" ng-click="newjobForm.$valid && employerAddNewJobCtrl.postNewJob()">Submit</button>
+						<!-- <a class="btn_orange" >Submit</a> -->
+						<a class="btn_orange" ui-sref="employer.dashboard">Back</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
+
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	jQuery('.icon').click(function () {
+		jQuery('.search').toggleClass('expanded');
+	});
+	jQuery(".chosen-select").chosen();
+});
+</script>
