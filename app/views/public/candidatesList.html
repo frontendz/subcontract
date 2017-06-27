@@ -1,5 +1,45 @@
-<div class="container-fluid">
-  <div class="modal-header">
+<div class="apply_popup" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  	<div class="model-lg" role="document">
+  		<div class="modal-content">
+  			<div class="modal-header">
+  				<button type="button" class="close" ng-click="close()" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times" aria-hidden="true"></i></span></button>
+  				<h4 class="modal-title" id="myModalLabel">Select Candidate for Apply</h4>
+  			</div>
+  			<div class="modal-body">
+          <div ng-show="candidates.length <= 0">
+            <h4>No Candidates to apply</h4>
+          </div>
+  				<div ng-show="candidates.length > 0" class="row candidate" ng-repeat="candidate in candidates">
+  					<div class="col-md-4 col-sm-4 col-xs-12">
+  						<div class="cand_photo">
+  							<img src="images/candidate1.jpg" alt="candidate1" />
+  						</div>
+  						<h4>{{candidate.firstName}} {{candidate.lastName}}</h4>
+  					</div>
+  					<div class="col-md-4 col-sm-4 col-xs-12">
+  						<p ng-repeat="skillName in candidate.candidateSkills">{{skillName.skillSetName}}</p>
+  					</div>
+  					<div class="col-md-3 col-sm-3 col-xs-12">
+  						<p>Ex: {{candidate.candidateSkills[0].experience}}+ Years</p>
+  					</div>
+  					<div class="col-md-1 col-sm-1 col-xs-12">
+  						<input type="checkbox" ng-click="selectCandidate(candidate.candidateId, candidate.checked)" ng-model="candidate.checked"/>
+  					</div>
+            <hr />
+  				</div>
+
+  			</div>
+  			<div class="modal-footer">
+  				<button type="button" ui-sref="employer.addNewCandidate" class="share_job"><i class="fa fa-user-plus" aria-hidden="true"></i> Add a Candidate</button>
+  				<button type="button" ng-click="applyCandidateForJob()" class="btn_orange">Submit</button>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+
+
+
+  <!-- <div class="modal-header">
     <h4>Select Candidate For Apply
       <p class="pull-right" ng-click="close()">X</p>
     </h4>
@@ -30,7 +70,7 @@
         <!-- <div class="col-md-4">
           <i class="glyphicon glyphicon-calendar"></i> {{candidate.candidateSkills[0].experience}}+ Years
         </div> -->
-      </div>
+      <!-- </div>
     </div>
   </div>
   <div class="modal-footer">
@@ -38,4 +78,4 @@
     <button class="btn btn-primary text-right" ng-click="close()">Close</button>
     <button class="btn btn-primary text-right" ng-click="applyCandidateForJob()">Click to Submit</button>
   </div>
-</div>
+   -->

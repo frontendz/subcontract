@@ -124,8 +124,9 @@
 										<div class="job-info-image"> <img src="images/candidate1.jpg" alt="candidate1" /> </div>
 										<div class="jb-info">
 											<div class="sec-one">
-												<h6>Full Time</h6>
-												<h4 class="not_avail"> <i class="fa fa-circle" aria-hidden="true"></i> Not Available </h4>
+												<h6>{{candidateData.employmentType}}</h6>
+												<h4 ng-if="candidateData.active === false" class="not_avail"> <i class="fa fa-circle" aria-hidden="true"></i> Not Available </h4>
+												<h4 ng-if="candidateData.active === true" class="avail"> <i class="fa fa-circle" aria-hidden="true"></i>Available </h4>
 												<span><a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i> Share Candidate </a></span> </div>
 											<h1>{{candidateData.firstName}} {{candidateData.lastName}}</h1>
 											<ul>

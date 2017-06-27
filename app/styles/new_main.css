@@ -67,7 +67,7 @@ h6 {font-size:15px; line-height:12px;}
 
 /* Paragraph CSS */
 p {font-size:16px; line-height:24px; color:#333; font-weight:400; margin:0 0 15px;}
-hr {border:none; margin:30px 0; background:#ccc; height:1px; float:left; width:100%;}
+hr {border:none; margin:18px 0; background:#ccc; height:1px; float:left; width:100%;}
 blockquote:after, li:after {content:""; display:block; clear:both;}
 blockquote {border-left:5px solid #eee;font-size:14px; margin:0 0 20px; padding:10px 20px;}
 
@@ -442,7 +442,9 @@ button:focus {outline:none;}
 .apply_popup .modal-header h4{color:#fff; text-transform:none; font-size:18px; font-family:'CenturyGothic-Bold';}
 .apply_popup .modal-header i{color:#fff;}
 .apply_popup .modal-header .close{font-size:16px; opacity:1;}
-.apply_popup .modal-body{padding:30px 15px 0px 30px; overflow:auto; height:400px;}
+/*.apply_popup .modal-body{padding:30px 15px 0px 30px; overflow:auto; height:400px;}*/
+.apply_popup .modal-body{padding:14px 18px 0px 18px; overflow:auto; height:400px;}
+
 .apply_popup .modal-body .cand_photo{background-color:#f8fafa; padding:3px; border:1px solid #e0e8e8; -webkit-border-radius:50%; -ms-border-radius:50%; -moz-border-radius:50%; -o-border-radius:50%; border-radius:50%; width:65px; height:65px; float:left;}
 .apply_popup .modal-body .cand_photo img{max-width:100%; height:auto; -webkit-border-radius:50%; -ms-border-radius:50%; -moz-border-radius:50%; -o-border-radius:50%; border-radius:50%;}
 .apply_popup .modal-body .candidate h4{font-size:15px; text-transform:none; float:left; margin:22px 0 0 20px;}

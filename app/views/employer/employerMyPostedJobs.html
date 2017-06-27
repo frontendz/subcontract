@@ -163,8 +163,8 @@
 										<div class="jb-info">
 											<div class="sec-one">
 												<h6>{{job.employmentType}}</h6>
-												<h5 class="highlited"><a data-toggle="tooltip" data-placement="bottom" title="Closing Date"><i class="fa fa-clock-o" aria-hidden="true"></i> 21.02.2017</a></h5>
-												<span>POSTED 2HR AGO</span> </div>
+												<h5 class="highlited"><a data-toggle="tooltip" data-placement="bottom" title="Closing Date"><i class="fa fa-clock-o" aria-hidden="true"></i>{{job.closingAt}}</a></h5>
+												<span>POSTED {{job.createdAt | dateToCustomString }}</span> </div>
 											<h1>{{job.jobTitle}}</h1>
 											<ul>
 												<li><i class="fa fa-map-signs" aria-hidden="true"></i>{{job.location}}</li>

@@ -3,7 +3,9 @@
   angular.module('scApp.filters')
   .filter('dateToCustomString', ['moment', function(moment) {
     return function(dateInput) {
-      return moment(dateInput).format('DD-MMM-YYYY');
+        //console.log(moment('2017-03-26').fromNow());
+        // return moment(dateInput).format('DD-MMM-YYYY');
+      return moment(dateInput).fromNow();
     };
   }])
   .filter('num', function() {
