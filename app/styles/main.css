@@ -1,6 +1,7 @@
 @import url(style.css);
 @import url(new_main.css);
 @import url(new_media.css);
+@import url(datepicker.css);
 .btnSubmit, .btnCancel {
   color: #fff;
   padding: 5px 15px;

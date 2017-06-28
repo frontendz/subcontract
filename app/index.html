@@ -149,12 +149,20 @@
         <script src="scripts/custom/browse.js"></script>
         <script src="scripts/custom/chosen.js"></script>
         <script src="scripts/custom/datepicker.js"></script>
+
         <script type="text/javascript">
         jQuery(document).ready(function(){
         	jQuery('.icon').click(function () {
         		jQuery('.search').toggleClass('expanded');
         	});
-        	jQuery(".chosen-select").chosen();
+
+        	jQuery('.button_style a').click(function (e) {
+        	  e.preventDefault()
+        	  jQuery(this).tab('show')
+        	});
+        	jQuery('.select-date').datepicker({
+        		format: 'mm-dd-yyyy'
+        	});
         });
         </script>
 

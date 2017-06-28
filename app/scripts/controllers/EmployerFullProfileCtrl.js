@@ -172,6 +172,12 @@ angular.module('scApp.controllers')
       console.log(response);
     };
 
+    vm.switchTab = function (view) {
+      $('.active').removeClass('active');
+      $('#' + view).addClass('active');
+      //getJobs(view);
+    };
+
     vm.initialize();
     vm.getQuestions();
 
