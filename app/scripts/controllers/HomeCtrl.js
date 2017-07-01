@@ -3,7 +3,7 @@
 
 angular.module('scApp.controllers')
   .controller('HomeCtrl', ['$scope', '$state', '$uibModal', function ($scope, $state, $uibModal) {
-    $('#mydiv').hide(); 
+    $('#mydiv').hide();
     var vm = this;
     vm.initialize = function() {
       vm.searchStr = '';
@@ -79,6 +79,10 @@ angular.module('scApp.controllers')
         controller: 'TermsAndConditionsCtrl',
         windowClass: 'termsConditionsWindow'
       });
+    }
+
+    vm.redirectToLoginPage = function() {
+      $state.go('login');
     }
 
     vm.redirectToContactUs = function() {

@@ -2,16 +2,16 @@
 'use strict';
 
 angular.module('scApp.controllers')
-  .controller('LoginPopupCtrl', ['$rootScope', '$scope', '$state', '$stateParams', 'AuthService', 'CustomAlertService', '$uibModalInstance', '$timeout',
-    function ($rootScope, $scope, $state, $stateParams, AuthService, CustomAlertService, $uibModalInstance, $timeout) {
+  .controller('LoginPopupCtrl', ['$rootScope', '$scope', '$state', '$stateParams', 'AuthService', 'CustomAlertService', '$timeout',
+    function ($rootScope, $scope, $state, $stateParams, AuthService, CustomAlertService, $timeout) {
 
     // alerts display
     if ($rootScope.sharedJob !== undefined) {
       var jobIdFromURL = $rootScope.sharedJob.jobId;
     }
-    $scope.close = function() {
-      $uibModalInstance.close();
-    };
+    // $scope.close = function() {
+    //   $uibModalInstance.close();
+    // };
 
     $scope.onLoginFormSubmit = function() {
        var requestParams = {

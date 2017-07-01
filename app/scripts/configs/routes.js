@@ -8,6 +8,11 @@
           templateUrl: 'views/home.html',
           authenticate: false,
         })
+        .state('login',{
+          url :'/login',
+          templateUrl : 'views/public/login.html',
+          controller : 'LoginPopupCtrl'
+        })
         .state('about', {
           url: '/aboutUs',
           templateUrl: 'views/public/aboutUs.html',
